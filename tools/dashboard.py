@@ -26,6 +26,7 @@ OPTS = {"container": "hl7ack-iris", "portal": "http://localhost:9772", "ns": "re
 MAP_CODE = """\
 Set rs=##class(%SQL.Statement).%ExecDirect(,"SELECT SessionId, MessageBodyId FROM Ens.MessageHeader WHERE MessageBodyClassName='EnsLib.HL7.Message' AND SourceConfigName LIKE 'in.%' AND Type=1 ORDER BY ID")
 While rs.%Next() { Set m=##class(EnsLib.HL7.Message).%OpenId(rs.MessageBodyId) If $IsObject(m) Write "MAP|",m.GetValueAt("MSH:10"),"|",rs.SessionId,! }
+Halt
 """
 
 

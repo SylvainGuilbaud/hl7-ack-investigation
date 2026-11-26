@@ -51,30 +51,154 @@ Two things vary independently. **ReplyCodeActions** (operation, how IRIS reacts 
 
 ## Run it
 
+**Prerequisites:** Docker with Compose v2, and Python 3 on the host (standard library only, nothing to install). The first
+build also downloads the IRIS for Health image (about 4.7 GB).
+**One stack at a time:** the containers are named `hl7ack-iris` / `hl7ack-lab` and use fixed ports (9772, 29201-29216). If
+another checkout of this repository is running, stop it first (`docker compose down` in *its* directory).
+
+### 1. Start the stack
+
 ```bash
-docker compose up -d --build          # ~2 min first time
-python3 tools/send.py localhost 29201 AR demo-1       # ports: see the table above
-SEND_WAIT=15 python3 tools/send.py localhost 29211 AR demo-2   # AckMode=App; optional args: MSH-15 MSH-16
-docker exec -i hl7ack-iris iris session IRIS -U REPRO <<< 'do ##class(Repro.Trace).Report("demo-1")'
-python3 tools/matrix.py               # all 11 services x 9 lab modes = 99 rows, ~20 min, writes results/matrix.md
+docker compose up -d --build
 ```
-Management Portal: http://localhost:9772/csp/sys/UtilHome.csp (namespace `REPRO`, user `_SYSTEM` / `SYS`).
-`tools/gen_production.py` regenerates `Production.cls` from its CASES table.
+Builds the IRIS image (namespace `REPRO`, production `Repro.Production` with its 11 services, auto-started) and starts two
+containers: `hl7ack-iris` (IRIS) and `hl7ack-lab` (the downstream receiver, port 6600). Allow about 2 minutes the first time.
+Check that the production is running (the last number must be `1`):
+
+```bash
+printf 'write ##class(Ens.Director).GetProductionStatus(.n,.s)," ",n," ",s,!\nhalt\n' | docker exec -i hl7ack-iris iris session IRIS -U REPRO
+```
+
+Expected output, the production is running (status `1`):
+
+```text
+1 Repro.Production 1
+```
+
+The `halt` at the end of the piped input closes the IRIS terminal session; without it IRIS prints `<ENDOFFILE>` and `<ERRTRAP>` when the input runs out.
+
+The Management Portal is at http://localhost:9772/csp/sys/UtilHome.csp (namespace `REPRO`, user `_SYSTEM`, password `SYS`).
+
+### 2. Send one message
+
+```bash
+python3 tools/send.py localhost 29201 AR demo-1
+```
+* `PORT` selects the inbound service, hence the `ReplyCodeActions` / `AckMode` variant (table above): 29201 = `default`.
+* `MODE` is written into MSH-6 and tells the **lab how to answer**: `AA AE AR AR3`(AR with MSH-9 `ACK^A28^ACK`)
+  `OTHERID`(AA whose MSA-2 is the control id of *another* message) `NOMSA` `NOFRAME`(no MLLP end block)
+  `CLOSE`(socket closed, no ACK) `LATE`(AA after 12 s).
+* `CONTROL_ID` becomes MSH-10. Use a **new one each time**: it is the key to find the message everywhere below.
+
+The script prints the message sent and the ACK the *sender* gets back, here IRIS's own `MSA|CA` (service `AckMode=Immed`),
+**not** the lab's `AR`. The other services behave differently, and two of them need extra settings:
+
+Port 29211 is the `App` service. `SEND_WAIT=15` makes the sender wait up to 15 s for an answer:
+
+```bash
+SEND_WAIT=15 python3 tools/send.py localhost 29211 AR demo-2
+```
+
+Port 29214 is the `Msh` service. The two extra arguments are MSH-15 (`AL`) and MSH-16 (`NE`):
+
+```bash
+python3 tools/send.py localhost 29214 AR demo-3 AL NE
+```
+
+### 3. Count the deliveries at the receiver (outside IRIS)
+
+Count how many times the lab received the message `demo-1`. Wait about 10 s after sending it, because the retries take that long:
+
+```bash
+grep '"control_id": "demo-1"' results/dashboard/$(cat results/dashboard/.lab-current) | grep -c '"received"'
+```
+
+Expected output, the lab received the same message 6 times:
+
+```text
+6
+```
+
+The lab appends every message it receives and every ACK it sends to its own log, `results/dashboard/lab<YYYY-MM-DD>.jsonl`
+(`.lab-current` holds the name of the live file). Six deliveries two seconds apart is the symptom of the article.
+
+### 4. Read what IRIS recorded
+
+```bash
+printf 'do ##class(Repro.Trace).Report("demo-1")\nhalt\n' | docker exec -i hl7ack-iris iris session IRIS -U REPRO
+```
+Prints the message headers and the Event Log of that message. Look for `... resulting in Action code RF` (the retry
+decision of `ReplyCodeActions`) and the final `ErrFailureTimeout`. The same data is in the Management Portal
+(Visual Trace and Event Log), and one click away from the dashboard (step 6).
+
+### 5. Run the automated tests
+
+Run all 6 scripts (24 tests, about 8 minutes):
+
+```bash
+test/run_all.sh
+```
+
+Or only some of them, here scripts 1 and 4:
+
+```bash
+test/run_all.sh 1 4
+```
+
+Each test sends messages, checks the deliveries and the final status, and writes a Markdown report to `results/reports/`
+(index in `results/reports/README.md`). Run **one at a time**: a second `run_all.sh` refuses to start, because the
+operations are single-threaded and concurrent runs would delay and mix each other's messages. Details in *Tests* below.
+
+### 6. Open the dashboard
+
+```bash
+python3 tools/dashboard.py --open
+```
+Turns the lab's log into one page, `results/dashboard/dashboard<YYYY-MM-DD>.html` (`run_all.sh` also builds it when it
+ends). Details in *Dashboard over the receiver's log* below.
+
+### 7. Optional: the full matrix (about 20 minutes)
+
+```bash
+python3 tools/matrix.py --out results/dashboard/matrix.md
+```
+Sends every lab mode through every one of the 11 services (99 messages) and writes the table. **Always pass `--out`**: the
+default, `results/matrix.md`, is the committed reference the article quotes, and a run overwrites it.
+
+### 8. Stop
+
+```bash
+docker compose down
+```
+`tools/gen_production.py` regenerates `Production.cls` from its CASES table if you want to add a service or change a setting;
+then rerun step 1.
 
 ### Dashboard over the receiver's log
 
+Build the page from the lab's current log, `results/dashboard/dashboard<YYYY-MM-DD>.html` (self-contained), and open it:
+
 ```bash
-python3 tools/dashboard.py --open      # current lab log -> results/dashboard/dashboard<YYYY-MM-DD>.html (self-contained), opened
-python3 tools/dashboard.py --serve     # live: reload the page to re-read the current log (default port 8765)
-python3 tools/dashboard.py --no-fetch -i results/lab.jsonl -o /tmp/reference.html   # view the committed reference, read-only
+python3 tools/dashboard.py --open
 ```
+
+Or serve it live: reload the page in the browser to re-read the current log (default port 8765):
+
+```bash
+python3 tools/dashboard.py --serve
+```
+
+To look at the committed reference run without touching it, read `results/lab.jsonl` without querying IRIS and write the
+page outside the repository:
+
+```bash
+python3 tools/dashboard.py --no-fetch -i results/lab.jsonl -o /tmp/reference.html
+```
+
 ![Dashboard](docs/img/dashboard-overview.png)
 
 Per message: deliveries, gaps, ACKs per delivery; a *trace ↗* link opens its Visual Trace (the session id is fetched from the
 running container and cached in `results/dashboard/sessions<YYYY-MM-DD>.json`, one cache per log; options `--portal`, `--ns`, `--container`, `--no-fetch`).
 It only sees what the downstream receiver saw, so it cannot show retries made by the *sender* (Cause D in the article).
-
-Lab modes (MSH-6): `AA AE AR AR3`(AR with MSH-9 `ACK^A28^ACK`) `OTHERID`(AA whose MSA-2 is the control id of *another* message) `NOMSA` `NOFRAME`(no MLLP end block) `CLOSE`(socket closed, no ACK) `LATE`(AA after 12 s).
 
 ## Tests (`test/`)
 
@@ -90,11 +214,24 @@ what the lab received/answered, the IRIS trace, and a PASS/FAIL verdict against 
 | `case_5_ack_content_checks` | `AE`, no MSA, an ACK for another message (MSA-2 mismatch) under the default |
 | `case_6_ackmode` | `AckMode` `App` / `Msh` / `Never` / `Byte`: what the **sender** receives (the lab's real ACK or not) |
 
+Run all scripts (about 8 minutes). One Markdown report per script goes to `results/reports/*.md`, with an index in `results/reports/README.md`:
+
 ```bash
-test/run_all.sh          # all, ~8 min -> results/reports/*.md + results/reports/README.md (index)
-test/run_all.sh 1 4      # selected scripts
-python3 -I test/case_2_corrected.py   # one script, report on stdout
+test/run_all.sh
 ```
+
+Run only selected scripts, here 1 and 4:
+
+```bash
+test/run_all.sh 1 4
+```
+
+Run a single script directly: its report is printed on stdout instead of being written to a file:
+
+```bash
+python3 -I test/case_2_corrected.py
+```
+
 A reference run is committed in `docs/reports/`.
 
 ## The investigation, in the order that worked
