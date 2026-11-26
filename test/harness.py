@@ -3,6 +3,9 @@ import json, subprocess, sys, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.dont_write_bytecode = True      # no __pycache__ in the repo
+sys.path.insert(0, str(ROOT / "tools"))
+from labpath import current_log   # the lab container's own dated log (results/lab<date>.jsonl)
 PORTS = {"default": 29201, "failrej": 29202, "legacy": 29203,
          # same operations, other AckMode on the service (what the sender gets back)
          "app.default": 29211, "app.failrej": 29212, "app.legacy": 29213,
@@ -19,7 +22,7 @@ def iris(code):
 
 
 def lab_events(ctrl):
-    p = ROOT / "results" / "lab.jsonl"
+    p = current_log()
     if not p.exists():
         return []
     ev = [json.loads(l) for l in p.read_text().splitlines() if l.strip()]
@@ -47,7 +50,7 @@ def run(case, mode, title, expect, ack=(), wait=40):
     ctrl = ctrl.replace("..", ".")
     print(f"## {title}\n")
     print(f"| case | port | lab mode (MSH-6) | control id |\n|---|---|---|---|\n| `{case}` | {PORTS[case]} | `{mode}` | `{ctrl}` |\n")
-    sent = subprocess.run([sys.executable, "-I", str(ROOT / "tools/send.py"), "localhost", str(PORTS[case]), mode, ctrl, *ack],
+    sent = subprocess.run([sys.executable, "-B", "-I", str(ROOT / "tools/send.py"), "localhost", str(PORTS[case]), mode, ctrl, *ack],
                           capture_output=True, text=True, check=True, env={"SEND_WAIT": str(wait), "PATH": "/usr/bin:/bin"}).stdout
     answer = sent.split("ANSWER TO THE SENDER", 1)[-1]
     print("### Sent, and what the sender gets back from IRIS\n")
@@ -63,7 +66,7 @@ def run(case, mode, title, expect, ack=(), wait=40):
         time.sleep(LATE_DELAY + 8)          # let the lab finish both late replies (one per attempt) ...
         iris(f'do ##class(Repro.Trace).ResetOperation("out.{case.split(".")[-1]}")')   # ... then drop the stale bytes
     ev = lab_events(ctrl)
-    print("### What the downstream lab saw and answered (`results/lab.jsonl`)\n")
+    print(f"### What the downstream lab saw and answered (`results/dashboard/{current_log().name}`)\n")
     rows = ["| time | event | MSA-1 | MSH-9 |", "|---|---|---|---|"]
     for e in ev:
         rows.append(f"| {e['ts'][11:23]} | {e['event']} | {e.get('msa1', '')} | `{e.get('msh9', '')}` |")

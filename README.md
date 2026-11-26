@@ -26,7 +26,7 @@ sender ──MLLP──▶ in.<case> ──▶ out.<case> ──MLLP──▶ la
   | `simulator/lab.py` | the downstream receiver |
   | `tools/` | `send.py` (sender), `matrix.py` (99-row matrix), `dashboard.py` (view of the lab log), `gen_production.py` |
   | `test/` | 6 scripts / 24 tests, each writing a Markdown report |
-  | `results/` | output of the last runs, **committed** (see Caveats) |
+  | `results/` | the committed reference run the article quotes; `results/dashboard/` (git-ignored) holds your own runs: `lab<date>.jsonl`, `dashboard<date>.html`, `sessions<date>.json` (see Caveats) |
   | `docs/` | the article, its images (`docs/img/`), and the reference run (`docs/reports/`, `docs/traces/`, `docs/matrix.md`) |
 
 * One service/operation pair per `ReplyCodeActions` variant; all other settings are identical
@@ -64,13 +64,14 @@ Management Portal: http://localhost:9772/csp/sys/UtilHome.csp (namespace `REPRO`
 ### Dashboard over the receiver's log
 
 ```bash
-python3 tools/dashboard.py --open      # writes results/dashboard.html (self-contained) and opens it
-python3 tools/dashboard.py --serve     # live: reload the page to re-read results/lab.jsonl (default port 8765)
+python3 tools/dashboard.py --open      # current lab log -> results/dashboard/dashboard<YYYY-MM-DD>.html (self-contained), opened
+python3 tools/dashboard.py --serve     # live: reload the page to re-read the current log (default port 8765)
+python3 tools/dashboard.py --no-fetch -i results/lab.jsonl -o /tmp/reference.html   # view the committed reference, read-only
 ```
 ![Dashboard](docs/img/dashboard-overview.png)
 
 Per message: deliveries, gaps, ACKs per delivery; a *trace ↗* link opens its Visual Trace (the session id is fetched from the
-running container and cached in `results/sessions.json`; options `--portal`, `--ns`, `--container`, `--no-fetch`).
+running container and cached in `results/dashboard/sessions<YYYY-MM-DD>.json`, one cache per log; options `--portal`, `--ns`, `--container`, `--no-fetch`).
 It only sees what the downstream receiver saw, so it cannot show retries made by the *sender* (Cause D in the article).
 
 Lab modes (MSH-6): `AA AE AR AR3`(AR with MSH-9 `ACK^A28^ACK`) `OTHERID`(AA whose MSA-2 is the control id of *another* message) `NOMSA` `NOFRAME`(no MLLP end block) `CLOSE`(socket closed, no ACK) `LATE`(AA after 12 s).
@@ -149,7 +150,8 @@ connection logic, **not** by ReplyCodeActions (no `Action code` in the log); (c)
 * Tested on `latest-cd` = **2026.3**
 * `F` on AR leaves the message in Error and the sender is not told (`AckMode=Immed`); alerting/resubmit is a business decision, not shown here.
 * Extra `RF` / `F` entries in the matrix's "action codes logged" column are log lines that *quote* the action (the final "Discarding message" line, or the service's "Constructing ACK with code CE" warning), not extra deliveries; the **deliveries** column is the receiver's count.
-* `results/` is committed on purpose (the article links to it). Re-running the lab or the tests overwrites it, and `results/lab.jsonl` is only appended to, never truncated (`: > results/lab.jsonl` to start clean). The reference run quoted in the article is kept in `docs/`.
+* **Reference vs. your own runs.** `results/lab.jsonl`, `results/dashboard.html`, `results/sessions.json` and `results/matrix.md` are the committed reference the article quotes; nothing in the lab writes to them. A fresh install (or any new lab container) logs to its **own** `results/dashboard/lab<YYYY-MM-DD>.jsonl` (the lab records the name in `results/dashboard/.lab-current`; a same-day restart appends to the same file), and `test/run_all.sh` ends (also when it fails or is cancelled with Ctrl-C) by building `results/dashboard/dashboard<YYYY-MM-DD>.html` and `results/dashboard/sessions<YYYY-MM-DD>.json` from it, so the Visual Trace links match *your* IRIS container, not the reference one. **`results/dashboard/` is git-ignored**: your own runs never end up in the repository. After `docker compose down -v`, empty `results/dashboard/` for a clean log.
+* `test/run_all.sh` still rewrites `results/reports/` and `tools/matrix.py` still writes `results/matrix.md` (use `--out` to keep the reference); `docs/reports/`, `docs/traces/` and `docs/matrix.md` keep the reference copies.
 * A `LATE` ACK stays in the operation's socket and IRIS logs *"Discarding data found in buffer before HL7 send"* on the next send. That is IRIS discarding a stale ACK on purpose; the test harness and `tools/matrix.py` reset the operation's connection after every `LATE` run (`Repro.Trace.ResetOperation`) so it does not leak into other tests.
 
 ## License

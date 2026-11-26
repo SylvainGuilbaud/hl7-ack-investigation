@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Dashboard for results/lab.jsonl (the lab simulator's delivery log).
+"""Dashboard for the lab simulator's delivery log (by default the lab container's current log, results/dashboard/lab<date>.jsonl).
 
-    python3 tools/dashboard.py                 # writes results/dashboard.html (self-contained)
+    python3 tools/dashboard.py                 # current log -> results/dashboard/dashboard<date>.html (self-contained)
+    python3 tools/dashboard.py --no-fetch -i results/lab.jsonl -o /tmp/reference.html   # view the committed reference without touching it
     python3 tools/dashboard.py --open          # ... and opens it in the browser
     python3 tools/dashboard.py --serve [PORT]  # live: re-reads the log on every refresh (default 8765)
     python3 tools/dashboard.py -i other.jsonl -o out.html
@@ -12,9 +13,12 @@ Control ids are expected as  <case>-<MODE>-<run>  (e.g. app.failrej-AR-154436).
 import argparse, http.server, json, os, subprocess, sys, webbrowser
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEFAULT_IN = os.path.join(ROOT, "results", "lab.jsonl")
-DEFAULT_OUT = os.path.join(ROOT, "results", "dashboard.html")
-SESSIONS_CACHE = os.path.join(ROOT, "results", "sessions.json")   # control id -> IRIS session id
+sys.dont_write_bytecode = True      # no __pycache__ in the repo
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from labpath import current_log, sibling
+# Per-log siblings: lab<date>.jsonl -> dashboard<date>.html + sessions<date>.json (control id -> IRIS session id).
+# A new IRIS container has new session ids, so each log keeps its own cache; the reference lab.jsonl keeps sessions.json.
+SESSIONS_CACHE = os.path.join(ROOT, "results", "sessions.json")   # set from --input in main()
 # Portal link target: {portal}/csp/healthshare/{ns}/EnsPortal.VisualTrace.zen?SESSIONID=<id>
 OPTS = {"container": "hl7ack-iris", "portal": "http://localhost:9772", "ns": "repro", "fetch": True}
 
@@ -89,16 +93,24 @@ def render(path):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("-i", "--input", default=DEFAULT_IN)
-    ap.add_argument("-o", "--output", default=DEFAULT_OUT)
+    ap.add_argument("-i", "--input", default=None, help="default: the lab's current log (results/.lab-current)")
+    ap.add_argument("-o", "--output", default=None, help="default: dashboard<date>.html next to the input")
     ap.add_argument("--serve", nargs="?", const=8765, type=int, metavar="PORT")
     ap.add_argument("--open", action="store_true")
     ap.add_argument("--portal", default=OPTS["portal"], help="Management Portal base URL (default %(default)s)")
     ap.add_argument("--ns", default=OPTS["ns"], help="namespace web-app name (default %(default)s)")
     ap.add_argument("--container", default=OPTS["container"], help="IRIS container queried for session ids")
-    ap.add_argument("--no-fetch", action="store_true", help="don't query IRIS; use results/sessions.json only")
+    ap.add_argument("--no-fetch", action="store_true", help="don't query IRIS; use the cached sessions<date>.json only")
     a = ap.parse_args()
     OPTS.update(portal=a.portal, ns=a.ns, container=a.container, fetch=not a.no_fetch)
+    global SESSIONS_CACHE
+    from pathlib import Path
+    log = Path(a.input).resolve() if a.input else current_log()
+    a.input = str(log)
+    if not log.exists():
+        sys.exit(f"no lab log at {log}\nStart (or recreate) the lab container of THIS checkout: docker compose up -d --build")
+    a.output = a.output or str(sibling(log, "dashboard", ".html"))
+    SESSIONS_CACHE = str(sibling(log, "sessions", ".json"))
 
     if a.serve:
         class H(http.server.BaseHTTPRequestHandler):

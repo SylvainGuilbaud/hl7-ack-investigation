@@ -14,7 +14,9 @@ from datetime import datetime
 VT, FS, CR = b"\x0b", b"\x1c", b"\x0d"
 PORT = int(os.environ.get("LAB_PORT", "6600"))
 LATE_DELAY = float(os.environ.get("LATE_DELAY", "12"))   # seconds, for mode LATE
-LOG = os.environ.get("LAB_LOG", "/results/lab.jsonl")
+# One log per lab container start: results/dashboard/lab<YYYY-MM-DD>.jsonl (appended to if it already exists).
+# results/dashboard/ is git-ignored; results/lab.jsonl is the committed reference the article quotes: never written here.
+LOG = os.environ.get("LAB_LOG") or f"/results/dashboard/lab{datetime.now():%Y-%m-%d}.jsonl"
 lock = threading.Lock()
 conn_seq = 0
 
@@ -114,6 +116,8 @@ def reply_to(sock, cid, ctrl, mode):
 def main():
     global conn_seq
     os.makedirs(os.path.dirname(LOG), exist_ok=True)
+    with open(os.path.join(os.path.dirname(LOG), ".lab-current"), "w") as f:   # tells the tools which log is live
+        f.write(os.path.basename(LOG))
     srv = socket.socket()
     srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     srv.bind(("0.0.0.0", PORT))

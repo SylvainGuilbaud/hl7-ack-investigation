@@ -32,9 +32,11 @@ Chaque étape répond à une question et indique où regarder. Suivez-les dans l
 Ne commencez pas dans IRIS. Demandez au système récepteur (ou capturez le trafic) combien de fois le **même MSH-10** est arrivé, à quel intervalle, et si chaque livraison a reçu un ACK. Dans le lab, cet enregistrement est [`results/lab.jsonl`](../results/lab.jsonl), écrit par [`lab.py`](../simulator/lab.py) et indépendant d'IRIS. [`tools/dashboard.py`](../tools/dashboard.py) le transforme en une seule page :
 
 ```bash
-python3 tools/dashboard.py --open      # écrit results/dashboard.html
+python3 tools/dashboard.py --open      # journal courant du lab -> results/dashboard/dashboard<AAAA-MM-JJ>.html
 python3 tools/dashboard.py --serve     # en direct : rechargez la page pour relire le journal
 ```
+
+Les chiffres et captures ci-dessous proviennent de l'**exécution de référence versionnée** (`results/lab.jsonl`, `results/dashboard.html`), qu'aucun outil du lab n'écrase. Une nouvelle installation journalise dans son propre `results/dashboard/lab<AAAA-MM-JJ>.jsonl`, et `test/run_all.sh` termine en générant `results/dashboard/dashboard<AAAA-MM-JJ>.html` à partir de celui-ci : les liens *trace ↗* pointent alors vers les sessions de **votre** conteneur IRIS.
 
 ![Le tableau de bord sur l'exécution complète de la matrice : tuiles de synthèse, observations, carte de chaleur cas × mode, barres par message, chronologie](img/dashboard-overview.png)
 
@@ -308,5 +310,5 @@ Relancer le lab écrase ces fichiers ; [`docs/reports/`](reports/README.md) et [
 
 * Testé sur 2026.3 (`latest-cd`).
 * Les noms de menus du portail sont les noms habituels d'Interoperability ; vérifiez-les sur votre version.
-* Le tableau de bord ne voit que ce qu'a vu le récepteur aval. Il ne peut pas montrer la Cause D (rejeux par l'émetteur amont) ni ce qu'IRIS a décidé ; utilisez pour cela le Visual Trace et l'Event Log. Les chiffres cités à l'Étape 1 du §3 proviennent d'une exécution complète de la matrice et changent si d'autres exécutions ajoutent des lignes à `lab.jsonl` (le fichier n'est jamais tronqué).
+* Le tableau de bord ne voit que ce qu'a vu le récepteur aval. Il ne peut pas montrer la Cause D (rejeux par l'émetteur amont) ni ce qu'IRIS a décidé ; utilisez pour cela le Visual Trace et l'Event Log. Les chiffres cités à l'Étape 1 du §3 proviennent d'une exécution complète de la matrice et diffèrent de vos propres exécutions, journalisées dans leurs propres fichiers datés.
 * Le simulateur est un petit serveur MLLP en Python, pas un vrai LIS ; les systèmes réels peuvent fermer les connexions inactives ou regrouper les ACK différemment.

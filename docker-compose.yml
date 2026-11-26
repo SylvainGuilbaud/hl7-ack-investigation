@@ -23,7 +23,6 @@ services:
     environment:
       LAB_PORT: "6600"
       LATE_DELAY: "12"
-      LAB_LOG: /results/lab.jsonl
     volumes:
       - ./simulator/lab.py:/app/lab.py:ro
       - ./results:/results

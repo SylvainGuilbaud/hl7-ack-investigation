@@ -2,7 +2,7 @@
 """Run the test matrix: every (case, simulator mode) pair, then print a Markdown table.
 
 For each cell it sends one message, waits until IRIS has finished with it, then reads
-  - how many times the lab simulator RECEIVED it   (results/lab.jsonl, independent of IRIS)
+  - how many times the lab simulator RECEIVED it   (the lab's current log results/dashboard/lab<date>.jsonl, independent of IRIS)
   - the final status and the ReplyCodeActions action codes IRIS logged (Repro.Trace.Summary)
 
 Rows = every inbound service of the production (ReplyCodeActions x AckMode), columns = what the lab does.
@@ -12,6 +12,9 @@ import argparse, json, subprocess, sys, time, os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.dont_write_bytecode = True      # no __pycache__ in the repo
+sys.path.insert(0, str(ROOT / "tools"))
+from labpath import current_log, sibling
 # case label -> (port, AckMode of the service, operation, extra sender args = MSH-15 MSH-16)
 CASES = {
     "default":        (29201, "Immed", "out.default", ()),
@@ -59,7 +62,7 @@ def sender_view(out: str) -> str:
 
 
 def lab_events(ctrl):
-    p = ROOT / "results" / "lab.jsonl"
+    p = current_log()
     ev = [json.loads(l) for l in p.read_text().splitlines() if l.strip()] if p.exists() else []
     return [e for e in ev if e.get("control_id") == ctrl]
 
@@ -68,7 +71,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cases", default=",".join(CASES))
     ap.add_argument("--modes", default=",".join(MODES))
-    ap.add_argument("--out", default=str(ROOT / "results" / "matrix.md"))
+    ap.add_argument("--out", default=str(ROOT / "results" / "matrix.md"), help="default: results/matrix.md (the committed reference!)")
+    ap.add_argument("--no-dashboard", action="store_true")
     a = ap.parse_args()
     cases = [c for c in a.cases.split(",") if c in CASES]
     rows = []
@@ -78,7 +82,7 @@ def main():
             port, ackmode, op, ackargs = CASES[case]
             ctrl = f"{case.replace('+', '_')}-{mode}-{run}"
             t0 = time.time()
-            sent = subprocess.run([sys.executable, "-I", str(ROOT / "tools/send.py"), "localhost", str(port), mode, ctrl, *ackargs],
+            sent = subprocess.run([sys.executable, "-B", "-I", str(ROOT / "tools/send.py"), "localhost", str(port), mode, ctrl, *ackargs],
                                   capture_output=True, text=True, check=True,
                                   env={"SEND_WAIT": str(SEND_WAIT), "PATH": "/usr/bin:/bin"}).stdout
             received = sender_view(sent)
@@ -103,6 +107,8 @@ def main():
         md.append("| " + " | ".join(str(x) for x in r) + " |")
     Path(a.out).write_text("\n".join(md) + "\n")
     print("\n" + "\n".join(md))
+    if not a.no_dashboard:       # dashboard<date>.html next to the log the run just wrote
+        subprocess.run([sys.executable, "-B", "-I", str(ROOT / "tools" / "dashboard.py")], check=False)
 
 
 if __name__ == "__main__":

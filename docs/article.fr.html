@@ -356,8 +356,18 @@ et indépendant d'IRIS. <a
 href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/tools/dashboard.py"><code>tools/dashboard.py</code></a>
 le transforme en une seule page :</p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> tools/dashboard.py <span class="at">--open</span>      <span class="co"># écrit results/dashboard.html</span></span>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> tools/dashboard.py <span class="at">--open</span>      <span class="co"># journal courant du lab -&gt; results/dashboard/dashboard&lt;AAAA-MM-JJ&gt;.html</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> tools/dashboard.py <span class="at">--serve</span>     <span class="co"># en direct : rechargez la page pour relire le journal</span></span></code></pre></div>
+<p>Les chiffres et captures ci-dessous proviennent de
+l'<strong>exécution de référence versionnée</strong>
+(<code>results/lab.jsonl</code>, <code>results/dashboard.html</code>),
+qu'aucun outil du lab n'écrase. Une nouvelle installation journalise
+dans son propre
+<code>results/dashboard/lab&lt;AAAA-MM-JJ&gt;.jsonl</code>, et
+<code>test/run_all.sh</code> termine en générant
+<code>results/dashboard/dashboard&lt;AAAA-MM-JJ&gt;.html</code> à partir
+de celui-ci : les liens <em>trace ↗</em> pointent alors vers les
+sessions de <strong>votre</strong> conteneur IRIS.</p>
 <p><img
 src="https://github.com/SylvainGuilbaud/hl7-ack-investigation/raw/main/docs/img/dashboard-overview.png"
 alt="Le tableau de bord sur l&#39;exécution complète de la matrice : tuiles de synthèse, observations, carte de chaleur cas × mode, barres par message, chronologie" /></p>
@@ -1114,8 +1124,8 @@ d'Interoperability ; vérifiez-les sur votre version.</li>
 peut pas montrer la Cause D (rejeux par l'émetteur amont) ni ce qu'IRIS
 a décidé ; utilisez pour cela le Visual Trace et l'Event Log. Les
 chiffres cités à l'Étape 1 du §3 proviennent d'une exécution complète de
-la matrice et changent si d'autres exécutions ajoutent des lignes à
-<code>lab.jsonl</code> (le fichier n'est jamais tronqué).</li>
+la matrice et diffèrent de vos propres exécutions, journalisées dans
+leurs propres fichiers datés.</li>
 <li>Le simulateur est un petit serveur MLLP en Python, pas un vrai LIS ;
 les systèmes réels peuvent fermer les connexions inactives ou regrouper
 les ACK différemment.</li>

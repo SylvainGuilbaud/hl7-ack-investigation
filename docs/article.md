@@ -32,9 +32,11 @@ Each step answers one question and names where to look. Do them in this order; s
 Do not start in IRIS. Ask the receiving side (or capture the traffic) how many times the **same MSH-10** arrived, at what interval, and whether each delivery got an ACK. In the lab that record is [`results/lab.jsonl`](../results/lab.jsonl), written by [`lab.py`](../simulator/lab.py) and independent of IRIS. [`tools/dashboard.py`](../tools/dashboard.py) turns it into one page:
 
 ```bash
-python3 tools/dashboard.py --open      # writes results/dashboard.html
+python3 tools/dashboard.py --open      # the lab's current log -> results/dashboard/dashboard<YYYY-MM-DD>.html
 python3 tools/dashboard.py --serve     # live: reload the page to re-read the log
 ```
+
+The figures and screenshots below come from the **committed reference run** (`results/lab.jsonl`, `results/dashboard.html`), which nothing in the lab overwrites. A fresh install logs to its own `results/dashboard/lab<YYYY-MM-DD>.jsonl`, and `test/run_all.sh` finishes by building `results/dashboard/dashboard<YYYY-MM-DD>.html` from it, so the *trace ↗* links point to the sessions of **your** IRIS container.
 
 ![The dashboard on the full matrix run: summary tiles, observations, case × mode heatmap, per-message bars, timeline](img/dashboard-overview.png)
 
@@ -313,5 +315,5 @@ Re-running the lab overwrites these files; [`docs/reports/`](reports/README.md) 
 
 * Tested on 2026.3 (`latest-cd`)
 * Portal menu names are the usual Interoperability ones; check them against your version.
-* The dashboard only sees what the downstream receiver saw. It cannot show Cause D (retries by the upstream sender) or what IRIS decided; use the Visual Trace and Event Log for that. The figures quoted in §3 Step 1 come from one full matrix run and change if `lab.jsonl` is appended to by other runs (the file is never truncated).
+* The dashboard only sees what the downstream receiver saw. It cannot show Cause D (retries by the upstream sender) or what IRIS decided; use the Visual Trace and Event Log for that. The figures quoted in §3 Step 1 come from one full matrix run and differ from your own runs, which are logged to their own dated files.
 * The simulator is a small Python MLLP server, not a real LIS; real systems may close idle connections or batch ACKs differently.

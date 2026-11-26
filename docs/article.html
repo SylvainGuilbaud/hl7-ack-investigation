@@ -248,9 +248,9 @@
 </head>
 <body>
 <h1
-id="the-ack-arrived--why-is-my-hl7-message-still-being-retried-in-intersystems-health-connect">The
+id="the-ack-arrived--why-is-my-hl7-message-still-being-retried-in-intersystems-iris-for-health--health-connect">The
 ACK Arrived — Why Is My HL7 Message Still Being Retried in InterSystems
-Health Connect?</h1>
+IRIS for Health | Health Connect?</h1>
 <p><em>Tested with InterSystems IRIS for Health community image
 <code>latest-cd</code> (2026.3.0.212). All messages are synthetic. The
 full lab (<a
@@ -350,8 +350,17 @@ and independent of IRIS. <a
 href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/tools/dashboard.py"><code>tools/dashboard.py</code></a>
 turns it into one page:</p>
 <div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> tools/dashboard.py <span class="at">--open</span>      <span class="co"># writes results/dashboard.html</span></span>
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> tools/dashboard.py <span class="at">--open</span>      <span class="co"># the lab&#39;s current log -&gt; results/dashboard/dashboard&lt;YYYY-MM-DD&gt;.html</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> tools/dashboard.py <span class="at">--serve</span>     <span class="co"># live: reload the page to re-read the log</span></span></code></pre></div>
+<p>The figures and screenshots below come from the <strong>committed
+reference run</strong> (<code>results/lab.jsonl</code>,
+<code>results/dashboard.html</code>), which nothing in the lab
+overwrites. A fresh install logs to its own
+<code>results/dashboard/lab&lt;YYYY-MM-DD&gt;.jsonl</code>, and
+<code>test/run_all.sh</code> finishes by building
+<code>results/dashboard/dashboard&lt;YYYY-MM-DD&gt;.html</code> from it,
+so the <em>trace ↗</em> links point to the sessions of
+<strong>your</strong> IRIS container.</p>
 <p><img
 src="https://github.com/SylvainGuilbaud/hl7-ack-investigation/raw/main/docs/img/dashboard-overview.png"
 alt="The dashboard on the full matrix run: summary tiles, observations, case × mode heatmap, per-message bars, timeline" /></p>
@@ -1081,8 +1090,8 @@ against your version.</li>
 <li>The dashboard only sees what the downstream receiver saw. It cannot
 show Cause D (retries by the upstream sender) or what IRIS decided; use
 the Visual Trace and Event Log for that. The figures quoted in §3 Step 1
-come from one full matrix run and change if <code>lab.jsonl</code> is
-appended to by other runs (the file is never truncated).</li>
+come from one full matrix run and differ from your own runs, which are
+logged to their own dated files.</li>
 <li>The simulator is a small Python MLLP server, not a real LIS; real
 systems may close idle connections or batch ACKs differently.</li>
 </ul>

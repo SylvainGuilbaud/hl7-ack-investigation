@@ -4,7 +4,7 @@ Cases 1-5 used AckMode=Immed, where the sender only ever sees IRIS' own 'MSA|CA'
 waits for the operation and answers with the downstream ACK - but only if the operation *completes*.
 When the operation fails or suspends, IRIS builds its own CE or sends nothing. The real downstream ACK (MSH-3 LAB)
 is what the sender sees only in the 'sender_has LAB' tests."""
-import sys; sys.path.insert(0, __file__.rsplit("/", 1)[0])
+import sys; sys.dont_write_bytecode = True; sys.path.insert(0, __file__.rsplit("/", 1)[0])
 from harness import *
 print("# Case 6 ackmode\n\n> Case 6 - AckMode: what the SENDER receives.\n> Cases 1-5 used AckMode=Immed, where the sender only ever sees IRIS' own 'MSA|CA'. With AckMode=App the service\n> waits for the operation and answers with the downstream ACK - but only if the operation *completes*.\n> When the operation fails or suspends, IRIS builds its own CE or sends nothing. The real downstream ACK (MSH-3 LAB)\n> is what the sender sees only in the 'sender_has LAB' tests.\n")
 # --- AckMode=App ------------------------------------------------------------------------------
