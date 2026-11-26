@@ -49,10 +49,25 @@ def frame(msg: str) -> bytes:
     return VT + msg.encode() + FS + CR
 
 
+def ensure_log():
+    """Make sure the live log, its directory and the .lab-current pointer exist. Called at start AND before every write,
+    so the lab survives (and the tools find it again) when results/dashboard/ was emptied or deleted while it runs."""
+    d = os.path.dirname(LOG)
+    os.makedirs(d, exist_ok=True)
+    pointer = os.path.join(d, ".lab-current")      # tells the tools which log is live
+    if not os.path.exists(pointer):
+        with open(pointer, "w") as f:
+            f.write(os.path.basename(LOG))
+    if not os.path.exists(LOG):
+        open(LOG, "a").close()
+
+
 def record(**kw):
     kw["ts"] = datetime.now().isoformat(timespec="milliseconds")
-    with lock, open(LOG, "a") as f:
-        f.write(json.dumps(kw) + "\n")
+    with lock:
+        ensure_log()
+        with open(LOG, "a") as f:
+            f.write(json.dumps(kw) + "\n")
 
 
 def field(msg: str, seg: str, idx: int) -> str:
@@ -115,9 +130,11 @@ def reply_to(sock, cid, ctrl, mode):
 
 def main():
     global conn_seq
-    os.makedirs(os.path.dirname(LOG), exist_ok=True)
-    with open(os.path.join(os.path.dirname(LOG), ".lab-current"), "w") as f:   # tells the tools which log is live
+    d = os.path.dirname(LOG)
+    os.makedirs(d, exist_ok=True)
+    with open(os.path.join(d, ".lab-current"), "w") as f:      # always (re)written at start: this container's log is the live one
         f.write(os.path.basename(LOG))
+    ensure_log()                                                # an empty log exists from the first second
     srv = socket.socket()
     srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     srv.bind(("0.0.0.0", PORT))

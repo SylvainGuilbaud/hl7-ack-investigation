@@ -11,9 +11,11 @@ OUT=results/reports; mkdir -p "$OUT"
 docker exec hl7ack-iris true 2>/dev/null || { echo "stack not running: docker compose up -d --build"; exit 2; }
 rc=0
 IDX="$OUT/README.md"
+# The lab container must be up. Its log file may not exist yet (fresh install, or results/dashboard/ emptied): the lab
+# (re)creates it, and its .lab-current pointer, when it starts and on every message, so this is not an error.
+[ "$(docker inspect -f '{{.State.Running}}' hl7ack-lab 2>/dev/null)" = "true" ] || { echo "the lab container (hl7ack-lab) is not running: docker compose up -d --build"; exit 2; }
 LOG=$(python3 -B -I -c "import sys; sys.path.insert(0,'tools'); from labpath import current_log; print(current_log())")
-[ -f "$LOG" ] || { echo "no lab log ($LOG): the lab container of this checkout is not running (docker compose up -d --build)"; exit 2; }
-echo "lab log of this run: $LOG"
+echo "lab log of this run: $LOG$([ -f "$LOG" ] || echo ' (created by the lab on the first message)')"
 
 # One run at a time: the operations are single-threaded and the lab answers on one connection, so two concurrent
 # runs (or a run plus a hand-made test) delay and mix each other's messages and give false FAILs.
@@ -35,7 +37,7 @@ build_dashboard() {
   rm -f "$LOCK/pid"; rmdir "$LOCK" 2>/dev/null
   echo
   python3 -B -I tools/dashboard.py || echo "dashboard generation failed"
-  { echo; echo "- dashboard: \`$(python3 -B -I -c "import sys; sys.path.insert(0,'tools'); from labpath import current_log, sibling; print(sibling(current_log(),'dashboard','.html').name)")\` from \`$(basename "$LOG")\`"; } >> "$IDX"
+  { echo; echo "- dashboard: \`$(python3 -B -I -c "import sys; sys.path.insert(0,'tools'); from labpath import current_log, sibling; print(sibling(current_log(),'dashboard','.html').name)")\` from \`$(python3 -B -I -c "import sys; sys.path.insert(0,'tools'); from labpath import current_log; print(current_log().name)")\`"; } >> "$IDX"
 }
 trap build_dashboard EXIT
 trap 'echo; echo "interrupted"; exit 130' INT TERM

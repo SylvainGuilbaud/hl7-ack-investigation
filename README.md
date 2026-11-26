@@ -133,7 +133,7 @@ decision of `ReplyCodeActions`) and the final `ErrFailureTimeout`. The same data
 
 ### 5. Run the automated tests
 
-Run all 6 scripts (24 tests, about 8 minutes):
+Run all 6 scripts (24 tests, about 3 minutes):
 
 ```bash
 test/run_all.sh
@@ -214,7 +214,7 @@ what the lab received/answered, the IRIS trace, and a PASS/FAIL verdict against 
 | `case_5_ack_content_checks` | `AE`, no MSA, an ACK for another message (MSA-2 mismatch) under the default |
 | `case_6_ackmode` | `AckMode` `App` / `Msh` / `Never` / `Byte`: what the **sender** receives (the lab's real ACK or not) |
 
-Run all scripts (about 8 minutes). One Markdown report per script goes to `results/reports/*.md`, with an index in `results/reports/README.md`:
+Run all scripts (about 3 minutes). One Markdown report per script goes to `results/reports/*.md`, with an index in `results/reports/README.md`:
 
 ```bash
 test/run_all.sh

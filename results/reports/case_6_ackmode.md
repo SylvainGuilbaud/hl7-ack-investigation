@@ -10,34 +10,34 @@
 
 | case | port | lab mode (MSH-6) | control id |
 |---|---|---|---|
-| `app.default` | 29211 | `AA` | `app.default-AA-191159` |
+| `app.default` | 29211 | `AA` | `app.default-AA-194419` |
 
 ### Sent, and what the sender gets back from IRIS
 
 ```text
 SENT:
-    MSH|^~\&|PAS|HOSP|IRIS|AA|20261126191159||ADT^A28^ADT_A05|app.default-AA-191159|P|2.5
-    EVN|A28|20261126191159
+    MSH|^~\&|PAS|HOSP|IRIS|AA|20261126194419||ADT^A28^ADT_A05|app.default-AA-194419|P|2.5
+    EVN|A28|20261126194419
     PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
     PV1|1|N
 ANSWER TO THE SENDER (after 0.0s) :
-    MSH|^~\&|LAB|SIM|IRIS|HOSP|20261126181159||ACK|ACKapp.default-AA-191159|P|2.5
-    MSA|AA|app.default-AA-191159
+    MSH|^~\&|LAB|SIM|IRIS|HOSP|20261126184419||ACK|ACKapp.default-AA-194419|P|2.5
+    MSA|AA|app.default-AA-194419
 ```
 
 ### What the downstream lab saw and answered (`results/dashboard/lab2026-11-26.jsonl`)
 
 | time | event | MSA-1 | MSH-9 |
 |---|---|---|---|
-| 18:11:59.302 | received |  | `` |
-| 18:11:59.304 | ack_sent | AA | `ACK` |
+| 18:44:19.793 | received |  | `` |
+| 18:44:19.799 | ack_sent | AA | `ACK` |
 
 ### What IRIS recorded (`Repro.Trace.Report`)
 
 ```text
-== message headers (session 143)
- 143 18:11:59.301 in.app.default -> out.default  [Request/9] 
- 144 18:11:59.305 out.default -> in.app.default  [Response/9] 
+== message headers (session 55)
+  55 18:44:19.792 in.app.default -> out.default  [Request/9] 
+  56 18:44:19.8 out.default -> in.app.default  [Response/9] 
 == event log
 ```
 
@@ -49,56 +49,56 @@ ANSWER TO THE SENDER (after 0.0s) :
 
 | case | port | lab mode (MSH-6) | control id |
 |---|---|---|---|
-| `app.default` | 29211 | `AR` | `app.default-AR-191201` |
+| `app.default` | 29211 | `AR` | `app.default-AR-194421` |
 
 ### Sent, and what the sender gets back from IRIS
 
 ```text
 SENT:
-    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126191201||ADT^A28^ADT_A05|app.default-AR-191201|P|2.5
-    EVN|A28|20261126191201
+    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126194421||ADT^A28^ADT_A05|app.default-AR-194421|P|2.5
+    EVN|A28|20261126194421
     PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
     PV1|1|N
 ANSWER TO THE SENDER (after 10.1s) :
-    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611261912||ACK^A28|app.default-AR-191201|P|2.5
-    MSA|CE|app.default-AR-191201
+    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611261944||ACK^A28|app.default-AR-194421|P|2.5
+    MSA|CE|app.default-AR-194421
 ```
 
 ### What the downstream lab saw and answered (`results/dashboard/lab2026-11-26.jsonl`)
 
 | time | event | MSA-1 | MSH-9 |
 |---|---|---|---|
-| 18:12:01.489 | received |  | `` |
-| 18:12:01.494 | ack_sent | AR | `ACK` |
-| 18:12:03.501 | received |  | `` |
-| 18:12:03.506 | ack_sent | AR | `ACK` |
-| 18:12:05.511 | received |  | `` |
-| 18:12:05.519 | ack_sent | AR | `ACK` |
-| 18:12:07.525 | received |  | `` |
-| 18:12:07.529 | ack_sent | AR | `ACK` |
-| 18:12:09.535 | received |  | `` |
-| 18:12:09.539 | ack_sent | AR | `ACK` |
-| 18:12:11.550 | received |  | `` |
-| 18:12:11.552 | ack_sent | AR | `ACK` |
+| 18:44:21.984 | received |  | `` |
+| 18:44:21.986 | ack_sent | AR | `ACK` |
+| 18:44:23.991 | received |  | `` |
+| 18:44:23.994 | ack_sent | AR | `ACK` |
+| 18:44:25.996 | received |  | `` |
+| 18:44:26.000 | ack_sent | AR | `ACK` |
+| 18:44:28.003 | received |  | `` |
+| 18:44:28.011 | ack_sent | AR | `ACK` |
+| 18:44:30.014 | received |  | `` |
+| 18:44:30.018 | ack_sent | AR | `ACK` |
+| 18:44:32.028 | received |  | `` |
+| 18:44:32.030 | ack_sent | AR | `ACK` |
 
 ### What IRIS recorded (`Repro.Trace.Report`)
 
 ```text
-== message headers (session 145)
- 145 18:12:01.488 in.app.default -> out.default  [Request/8] 
- 146 18:12:11.554 out.default -> in.app.default  [Response/9] 
+== message headers (session 57)
+  57 18:44:21.983 in.app.default -> out.default  [Request/8] 
+  58 18:44:32.032 out.default -> in.app.default  [Response/9] 
 == event log
-18:12:01.495 ERROR [out.default] ERROR <Ens>ErrGeneral: Retrying HL7 Message body 12@EnsLib.HL7.Message / 449 because response 10@EnsLib.HL7.Message / 450 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=RF,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting in Action co
-18:12:03.507 ERROR [out.default] ERROR <Ens>ErrGeneral: Retrying HL7 Message body 12@EnsLib.HL7.Message / 449 because response 13@EnsLib.HL7.Message / 451 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=RF,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting in Action co
-18:12:05.522 ERROR [out.default] ERROR <Ens>ErrGeneral: Retrying HL7 Message body 12@EnsLib.HL7.Message / 449 because response 10@EnsLib.HL7.Message / 452 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=RF,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting in Action co
-18:12:07.53 ERROR [out.default] ERROR <Ens>ErrGeneral: Retrying HL7 Message body 12@EnsLib.HL7.Message / 449 because response 13@EnsLib.HL7.Message / 453 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=RF,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting in Action cod
-18:12:09.54 ERROR [out.default] ERROR <Ens>ErrGeneral: Retrying HL7 Message body 12@EnsLib.HL7.Message / 449 because response 10@EnsLib.HL7.Message / 454 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=RF,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting in Action cod
-18:12:11.542 INFO [out.default] Attempting to re-connect on try #6 (ReconnectRetry value is 5
-18:12:11.543 INFO [out.default] Disconnecting from  lab:6600
-18:12:11.546 INFO [out.default] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
-18:12:11.553 ERROR [out.default] ERROR <Ens>ErrGeneral: Retrying HL7 Message body 12@EnsLib.HL7.Message / 449 because response 13@EnsLib.HL7.Message / 455 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=RF,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting in Action co
-18:12:11.554 ERROR [out.default] ERROR <Ens>ErrGeneral: Discarding message on ERROR <Ens>ErrFailureTimeout: FailureTimeout of 10 seconds exceeded in EnsLib.HL7.Operation.TCPOperation; status from last attempt was ERROR <Ens>ErrGeneral: Retrying HL7 Message bod
-18:12:11.556 WARNING [in.app.default] Constructing ACK with code CE because SendRequestSync() of 8@EnsLib.HL7.Message/449 returned with no response object and status: ERROR <Ens>ErrGeneral: Discarding message on ERROR <Ens>ErrFailureTimeout: FailureTimeout of
+18:44:21.987 ERROR [out.default] ERROR <Ens>ErrGeneral: Retrying HL7 Message body 12@EnsLib.HL7.Message / 165 because response 13@EnsLib.HL7.Message / 166 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=RF,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting in Action co
+18:44:23.995 ERROR [out.default] ERROR <Ens>ErrGeneral: Retrying HL7 Message body 12@EnsLib.HL7.Message / 165 because response 11@EnsLib.HL7.Message / 167 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=RF,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting in Action co
+18:44:26.001 ERROR [out.default] ERROR <Ens>ErrGeneral: Retrying HL7 Message body 12@EnsLib.HL7.Message / 165 because response 13@EnsLib.HL7.Message / 168 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=RF,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting in Action co
+18:44:28.013 ERROR [out.default] ERROR <Ens>ErrGeneral: Retrying HL7 Message body 12@EnsLib.HL7.Message / 165 because response 11@EnsLib.HL7.Message / 169 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=RF,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting in Action co
+18:44:30.019 ERROR [out.default] ERROR <Ens>ErrGeneral: Retrying HL7 Message body 12@EnsLib.HL7.Message / 165 because response 13@EnsLib.HL7.Message / 170 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=RF,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting in Action co
+18:44:32.02 INFO [out.default] Attempting to re-connect on try #6 (ReconnectRetry value is 5
+18:44:32.02 INFO [out.default] Disconnecting from  lab:6600
+18:44:32.021 INFO [out.default] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
+18:44:32.031 ERROR [out.default] ERROR <Ens>ErrGeneral: Retrying HL7 Message body 12@EnsLib.HL7.Message / 165 because response 11@EnsLib.HL7.Message / 171 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=RF,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting in Action co
+18:44:32.032 ERROR [out.default] ERROR <Ens>ErrGeneral: Discarding message on ERROR <Ens>ErrFailureTimeout: FailureTimeout of 10 seconds exceeded in EnsLib.HL7.Operation.TCPOperation; status from last attempt was ERROR <Ens>ErrGeneral: Retrying HL7 Message bod
+18:44:32.034 WARNING [in.app.default] Constructing ACK with code CE because SendRequestSync() of 8@EnsLib.HL7.Message/165 returned with no response object and status: ERROR <Ens>ErrGeneral: Discarding message on ERROR <Ens>ErrFailureTimeout: FailureTimeout of
 ```
 
 **Result:** deliveries = **6**, final status = **Error**, action codes = `RF,RF,RF,RF,RF,RF,RF,RF`
@@ -109,37 +109,37 @@ ANSWER TO THE SENDER (after 10.1s) :
 
 | case | port | lab mode (MSH-6) | control id |
 |---|---|---|---|
-| `app.failrej` | 29212 | `AR` | `app.failrej-AR-191213` |
+| `app.failrej` | 29212 | `AR` | `app.failrej-AR-194434` |
 
 ### Sent, and what the sender gets back from IRIS
 
 ```text
 SENT:
-    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126191213||ADT^A28^ADT_A05|app.failrej-AR-191213|P|2.5
-    EVN|A28|20261126191213
+    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126194434||ADT^A28^ADT_A05|app.failrej-AR-194434|P|2.5
+    EVN|A28|20261126194434
     PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
     PV1|1|N
 ANSWER TO THE SENDER (after 0.0s) :
-    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611261912||ACK^A28|app.failrej-AR-191213|P|2.5
-    MSA|CE|app.failrej-AR-191213
+    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611261944||ACK^A28|app.failrej-AR-194434|P|2.5
+    MSA|CE|app.failrej-AR-194434
 ```
 
 ### What the downstream lab saw and answered (`results/dashboard/lab2026-11-26.jsonl`)
 
 | time | event | MSA-1 | MSH-9 |
 |---|---|---|---|
-| 18:12:13.792 | received |  | `` |
-| 18:12:13.795 | ack_sent | AR | `ACK` |
+| 18:44:34.245 | received |  | `` |
+| 18:44:34.249 | ack_sent | AR | `ACK` |
 
 ### What IRIS recorded (`Repro.Trace.Report`)
 
 ```text
-== message headers (session 147)
- 147 18:12:13.789 in.app.failrej -> out.failrej  [Request/8] 
- 148 18:12:13.796 out.failrej -> in.app.failrej  [Response/9] 
+== message headers (session 59)
+  59 18:44:34.244 in.app.failrej -> out.failrej  [Request/8] 
+  60 18:44:34.25 out.failrej -> in.app.failrej  [Response/9] 
 == event log
-18:12:13.796 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 9@EnsLib.HL7.Message / 457 because response 12@EnsLib.HL7.Message / 458 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting 
-18:12:13.798 WARNING [in.app.failrej] Constructing ACK with code CE because SendRequestSync() of 8@EnsLib.HL7.Message/457 returned with no response object and status: ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 9@EnsLib.HL7.Message / 457 bec
+18:44:34.25 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 9@EnsLib.HL7.Message / 173 because response 12@EnsLib.HL7.Message / 174 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting i
+18:44:34.252 WARNING [in.app.failrej] Constructing ACK with code CE because SendRequestSync() of 8@EnsLib.HL7.Message/173 returned with no response object and status: ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 9@EnsLib.HL7.Message / 173 bec
 ```
 
 **Result:** deliveries = **1**, final status = **Error**, action codes = `F,F`
@@ -150,36 +150,36 @@ ANSWER TO THE SENDER (after 0.0s) :
 
 | case | port | lab mode (MSH-6) | control id |
 |---|---|---|---|
-| `app.legacy` | 29213 | `AR` | `app.legacy-AR-191215` |
+| `app.legacy` | 29213 | `AR` | `app.legacy-AR-194436` |
 
 ### Sent, and what the sender gets back from IRIS
 
 ```text
 SENT:
-    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126191215||ADT^A28^ADT_A05|app.legacy-AR-191215|P|2.5
-    EVN|A28|20261126191215
+    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126194436||ADT^A28^ADT_A05|app.legacy-AR-194436|P|2.5
+    EVN|A28|20261126194436
     PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
     PV1|1|N
 ANSWER TO THE SENDER (after 0.0s) :
-    MSH|^~\&|LAB|SIM|IRIS|HOSP|20261126181215||ACK|ACKapp.legacy-AR-191215|P|2.5
-    MSA|AR|app.legacy-AR-191215|Rejected
+    MSH|^~\&|LAB|SIM|IRIS|HOSP|20261126184436||ACK|ACKapp.legacy-AR-194436|P|2.5
+    MSA|AR|app.legacy-AR-194436|Rejected
 ```
 
 ### What the downstream lab saw and answered (`results/dashboard/lab2026-11-26.jsonl`)
 
 | time | event | MSA-1 | MSH-9 |
 |---|---|---|---|
-| 18:12:15.989 | received |  | `` |
-| 18:12:15.992 | ack_sent | AR | `ACK` |
+| 18:44:36.473 | received |  | `` |
+| 18:44:36.478 | ack_sent | AR | `ACK` |
 
 ### What IRIS recorded (`Repro.Trace.Report`)
 
 ```text
-== message headers (session 149)
- 149 18:12:15.987 in.app.legacy -> out.legacy  [Request/9] 
- 150 18:12:15.993 out.legacy -> in.app.legacy  [Response/9] 
+== message headers (session 61)
+  61 18:44:36.471 in.app.legacy -> out.legacy  [Request/9] 
+  62 18:44:36.479 out.legacy -> in.app.legacy  [Response/9] 
 == event log
-18:12:15.993 WARNING [out.legacy] Warning on HL7 Message body 12@EnsLib.HL7.Message / 460 because response 10@EnsLib.HL7.Message / 461 MSA code 'AR' matched ReplyCodeActions 1-4 : ':?R=W,:?E=W,:~=F,:?A=C' and Reply message type ACK does not match expected type
+18:44:36.479 WARNING [out.legacy] Warning on HL7 Message body 10@EnsLib.HL7.Message / 176 because response 8@EnsLib.HL7.Message / 177 MSA code 'AR' matched ReplyCodeActions 1-4 : ':?R=W,:?E=W,:~=F,:?A=C' and Reply message type ACK does not match expected type
 ```
 
 **Result:** deliveries = **1**, final status = **Completed**, action codes = `CW`
@@ -190,14 +190,14 @@ ANSWER TO THE SENDER (after 0.0s) :
 
 | case | port | lab mode (MSH-6) | control id |
 |---|---|---|---|
-| `app.failrej` | 29212 | `AE` | `app.failrej-AE-191218` |
+| `app.failrej` | 29212 | `AE` | `app.failrej-AE-194438` |
 
 ### Sent, and what the sender gets back from IRIS
 
 ```text
 SENT:
-    MSH|^~\&|PAS|HOSP|IRIS|AE|20261126191218||ADT^A28^ADT_A05|app.failrej-AE-191218|P|2.5
-    EVN|A28|20261126191218
+    MSH|^~\&|PAS|HOSP|IRIS|AE|20261126194438||ADT^A28^ADT_A05|app.failrej-AE-194438|P|2.5
+    EVN|A28|20261126194438
     PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
     PV1|1|N
 ANSWER TO THE SENDER (after 15.0s) (no complete MLLP frame within 15s):
@@ -208,16 +208,16 @@ ANSWER TO THE SENDER (after 15.0s) (no complete MLLP frame within 15s):
 
 | time | event | MSA-1 | MSH-9 |
 |---|---|---|---|
-| 18:12:18.179 | received |  | `` |
-| 18:12:18.182 | ack_sent | AE | `ACK` |
+| 18:44:38.671 | received |  | `` |
+| 18:44:38.676 | ack_sent | AE | `ACK` |
 
 ### What IRIS recorded (`Repro.Trace.Report`)
 
 ```text
-== message headers (session 151)
- 151 18:12:18.178 in.app.failrej -> out.failrej  [Request/5] 
+== message headers (session 63)
+  63 18:44:38.67 in.app.failrej -> out.failrej  [Request/5] 
 == event log
-18:12:18.183 ERROR [out.failrej] ERROR <Ens>ErrSuspending: Suspending message 151 as requested by message handler with status: ERROR <Ens>ErrGeneral: Suspending HL7 Message body 8@EnsLib.HL7.Message / 462 because response 11@EnsLib.HL7.Message / 463 MSA code '
+18:44:38.676 ERROR [out.failrej] ERROR <Ens>ErrSuspending: Suspending message 63 as requested by message handler with status: ERROR <Ens>ErrGeneral: Suspending HL7 Message body 8@EnsLib.HL7.Message / 178 because response 11@EnsLib.HL7.Message / 179 MSA code 'A
 ```
 
 **Result:** deliveries = **1**, final status = **Suspended**, action codes = `S`
@@ -228,35 +228,35 @@ ANSWER TO THE SENDER (after 15.0s) (no complete MLLP frame within 15s):
 
 | case | port | lab mode (MSH-6) | control id |
 |---|---|---|---|
-| `msh.failrej` | 29214 | `AR` | `msh.failrej-AR-191235` |
+| `msh.failrej` | 29214 | `AR` | `msh.failrej-AR-194455` |
 
 ### Sent, and what the sender gets back from IRIS
 
 ```text
 SENT:
-    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126191235||ADT^A28^ADT_A05|msh.failrej-AR-191235|P|2.5|||AL|NE
-    EVN|A28|20261126191235
+    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126194455||ADT^A28^ADT_A05|msh.failrej-AR-194455|P|2.5|||AL|NE
+    EVN|A28|20261126194455
     PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
     PV1|1|N
 ANSWER TO THE SENDER (after 0.0s) :
-    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611261912||ACK^A28|msh.failrej-AR-191235|P|2.5
-    MSA|CA|msh.failrej-AR-191235
+    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611261944||ACK^A28|msh.failrej-AR-194455|P|2.5
+    MSA|CA|msh.failrej-AR-194455
 ```
 
 ### What the downstream lab saw and answered (`results/dashboard/lab2026-11-26.jsonl`)
 
 | time | event | MSA-1 | MSH-9 |
 |---|---|---|---|
-| 18:12:35.380 | received |  | `` |
-| 18:12:35.383 | ack_sent | AR | `ACK` |
+| 18:44:55.902 | received |  | `` |
+| 18:44:55.908 | ack_sent | AR | `ACK` |
 
 ### What IRIS recorded (`Repro.Trace.Report`)
 
 ```text
-== message headers (session 152)
- 152 18:12:35.379 in.msh.failrej -> out.failrej  [Request/8] 
+== message headers (session 64)
+  64 18:44:55.9 in.msh.failrej -> out.failrej  [Request/8] 
 == event log
-18:12:35.384 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 11@EnsLib.HL7.Message / 464 because response 10@EnsLib.HL7.Message / 466 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting
+18:44:55.909 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 11@EnsLib.HL7.Message / 180 because response 10@EnsLib.HL7.Message / 182 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting
 ```
 
 **Result:** deliveries = **1**, final status = **Error**, action codes = `F`
@@ -267,37 +267,37 @@ ANSWER TO THE SENDER (after 0.0s) :
 
 | case | port | lab mode (MSH-6) | control id |
 |---|---|---|---|
-| `msh.failrej` | 29214 | `AR` | `msh.failrej-AR-191237` |
+| `msh.failrej` | 29214 | `AR` | `msh.failrej-AR-194458` |
 
 ### Sent, and what the sender gets back from IRIS
 
 ```text
 SENT:
-    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126191237||ADT^A28^ADT_A05|msh.failrej-AR-191237|P|2.5|||NE|AL
-    EVN|A28|20261126191237
+    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126194458||ADT^A28^ADT_A05|msh.failrej-AR-194458|P|2.5|||NE|AL
+    EVN|A28|20261126194458
     PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
     PV1|1|N
 ANSWER TO THE SENDER (after 0.0s) :
-    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611261912||ACK^A28|msh.failrej-AR-191237|P|2.5
-    MSA|CE|msh.failrej-AR-191237
+    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611261944||ACK^A28|msh.failrej-AR-194458|P|2.5
+    MSA|CE|msh.failrej-AR-194458
 ```
 
 ### What the downstream lab saw and answered (`results/dashboard/lab2026-11-26.jsonl`)
 
 | time | event | MSA-1 | MSH-9 |
 |---|---|---|---|
-| 18:12:37.563 | received |  | `` |
-| 18:12:37.566 | ack_sent | AR | `ACK` |
+| 18:44:58.083 | received |  | `` |
+| 18:44:58.087 | ack_sent | AR | `ACK` |
 
 ### What IRIS recorded (`Repro.Trace.Report`)
 
 ```text
-== message headers (session 153)
- 153 18:12:37.562 in.msh.failrej -> out.failrej  [Request/8] 
- 154 18:12:37.567 out.failrej -> in.msh.failrej  [Response/9] 
+== message headers (session 65)
+  65 18:44:58.081 in.msh.failrej -> out.failrej  [Request/8] 
+  66 18:44:58.088 out.failrej -> in.msh.failrej  [Response/9] 
 == event log
-18:12:37.567 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 10@EnsLib.HL7.Message / 467 because response 9@EnsLib.HL7.Message / 468 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting 
-18:12:37.568 WARNING [in.msh.failrej] Constructing ACK with code CE because SendRequestSync() of 8@EnsLib.HL7.Message/467 returned with no response object and status: ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 10@EnsLib.HL7.Message / 467 be
+18:44:58.088 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 10@EnsLib.HL7.Message / 183 because response 9@EnsLib.HL7.Message / 184 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting 
+18:44:58.09 WARNING [in.msh.failrej] Constructing ACK with code CE because SendRequestSync() of 8@EnsLib.HL7.Message/183 returned with no response object and status: ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 10@EnsLib.HL7.Message / 183 bec
 ```
 
 **Result:** deliveries = **1**, final status = **Error**, action codes = `F,F`
@@ -308,14 +308,14 @@ ANSWER TO THE SENDER (after 0.0s) :
 
 | case | port | lab mode (MSH-6) | control id |
 |---|---|---|---|
-| `msh.failrej` | 29214 | `AR` | `msh.failrej-AR-191239` |
+| `msh.failrej` | 29214 | `AR` | `msh.failrej-AR-194500` |
 
 ### Sent, and what the sender gets back from IRIS
 
 ```text
 SENT:
-    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126191239||ADT^A28^ADT_A05|msh.failrej-AR-191239|P|2.5
-    EVN|A28|20261126191239
+    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126194500||ADT^A28^ADT_A05|msh.failrej-AR-194500|P|2.5
+    EVN|A28|20261126194500
     PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
     PV1|1|N
 ANSWER TO THE SENDER (after 10.0s) (no complete MLLP frame within 10s):
@@ -326,16 +326,16 @@ ANSWER TO THE SENDER (after 10.0s) (no complete MLLP frame within 10s):
 
 | time | event | MSA-1 | MSH-9 |
 |---|---|---|---|
-| 18:12:39.884 | received |  | `` |
-| 18:12:39.888 | ack_sent | AR | `ACK` |
+| 18:45:00.338 | received |  | `` |
+| 18:45:00.342 | ack_sent | AR | `ACK` |
 
 ### What IRIS recorded (`Repro.Trace.Report`)
 
 ```text
-== message headers (session 155)
- 155 18:12:39.883 in.msh.failrej -> out.failrej  [Request/8] 
+== message headers (session 67)
+  67 18:45:00.338 in.msh.failrej -> out.failrej  [Request/8] 
 == event log
-18:12:39.889 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 12@EnsLib.HL7.Message / 470 because response 8@EnsLib.HL7.Message / 471 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting
+18:45:00.343 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 12@EnsLib.HL7.Message / 186 because response 8@EnsLib.HL7.Message / 187 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting
 ```
 
 **Result:** deliveries = **1**, final status = **Error**, action codes = `F`
@@ -346,14 +346,14 @@ ANSWER TO THE SENDER (after 10.0s) (no complete MLLP frame within 10s):
 
 | case | port | lab mode (MSH-6) | control id |
 |---|---|---|---|
-| `never.failrej` | 29215 | `AR` | `never.failrej-AR-191252` |
+| `never.failrej` | 29215 | `AR` | `never.failrej-AR-194512` |
 
 ### Sent, and what the sender gets back from IRIS
 
 ```text
 SENT:
-    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126191252||ADT^A28^ADT_A05|never.failrej-AR-191252|P|2.5
-    EVN|A28|20261126191252
+    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126194512||ADT^A28^ADT_A05|never.failrej-AR-194512|P|2.5
+    EVN|A28|20261126194512
     PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
     PV1|1|N
 ANSWER TO THE SENDER (after 10.0s) (no complete MLLP frame within 10s):
@@ -364,16 +364,16 @@ ANSWER TO THE SENDER (after 10.0s) (no complete MLLP frame within 10s):
 
 | time | event | MSA-1 | MSH-9 |
 |---|---|---|---|
-| 18:12:52.112 | received |  | `` |
-| 18:12:52.117 | ack_sent | AR | `ACK` |
+| 18:45:12.525 | received |  | `` |
+| 18:45:12.529 | ack_sent | AR | `ACK` |
 
 ### What IRIS recorded (`Repro.Trace.Report`)
 
 ```text
-== message headers (session 156)
- 156 18:12:52.107 in.never.failrej -> out.failrej  [Request/8] 
+== message headers (session 68)
+  68 18:45:12.524 in.never.failrej -> out.failrej  [Request/8] 
 == event log
-18:12:52.118 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 8@EnsLib.HL7.Message / 472 because response 11@EnsLib.HL7.Message / 473 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting
+18:45:12.53 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 8@EnsLib.HL7.Message / 188 because response 11@EnsLib.HL7.Message / 189 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting i
 ```
 
 **Result:** deliveries = **1**, final status = **Error**, action codes = `F`
@@ -384,14 +384,14 @@ ANSWER TO THE SENDER (after 10.0s) (no complete MLLP frame within 10s):
 
 | case | port | lab mode (MSH-6) | control id |
 |---|---|---|---|
-| `byte.failrej` | 29216 | `AR` | `byte.failrej-AR-191304` |
+| `byte.failrej` | 29216 | `AR` | `byte.failrej-AR-194524` |
 
 ### Sent, and what the sender gets back from IRIS
 
 ```text
 SENT:
-    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126191304||ADT^A28^ADT_A05|byte.failrej-AR-191304|P|2.5
-    EVN|A28|20261126191304
+    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126194524||ADT^A28^ADT_A05|byte.failrej-AR-194524|P|2.5
+    EVN|A28|20261126194524
     PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
     PV1|1|N
 ANSWER TO THE SENDER (after 0.0s) :
@@ -402,16 +402,16 @@ ANSWER TO THE SENDER (after 0.0s) :
 
 | time | event | MSA-1 | MSH-9 |
 |---|---|---|---|
-| 18:13:04.339 | received |  | `` |
-| 18:13:04.347 | ack_sent | AR | `ACK` |
+| 18:45:24.703 | received |  | `` |
+| 18:45:24.706 | ack_sent | AR | `ACK` |
 
 ### What IRIS recorded (`Repro.Trace.Report`)
 
 ```text
-== message headers (session 157)
- 157 18:13:04.337 in.byte.failrej -> out.failrej  [Request/8] 
+== message headers (session 69)
+  69 18:45:24.701 in.byte.failrej -> out.failrej  [Request/8] 
 == event log
-18:13:04.349 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 11@EnsLib.HL7.Message / 474 because response 13@EnsLib.HL7.Message / 475 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting
+18:45:24.707 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 11@EnsLib.HL7.Message / 190 because response 13@EnsLib.HL7.Message / 191 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting
 ```
 
 **Result:** deliveries = **1**, final status = **Error**, action codes = `F`
