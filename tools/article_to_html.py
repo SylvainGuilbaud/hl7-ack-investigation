@@ -2,6 +2,7 @@
 """docs/article.md -> docs/article.html, with every relative link rewritten to a GitHub URL.
 
     python3 tools/article_to_html.py [--repo https://github.com/OWNER/REPO] [--branch main]
+    python3 tools/article_to_html.py --src docs/article.fr.md --lang fr     # -> docs/article.fr.html
 
  * images  (![..](img/x.png))   -> <repo>/raw/<branch>/docs/img/x.png
  * files   ([..](../test/x.py)) -> <repo>/blob/<branch>/test/x.py
@@ -12,7 +13,7 @@ import argparse, os, re, subprocess, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC = ROOT / "docs" / "article.md"
+DEFAULT_SRC = ROOT / "docs" / "article.md"
 
 CSS = """<style>
 body{max-width:980px;margin:2rem auto;padding:0 1rem;font:16px/1.55 -apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#1f2328}
@@ -30,8 +31,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", default="https://github.com/SylvainGuilbaud/hl7-ack-investigation")
     ap.add_argument("--branch", default="main")
-    ap.add_argument("--out", default=str(ROOT / "docs" / "article.html"))
+    ap.add_argument("--src", default=str(DEFAULT_SRC), help="Markdown file inside docs/ (links are resolved relative to it)")
+    ap.add_argument("--lang", default="en")
+    ap.add_argument("--out", default=None, help="default: same name as --src with .html")
     a = ap.parse_args()
+    global SRC
+    SRC = Path(a.src).resolve()
+    if a.out is None:
+        a.out = str(SRC.with_suffix(".html"))
     repo = a.repo.rstrip("/")
     stats = {"image": 0, "file": 0, "folder": 0}
 
@@ -63,7 +70,7 @@ def main():
     hdr.write_text(CSS)
     try:
         subprocess.run(["pandoc", "-f", "gfm", "-t", "html5", "--standalone", "--metadata", f"title={title}",
-                        "--metadata", "lang=en", "-H", str(hdr), "-o", a.out],
+                        "--metadata", f"lang={a.lang}", "-H", str(hdr), "-o", a.out],
                        input=md, text=True, check=True)
     finally:
         hdr.unlink(missing_ok=True)

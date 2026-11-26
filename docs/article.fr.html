@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>L'ACK est bien arrivé — pourquoi mon message HL7 est-il quand même rejoué dans InterSystems IRIS for Health | Health Connect ?</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <style>
+  body{max-width:980px;margin:2rem auto;padding:0 1rem;font:16px/1.55 -apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#1f2328}
+  h1,h2,h3{line-height:1.25;margin-top:1.8em}h1,h2{border-bottom:1px solid #d1d9e0;padding-bottom:.3em}
+  a{color:#0969da;text-decoration:none}a:hover{text-decoration:underline}
+  code{background:#eff1f3;padding:.15em .35em;border-radius:5px;font-size:88%}
+  pre{background:#f6f8fa;padding:1em;border-radius:6px;overflow:auto;line-height:1.4}pre code{background:none;padding:0;font-size:85%}
+  table{border-collapse:collapse;display:block;overflow:auto;margin:1em 0}th,td{border:1px solid #d1d9e0;padding:6px 13px}th{background:#f6f8fa}tr:nth-child(even) td{background:#fafbfc}
+  blockquote{margin:1em 0;padding:0 1em;color:#59636e;border-left:.25em solid #d1d9e0}
+  img{max-width:100%}
+  </style>
+</head>
+<body>
+<h1
+id="lack-est-bien-arrivé--pourquoi-mon-message-hl7-est-il-quand-même-rejoué-dans-intersystems-iris-for-health--health-connect-">L'ACK
+est bien arrivé — pourquoi mon message HL7 est-il quand même rejoué dans
+InterSystems IRIS for Health | Health Connect ?</h1>
+<p><em>Testé avec l'image InterSystems IRIS for Health community
+<code>latest-cd</code> (2026.3.0.212). Tous les messages sont
+synthétiques. Le laboratoire complet (<a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docker-compose.yml">Docker
+Compose</a>, <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/simulator/lab.py">simulateur</a>,
+<a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/iris/src/Repro/Production.cls">production</a>,
+24 <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/tree/main/test">tests
+scriptés</a> avec leurs <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/reports/README.md">rapports</a>,
+et un <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/tools/dashboard.py">tableau
+de bord</a> sur le journal du récepteur) se trouve dans le dépôt associé
+; voir le <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/README.md">README</a>.</em></p>
+<h2 id="1-le-symptôme">1. Le symptôme</h2>
+<p>Une opération HL7 TCP envoie un <code>ADT^A28</code> à un système
+aval. Le système aval <strong>répond bien</strong> : la trace TCP montre
+un ACK bien formé. Pourtant, le même message continue d'arriver côté
+récepteur, toutes les quelques secondes, et finit par passer en
+<em>Error</em>.</p>
+<p>« L'ACK est arrivé » et « le message est rejoué » semblent
+contradictoires. Ils ne le sont pas, et cet article propose une méthode
+reproductible pour déterminer lequel de <strong>quatre mécanismes
+différents</strong> est à l'œuvre <em>avant</em> de toucher à un
+paramètre de production. La méthode part de <strong>ce que le récepteur
+a vu</strong>, lu à travers un petit tableau de bord, et ne passe
+qu'ensuite dans IRIS.</p>
+<h2 id="2-le-laboratoire-en-une-image">2. Le laboratoire en une
+image</h2>
+<p><img
+src="https://github.com/SylvainGuilbaud/hl7-ack-investigation/raw/main/docs/img/flow.svg"
+alt="Flux du laboratoire de test : l&#39;émetteur parle MLLP à in. (AckMode variable), qui transmet le message à out. (ReplyCodeActions variable), qui parle MLLP au simulateur lab ; le lab journalise chaque livraison dans lab.jsonl, que lit le tableau de bord (schéma en anglais)" /></p>
+<ul>
+<li>Le <strong>lab</strong> (<a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/simulator/lab.py"><code>simulator/lab.py</code></a>)
+lit le MSH-6 de ce qu'il reçoit et répond en conséquence
+(<code>AA</code>, <code>AE</code>, <code>AR</code>, <code>AR3</code> =
+AR avec <code>MSH-9 = ACK^A28^ACK</code>, un ACK pour <em>un autre</em>
+message (<code>MSA-2</code> ≠ <code>MSH-10</code> d'origine), pas de
+MSA, pas de fin de bloc MLLP, socket fermée, délai de 12 secondes).
+L'émetteur est <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/tools/send.py"><code>tools/send.py</code></a>.
+Le lab journalise aussi chaque livraison, si bien que <em>combien de
+fois le message a été envoyé</em> est compté <strong>en dehors
+d'IRIS</strong>.</li>
+<li>Trois opérations (définies dans <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/iris/src/Repro/Production.cls"><code>Production.cls</code></a>,
+générées par <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/tools/gen_production.py"><code>tools/gen_production.py</code></a>)
+ne diffèrent <strong>que</strong> par <code>ReplyCodeActions</code>
+(tout le reste : <code>ResponseTimeout=5</code>,
+<code>RetryInterval=2</code>, <code>FailureTimeout=10</code>) :</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>opération</th>
+<th><code>ReplyCodeActions</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>out.default</code></td>
+<td>vide → valeur par défaut documentée
+<code>:?R=RF,:?E=S,:~=S,:?A=C,:*=S,:I?=W,:T?=C</code></td>
+</tr>
+<tr>
+<td><code>out.failrej</code></td>
+<td>identique, <code>:?R=RF</code> → <code>:?R=F</code></td>
+</tr>
+<tr>
+<td><code>out.legacy</code></td>
+<td><code>:?R=W,:?E=W,:~=F,:?A=C,:T?=C,:*=F</code> (une chaîne « héritée
+»)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Les services placés devant elles ne diffèrent que par
+<code>AckMode</code> (<code>Immed</code>, <code>App</code>,
+<code>Msh</code>, <code>Never</code>, <code>Byte</code>).</li>
+</ul>
+<h2 id="3-la-méthode-dinvestigation-six-étapes">3. La méthode
+d'investigation (six étapes)</h2>
+<p>Chaque étape répond à une question et indique où regarder. Suivez-les
+dans l'ordre ; arrêtez-vous dès que vous pouvez expliquer le
+comportement.</p>
+<h3
+id="étape-1--le-message-est-il-vraiment-renvoyé--compter-côté-récepteur-avec-le-tableau-de-bord">Étape
+1 — Le message est-il vraiment <em>renvoyé</em> ? Compter côté
+récepteur, avec le tableau de bord</h3>
+<p>Ne commencez pas dans IRIS. Demandez au système récepteur (ou
+capturez le trafic) combien de fois le <strong>même MSH-10</strong> est
+arrivé, à quel intervalle, et si chaque livraison a reçu un ACK. Dans le
+lab, cet enregistrement est <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/results/lab.jsonl"><code>results/lab.jsonl</code></a>,
+écrit par <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/simulator/lab.py"><code>lab.py</code></a>
+et indépendant d'IRIS. <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/tools/dashboard.py"><code>tools/dashboard.py</code></a>
+le transforme en une seule page :</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> tools/dashboard.py <span class="at">--open</span>      <span class="co"># écrit results/dashboard.html</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> tools/dashboard.py <span class="at">--serve</span>     <span class="co"># en direct : rechargez la page pour relire le journal</span></span></code></pre></div>
+<p><img
+src="https://github.com/SylvainGuilbaud/hl7-ack-investigation/raw/main/docs/img/dashboard-overview.png"
+alt="Le tableau de bord sur l&#39;exécution complète de la matrice : tuiles de synthèse, observations, carte de chaleur cas × mode, barres par message, chronologie" /></p>
+<p>L'exécution complète de la matrice (<a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/results/matrix.md"><code>results/matrix.md</code></a>)
+a produit <strong>99 messages distincts</strong> et <strong>185
+livraisons</strong> : 86 d'entre elles étaient des re-livraisons,
+réparties sur 26 messages (26 %). Le lab a envoyé 119 ACK, et 11
+messages n'en ont jamais reçu. Le panneau d'observations l'énonce par
+mode du lab ; la carte de chaleur (lignes = cas
+<code>ReplyCodeActions</code>/<code>AckMode</code>, colonnes = ce qu'a
+fait le lab) montre <em>où</em>. Chaque cellule indique le nombre de
+livraisons et, en dessous, combien d'ACK le lab a réussi à envoyer.</p>
+<table>
+<thead>
+<tr>
+<th>ce que montre le tableau de bord</th>
+<th>lecture</th>
+<th>mène à</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AR</code> et <code>AR3</code> : <strong>6 livraisons</strong>,
+écart médian <strong>2,01 s</strong>,
+<strong><code>ACK 6</code></strong> — mais seulement dans les lignes
+<code>default</code> et <code>app.default</code> ; toutes les autres
+lignes valent <code>1</code></td>
+<td>chaque livraison <em>a bien reçu</em> un ACK, de code négatif ;
+l'écart est égal à <code>RetryInterval</code>, et le nombre ne dépend
+que de <code>ReplyCodeActions</code></td>
+<td>Cause A, B, B'</td>
+</tr>
+<tr>
+<td><code>CLOSE</code> : <strong>6 livraisons</strong>, écart médian
+<strong>2,02 s</strong>, <strong><code>ACK 0</code></strong> — dans
+<em>toutes</em> les lignes</td>
+<td>même nombre et même cadence que <code>AR</code>, mais rien n'a
+jamais été répondu, et aucune variante de <code>ReplyCodeActions</code>
+n'y change rien</td>
+<td>Cause C</td>
+</tr>
+<tr>
+<td><code>LATE</code> : <strong>2 livraisons</strong>,
+<strong><code>ACK 2</code></strong>, écart médian <strong>12,0
+s</strong>, latence d'ACK 12 s</td>
+<td>les ACK sont valides mais arrivent après
+<code>ResponseTimeout</code> (5 s) ; l'écart n'est pas
+<code>RetryInterval</code></td>
+<td>Cause C</td>
+</tr>
+<tr>
+<td>51 messages avec une réponse autre que <code>AA</code>, <strong>non
+rejoués</strong> (<code>AE</code>, pas de MSA, <code>NOFRAME</code>,
+<code>AR</code> sous <code>failrej</code>/<code>legacy</code>…)</td>
+<td>une seule livraison ne prouve pas le succès : IRIS a pu suspendre,
+échouer ou « terminer avec avertissement »</td>
+<td>Autres contenus d'ACK, Cause B/B', ligne <code>NOFRAME</code> de la
+Cause C</td>
+</tr>
+</tbody>
+</table>
+<p>Deux choses que cette vue rend évidentes et qu'un journal brut cache
+:</p>
+<ul>
+<li><strong>Le nombre de livraisons seul n'identifie pas le
+mécanisme.</strong> <code>AR</code> sous la configuration par défaut et
+<code>CLOSE</code> donnent tous deux 6 livraisons espacées de deux
+secondes. C'est le <em>nombre d'ACK sous le nombre de livraisons</em>
+qui les distingue (<code>ACK 6</code> contre <code>ACK 0</code>) : dans
+le premier cas le récepteur a répondu à chaque fois, dans le second
+jamais.</li>
+<li><strong>Le motif sur l'ensemble des lignes est le
+diagnostic.</strong> <code>AR</code> est rejoué dans deux lignes et pas
+dans les autres : le rejeu est donc une propriété du <em>paramétrage de
+l'opération</em>. <code>CLOSE</code> et <code>LATE</code> sont rejoués
+dans toutes : c'est une propriété de la <em>connexion</em>.</li>
+</ul>
+<p>Un intervalle régulier égal au <code>RetryInterval</code> de
+l'opération, qui s'arrête à <code>FailureTimeout</code> (ici ≈ 10 s : la
+vue relative de la chronologie aligne les rejeux à +2, +4, +6, +8, +10
+s), désigne la <strong>boucle de rejeu de l'opération</strong>. Un
+intervalle qui correspond au délai d'attente <em>de l'émetteur</em>
+désigne autre chose (voir §6, Cause D). Le tableau de bord ne peut pas
+montrer ce dernier cas : il ne voit que le récepteur aval, la Cause D se
+vérifie donc côté entrant dans IRIS (Étape 3).</p>
+<p>Les lignes brutes derrière la chronologie, si vous n'avez pas de
+tableau de bord :</p>
+<pre><code>11:34:40.284 received  t-ar-1
+11:34:42.290 received  t-ar-1     &lt;- toutes les 2 s = RetryInterval
+11:34:44.298 received  t-ar-1
+...                               &lt;- s&#39;arrête après ~10 s = FailureTimeout</code></pre>
+<p>Sélectionnez une ligne du tableau <em>Messages</em> (ou une barre, ou
+une étiquette de la chronologie) pour voir les événements du message
+avec le temps écoulé depuis la première livraison et depuis la
+précédente. Son lien <strong>trace ↗</strong> ouvre directement le
+Visual Trace de ce message (étapes suivantes).</p>
+<h3 id="étape-2--qua-exactement-répondu-le-récepteur-">Étape 2 — Qu'a
+exactement répondu le récepteur ?</h3>
+<p>Regardez l'ACK lui-même, champ par champ : <code>MSA-1</code> (code),
+<code>MSA-2</code> (identifiant de contrôle), <code>MSH-9</code> (type),
+encadrement MLLP.</p>
+<pre><code>MSH|^~\&amp;|LAB|SIM|IRIS|HOSP|20261126113438||ACK|ACKt-ar-1|P|2.5
+MSA|AR|t-ar-1|Rejected</code></pre>
+<p><code>MSA|AR</code> est un ACK parfaitement valide. C'est un
+<strong>accusé de réception négatif</strong>, et « arrivé » ne veut pas
+dire « accepté ». Notez le <code>MSA-1</code> avant de lire le moindre
+paramètre IRIS.</p>
+<blockquote>
+<p><strong>Deux ACK, ne les confondez pas.</strong> L'ACK que <em>votre
+émetteur</em> reçoit d'IRIS n'est pas celui que le lab a envoyé. Avec
+<code>AckMode=Immed</code>, l'émetteur reçoit toujours le
+<code>MSA|CA</code> propre à IRIS, quelle que soit la réponse du
+lab.</p>
+</blockquote>
+<h3
+id="étape-3--suivre-le-message-dans-iris-visual-trace-et-message-viewer">Étape
+3 — Suivre le message dans IRIS (Visual Trace et Message Viewer)</h3>
+<p>Dans le Management Portal, namespace de votre production :
+<strong>Interoperability → View → Messages</strong>, trouvez le message
+entrant (recherche sur la session de l'en-tête, ou sur l'identifiant de
+contrôle HL7 avec une table de recherche), puis ouvrez <strong>Visual
+Trace</strong>.</p>
+<p>Depuis le tableau de bord, c'est un clic : le lien <em>trace ↗</em>
+d'un message (dans le tableau Messages, le panneau de détail et les
+événements bruts) ouvre
+<code>…/csp/healthshare/&lt;namespace&gt;/EnsPortal.VisualTrace.zen?SESSIONID=&lt;id&gt;</code>.
+Le tableau de bord obtient l'identifiant de session en interrogeant le
+conteneur en cours d'exécution sur la session dont la requête entrante a
+<code>MSH-10</code> = l'identifiant de contrôle (aucune configuration
+supplémentaire ; le résultat est mis en cache dans
+<code>results/sessions.json</code> ; options <code>--portal</code>,
+<code>--ns</code>, <code>--container</code>,
+<code>--no-fetch</code>).</p>
+<p>Ce qu'il faut lire :</p>
+<ul>
+<li>la <strong>requête</strong> <code>in.xxx → out.xxx</code> et son
+statut final (<em>Completed</em>, <em>Error</em>, <em>Suspended</em>,
+<em>Discarded</em>…) ;</li>
+<li>une <strong>réponse</strong> <code>out.xxx → in.xxx</code> lorsque
+le service en attend une (<code>AckMode=App</code>) ;</li>
+<li>le <strong>nombre de réponses</strong> stockées pour l'opération
+(une par tentative ayant reçu un ACK ; <code>ArchiveIO=1</code> sur les
+éléments permet d'inspecter les E/S brutes).</li>
+</ul>
+<p>Dans le lab, la même information est affichée par
+<code>Repro.Trace.Report("&lt;control id&gt;")</code> (<a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/iris/src/Repro/Trace.cls"><code>Trace.cls</code></a>)
+; c'est un simple SQL sur <code>Ens.MessageHeader</code> et
+<code>Ens_Util.Log</code> filtré sur l'identifiant de session.</p>
+<h3
+id="étape-4--lire-levent-log-de-cette-session--cest-là-quest-la-réponse">Étape
+4 — Lire l'Event Log de cette session — c'est là qu'est la réponse</h3>
+<p><strong>Interoperability → View → Event Log</strong>, filtrez sur le
+nom de configuration de l'opération, ou naviguez depuis le Visual Trace.
+Deux types de lignes comptent, et elles se distinguent facilement :</p>
+<p><strong>(a) Une ligne contenant
+<code>resulting in Action code …</code></strong> — la décision vient de
+<code>ReplyCodeActions</code> :</p>
+<pre><code>ERROR [out.default] ERROR &lt;Ens&gt;ErrGeneral: Retrying HL7 Message body 10@EnsLib.HL7.Message / 1
+  because response 13@EnsLib.HL7.Message / 2
+  MSA code &#39;AR&#39; matched ReplyCodeActions 1-6 : &#39;:?R=RF,:?E=S,:~=S,:?A=C,:*=S,:I?=W&#39;,
+  resulting in Action code RF : MSH|^~\&amp;|LAB|SIM|IRIS|HOSP|...||ACK|ACKt-ar-1|P|2.5 MSA|AR|t-ar-1|Rejected</code></pre>
+<p>Elle vous dit <em>quelle</em> entrée s'est déclenchée
+(<code>1-6</code> est le bloc contigu des entrées <code>:</code> ; la
+chaîne entre apostrophes est le paramètre <strong>effectif</strong>, que
+vous n'avez peut-être pas saisi vous-même), <em>quel</em> ACK l'a
+déclenchée (identifiant de la réponse et contenu brut) et
+<em>quelle</em> action a été prise (<code>RF</code> =
+<strong>R</strong>etry, puis <strong>F</strong>ail à la fin).</p>
+<p>La séquence se termine par :</p>
+<pre><code>ERROR [out.default] ERROR &lt;Ens&gt;ErrGeneral: Discarding message on ERROR &lt;Ens&gt;ErrFailureTimeout:
+  FailureTimeout of 10 seconds exceeded in EnsLib.HL7.Operation.TCPOperation; status from last attempt was ...</code></pre>
+<p><strong>(b) Une ligne d'erreur TCP/adaptateur sans code
+d'action</strong> — la décision vient de l'adaptateur, pas de
+<code>ReplyCodeActions</code> :</p>
+<pre><code>ERROR &lt;Ens&gt;ErrTCPTerminatedReadTimeoutExpired: TCP Read timeout (5) expired waiting for terminator ...
+ERROR &lt;Ens&gt;ErrOutConnectionLost: Lost HL7 Read connection to lab:6600 ...
+ERROR &lt;EnsEDIHL7&gt;ErrEndBlock: Received unexpected EndBlock &#39;&#39; in input &quot;&quot;, expected &#39;er ...</code></pre>
+<blockquote>
+<p><strong>Règle pratique :</strong> <em>code d'action dans le journal ⇒
+lisez <code>ReplyCodeActions</code> ; pas de code d'action ⇒ lisez les
+paramètres de connexion et le comportement du récepteur.</em></p>
+</blockquote>
+<h3 id="étape-5--résoudre-le-replycodeactions-effectif">Étape 5 —
+Résoudre le <code>ReplyCodeActions</code> effectif</h3>
+<p><strong>Interoperability → Configure → Production</strong>,
+sélectionnez l'opération, <strong>Settings → Additional Settings → Reply
+Code Actions</strong>.</p>
+<ul>
+<li><strong>Vide ne signifie pas « aucune règle »</strong> : cela
+signifie la valeur par défaut documentée
+<code>:?R=RF,:?E=S,:~=S,:?A=C,:*=S,:I?=W,:T?=C</code>. Cette valeur
+rejoue sur <code>AR</code>/<code>CR</code> — par conception.</li>
+<li>Les entrées sont évaluées <strong>de gauche à droite et la première
+correspondance qui n'est pas un simple avertissement l'emporte</strong>.
+Les entrées dont l'action est seulement <code>W</code> sont évaluées et
+journalisées mais n'arrêtent pas la recherche. Conséquence, vérifiée
+dans le lab (mode <code>OTHERID</code>) : un <code>AA</code> dont le
+<code>MSA-2</code> est l'identifiant de contrôle d'<em>un autre</em>
+message — un ACK périmé ou mal routé, donc <em>pas</em> l'accusé du
+message que vous avez envoyé — est accepté en silence : le message se
+termine et rien n'est journalisé, car <code>:?A=C</code> correspond
+avant que <code>:I?=W</code> ne soit atteint. Ce n'est pas un cas de
+rejeu ; c'en est l'image inverse (un faux succès). Si vous voulez que le
+contrôle de l'identifiant agisse, placez <code>:I?</code> <em>avant</em>
+<code>:?A</code> (je n'ai pas testé cet ordre).</li>
+<li>Lettres d'action : <code>C</code> terminé, <code>W</code>
+avertissement, <code>R</code> rejeu (jusqu'à
+<code>FailureTimeout</code>, toutes les <code>RetryInterval</code>),
+<code>S</code> suspendre, <code>D</code> désactiver l'opération,
+<code>F</code> échec. Elles se combinent (<code>RF</code>,
+<code>RD</code>, <code>CW</code>).</li>
+</ul>
+<h3
+id="étape-6--vérifier-ce-qua-reçu-lémetteur-ackmode-du-service">Étape 6
+— Vérifier ce qu'a reçu l'<em>émetteur</em> (AckMode du service)</h3>
+<p>Ouvrez l'<code>AckMode</code> du service entrant. Il décide de l'ACK
+que voit votre système amont, et donc si <em>lui</em> peut rejouer. Voir
+§6.</p>
+<h2 id="4-les-cas-un-par-un">4. Les cas, un par un</h2>
+<p>Tous les chiffres ci-dessous proviennent des tests scriptés (<a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/tree/main/test"><code>test/</code></a>,
+rapports dans <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/reports/README.md"><code>docs/reports/</code></a>,
+traces brutes dans <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/tree/main/docs/traces"><code>docs/traces/</code></a>),
+2026.3, <code>FailureTimeout=10</code>, <code>RetryInterval=2</code>,
+<code>ResponseTimeout=5</code>.</p>
+<h3
+id="cause-a--un-ack-négatif-valide-sous-un-replycodeactions-qui-rejoue-la-valeur-par-défaut">Cause
+A — Un ACK négatif valide, sous un <code>ReplyCodeActions</code> qui
+rejoue (la valeur par défaut)</h3>
+<p>Test : <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/test/case_1_reject_is_retried.py"><code>case_1_reject_is_retried.py</code></a>
+→ <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/reports/case_1_reject_is_retried.md">rapport</a>.</p>
+<table>
+<thead>
+<tr>
+<th>le lab répond</th>
+<th style="text-align: right;">livraisons</th>
+<th>statut final</th>
+<th>journal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MSA|AR</code></td>
+<td style="text-align: right;"><strong>6</strong></td>
+<td>Error</td>
+<td><code>... Action code RF</code> ×6, puis
+<code>ErrFailureTimeout</code></td>
+</tr>
+<tr>
+<td><code>MSA|AR</code>, <code>MSH-9 = ACK^A28^ACK</code></td>
+<td style="text-align: right;"><strong>6</strong></td>
+<td>Error</td>
+<td>idem</td>
+</tr>
+</tbody>
+</table>
+<p>Rien n'est cassé : la valeur par défaut <strong>est</strong>
+<code>:?R=RF</code>. Le <code>ACK^A28^ACK</code> à trois composants est
+une fausse piste — c'est un <code>MSH-9</code> valide et ce n'est pas
+<code>:T?</code> (contrôle du type) qui s'est déclenché.</p>
+<p><em>Vérifier :</em> l'Étape 4(a) montre <code>RF</code>. <em>Décider
+:</em> un renvoi identique va-t-il un jour faire changer d'avis le
+récepteur ? En général non.</p>
+<h3 id="cause-b--corriger-la-cause-a">Cause B — Corriger la Cause A</h3>
+<p>Test : <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/test/case_2_corrected.py"><code>case_2_corrected.py</code></a>
+→ <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/reports/case_2_corrected.md">rapport</a>.</p>
+<p>Changez seulement <code>:?R=RF</code> → <code>:?R=F</code> :</p>
+<table>
+<thead>
+<tr>
+<th>le lab répond</th>
+<th style="text-align: right;">livraisons</th>
+<th>statut final</th>
+<th>journal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MSA|AR</code></td>
+<td style="text-align: right;"><strong>1</strong></td>
+<td>Error</td>
+<td><code>Quitting with error ... Action code F</code></td>
+</tr>
+<tr>
+<td><code>MSA|AA</code> (témoin)</td>
+<td style="text-align: right;">1</td>
+<td>Completed</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Le rejet est désormais <strong>visible une fois</strong> au lieu
+d'être caché derrière dix secondes de rejeux. <code>S</code> (suspendre)
+est l'alternative si vous voulez renvoyer à la main. Ajoutez dans tous
+les cas une alerte sur l'opération : <code>F</code> laisse le message en
+<em>Error</em> et, avec <code>AckMode=Immed</code>, l'émetteur n'en est
+pas informé.</p>
+<h3 id="cause-b--le--correctif--qui-cache-le-problème">Cause B' — Le «
+correctif » qui cache le problème</h3>
+<p>Test : <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/test/case_3_swallowed_rejection.py"><code>case_3_swallowed_rejection.py</code></a>
+→ <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/reports/case_3_swallowed_rejection.md">rapport</a>.</p>
+<p>La chaîne héritée <code>:?R=W,:?E=W,:~=F,:?A=C,:T?=C,:*=F</code>
+arrête elle aussi les rejeux :</p>
+<table>
+<thead>
+<tr>
+<th>le lab répond</th>
+<th style="text-align: right;">livraisons</th>
+<th>statut final</th>
+<th>action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AR</code></td>
+<td style="text-align: right;">1</td>
+<td><strong>Completed</strong></td>
+<td><code>CW</code></td>
+</tr>
+<tr>
+<td><code>AE</code></td>
+<td style="text-align: right;">1</td>
+<td><strong>Completed</strong></td>
+<td><code>CW</code></td>
+</tr>
+<tr>
+<td>pas de MSA</td>
+<td style="text-align: right;">1</td>
+<td>Error</td>
+<td><code>F</code></td>
+</tr>
+</tbody>
+</table>
+<p>Le message est marqué <em>Completed</em> alors que le récepteur l'a
+rejeté ; il ne reste qu'un avertissement. Acceptable si les rejets ne
+demandent vraiment aucune action chez vous, dangereux sinon.</p>
+<h3
+id="cause-c--lack-est-arrivé-dans-iris-mais-nest-jamais-devenu-un-ack-exploitable">Cause
+C — L'ACK est arrivé dans IRIS mais n'est jamais devenu un ACK
+exploitable</h3>
+<p>Test : <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/test/case_4_ack_not_recognised.py"><code>case_4_ack_not_recognised.py</code></a>
+→ <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/reports/case_4_ack_not_recognised.md">rapport</a>
+; traces : <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/traces/default-CLOSE-124218.txt">socket
+fermée</a>, <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/traces/default-LATE-124218.txt">ACK
+tardif</a>, <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/traces/default-NOFRAME-124218.txt">pas
+de fin de bloc</a>.</p>
+<p>Pas de code d'action dans le journal ; le rejeu vient de l'adaptateur
+TCP, qui positionne l'indicateur <code>Retry</code> de l'opération sur
+les erreurs réseau (documenté dans la référence de classe de
+<code>ReplyCodeActions</code>).</p>
+<table>
+<thead>
+<tr>
+<th>ce qu'a fait le récepteur</th>
+<th style="text-align: right;">livraisons</th>
+<th>final</th>
+<th>signature dans le journal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a fermé la socket sans ACK</td>
+<td style="text-align: right;"><strong>6</strong></td>
+<td>Error</td>
+<td><code>ErrOutConnectionLost</code>, puis <em>Disconnecting / Opened
+TCP connection</em> répétés</td>
+</tr>
+<tr>
+<td>ACK après 12 s (<code>ResponseTimeout</code> = 5)</td>
+<td style="text-align: right;"><strong>2</strong></td>
+<td>Error</td>
+<td><code>ErrTCPTerminatedReadTimeoutExpired</code>, puis
+<code>ErrFailureTimeout</code></td>
+</tr>
+<tr>
+<td>ACK sans fin de bloc MLLP (<code>0x1C 0x0D</code>)</td>
+<td style="text-align: right;">1</td>
+<td>Error</td>
+<td><code>ErrEndBlock</code>, <strong>non</strong> rejoué</td>
+</tr>
+</tbody>
+</table>
+<p>La dernière ligne est la plus difficile à diagnostiquer : des octets
+<em>sont</em> arrivés, le journal du récepteur dit « ACK sent », et IRIS
+signale pourtant une erreur. Seule une capture de paquets ou le texte
+exact <code>ErrEndBlock</code> vous dit que l'encadrement est faux.</p>
+<blockquote>
+<p><strong>À propos de « Discarding data found in buffer before HL7 send
+».</strong> Si vous exécutez le lab, vous verrez peut-être cet
+avertissement sur une opération. C'est IRIS qui vous protège, pas une
+défaillance : un ACK qui arrive <em>après</em>
+<code>ResponseTimeout</code> reste dans la socket, et IRIS le jette la
+prochaine fois qu'il envoie sur cette connexion, au lieu de le prendre
+pour la réponse au nouveau message. Dans le lab, il apparaissait dans
+des tests sans rapport, car les ACK tardifs d'un test étaient encore
+dans la socket du suivant. Le banc de test coupe désormais la connexion
+de l'opération après chaque test <code>LATE</code>
+(<code>Repro.Trace.ResetOperation</code>) pour que chaque rapport ne
+montre que ses propres événements.</p>
+</blockquote>
+<p><em>Vérifier :</em> Étape 4(b). <em>Corriger :</em> côté récepteur
+(encadrement, latence de réponse) ou
+<code>ResponseTimeout</code>/<code>FailureTimeout</code>. Modifier
+<code>ReplyCodeActions</code> n'aide pas ici, hormis les entrées
+préfixées par <code>E</code> qui correspondent au statut d'erreur
+lui-même.</p>
+<h3 id="autres-contenus-dack-avec-la-configuration-par-défaut">Autres
+contenus d'ACK avec la configuration par défaut</h3>
+<p>Test : <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/test/case_5_ack_content_checks.py"><code>case_5_ack_content_checks.py</code></a>
+→ <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/reports/case_5_ack_content_checks.md">rapport</a>
+; trace du cas <code>OTHERID</code> : <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/traces/default-OTHERID-165505.txt">default-OTHERID-165505</a>.</p>
+<table>
+<thead>
+<tr>
+<th>le lab répond</th>
+<th style="text-align: right;">livraisons</th>
+<th>final</th>
+<th>action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AA</code></td>
+<td style="text-align: right;">1</td>
+<td>Completed</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>AE</code></td>
+<td style="text-align: right;">1</td>
+<td><strong>Suspended</strong></td>
+<td><code>S</code></td>
+</tr>
+<tr>
+<td>pas de segment <code>MSA</code></td>
+<td style="text-align: right;">1</td>
+<td><strong>Suspended</strong></td>
+<td><code>S</code></td>
+</tr>
+<tr>
+<td><code>AA</code> accusant réception d'<em>un autre</em> message
+(<code>MSA-2</code> différent)</td>
+<td style="text-align: right;">1</td>
+<td>Completed</td>
+<td>aucune (voir Étape 5)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-ce-que-lémetteur-reçoit-réellement--ackmode">5. Ce que
+l'émetteur reçoit réellement — <code>AckMode</code></h2>
+<p>Jusqu'ici, l'émetteur recevait toujours le <code>CA</code> propre à
+IRIS (<code>AckMode=Immed</code>). Les mêmes opérations derrière des
+services d'autres modes (test : <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/test/case_6_ackmode.py"><code>case_6_ackmode.py</code></a>
+→ <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/reports/case_6_ackmode.md">rapport</a>)
+:</p>
+<table>
+<thead>
+<tr>
+<th>AckMode</th>
+<th>le lab répond</th>
+<th>résultat de l'opération</th>
+<th>l'émetteur reçoit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Immed</code></td>
+<td>n'importe quoi</td>
+<td>n'importe quoi</td>
+<td>le <code>MSA|CA</code> propre à IRIS, immédiatement — l'ACK du lab
+n'est jamais vu</td>
+</tr>
+<tr>
+<td><code>App</code></td>
+<td><code>AA</code></td>
+<td>Completed</td>
+<td><strong>le vrai ACK du lab</strong> (MSH-3 <code>LAB</code>)</td>
+</tr>
+<tr>
+<td><code>App</code></td>
+<td><code>AR</code>, défaut</td>
+<td>Error après 6 livraisons</td>
+<td>un <code>MSA|CE</code> construit par IRIS après ≈10 s</td>
+</tr>
+<tr>
+<td><code>App</code></td>
+<td><code>AR</code>, <code>:?R=F</code></td>
+<td>Error, 1 livraison</td>
+<td>un <code>CE</code> construit par IRIS, immédiatement</td>
+</tr>
+<tr>
+<td><code>App</code></td>
+<td><code>AR</code>, chaîne héritée</td>
+<td>Completed (<code>CW</code>)</td>
+<td><strong>le vrai <code>AR</code> du lab</strong></td>
+</tr>
+<tr>
+<td><code>App</code></td>
+<td><code>AE</code>, suspendu</td>
+<td>Suspended</td>
+<td><strong>rien</strong></td>
+</tr>
+<tr>
+<td><code>Msh</code></td>
+<td><code>AR</code></td>
+<td>Error</td>
+<td><code>CA</code> si MSH-15=AL ; <code>CE</code> construit si
+MSH-16=AL ; rien sinon</td>
+</tr>
+<tr>
+<td><code>Never</code></td>
+<td><code>AR</code></td>
+<td>Error</td>
+<td>rien</td>
+</tr>
+<tr>
+<td><code>Byte</code></td>
+<td><code>AR</code></td>
+<td>Error</td>
+<td>un octet <code>0x06</code> (« OK »)</td>
+</tr>
+</tbody>
+</table>
+<p>Le journal du service explique le <code>CE</code> :</p>
+<pre><code>WARNING [in.app.default] Constructing ACK with code CE because SendRequestSync() of 8@EnsLib.HL7.Message/1
+  returned with no response object and status: ERROR &lt;Ens&gt;ErrGeneral: Discarding message on ERROR &lt;Ens&gt;ErrFailureTimeout ...</code></pre>
+<h2
+id="6-cause-d--le-rejeu-nest-pas-celui-diris--cest-celui-de-lémetteur">6.
+Cause D — le rejeu n'est pas celui d'IRIS : c'est celui de
+l'émetteur</h2>
+<p>Si les Étapes 1 à 5 montrent <strong>une seule</strong> livraison
+vers le système aval, mais que le système <em>amont</em> continue
+d'envoyer le même message :</p>
+<ul>
+<li>Avec <code>AckMode=App</code>, un message <strong>suspendu</strong>
+ne produit <strong>aucun ACK</strong> : l'amont attend, expire, et
+renvoie. Dans le Message Viewer, vous verrez plusieurs messages
+<em>entrants</em> avec le même MSH-10, et non plusieurs tentatives d'un
+seul message.</li>
+<li>Avec <code>Immed</code>/<code>Msh</code> (<code>CA</code>), l'amont
+croit que le message a été <em>accepté</em> ; le rejet aval ne
+déclenchera jamais de rejeu amont, ce qui est le problème inverse (perte
+silencieuse) — à comparer avec la Cause B'.</li>
+<li>Avec <code>Byte</code>, l'émetteur reçoit « OK » quoi qu'il soit
+arrivé en aval.</li>
+</ul>
+<p><em>Vérifier :</em> comptez les messages <strong>entrants</strong>
+par MSH-10 (Étape 1 côté émetteur), et comparez l'intervalle avec le
+délai d'attente propre de l'émetteur.</p>
+<h2 id="7-arbre-de-décision">7. Arbre de décision</h2>
+<pre><code>Même MSH-10 reçu plus d&#39;une fois ?
+├─ côté système AVAL ?
+│   ├─ l&#39;Event Log contient &quot;resulting in Action code ..R..&quot;  → Cause A : ReplyCodeActions (défaut :?R=RF sur AR/CR)
+│   └─ l&#39;Event Log contient ErrTCP... / ErrOutConnectionLost / timeout, sans code d&#39;action → Cause C : connexion/ACK jamais exploitable
+└─ seulement côté ENTRANT d&#39;IRIS (plusieurs requêtes dans le Message Viewer) ? → Cause D : l&#39;émetteur rejoue
+      └─ vérifier l&#39;AckMode du service et si le message est passé en Suspended/Error</code></pre>
+<p>Le même arbre en image (<a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/img/decision-flow.svg">source
+SVG</a>, <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/img/decision-flow.png">PNG</a>
+; le texte du schéma est en anglais) :</p>
+<p><img
+src="https://github.com/SylvainGuilbaud/hl7-ack-investigation/raw/main/docs/img/decision-flow.png"
+alt="Arbre de décision : l&#39;ACK est arrivé mais le message est rejoué. Même MSH-10 reçu plus d&#39;une fois côté aval : si l&#39;Event Log montre « resulting in Action code », c&#39;est ReplyCodeActions (cause A/B) ; s&#39;il montre une erreur TCP ou d&#39;adaptateur sans code d&#39;action, c&#39;est la couche connexion (cause C) ; si les doublons ne sont que côté entrant d&#39;IRIS, l&#39;émetteur rejoue (cause D), selon l&#39;AckMode du service. Schéma en anglais." /></p>
+<h2 id="8-comportement-corrigé--la-matrice-de-tests">8. Comportement
+corrigé : la matrice de tests</h2>
+<p>Tout ce qui figure dans cet article est reproduit par (voir <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/test/run_all.sh"><code>test/run_all.sh</code></a>
+et l'<a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/reports/README.md">index
+des rapports</a>) :</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> compose up <span class="at">-d</span> <span class="at">--build</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">test/run_all.sh</span>          <span class="co"># 6 scripts, 24 tests, un rapport Markdown chacun (results/reports/)</span></span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>script</th>
+<th>démontre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/test/case_1_reject_is_retried.py"><code>case_1_reject_is_retried</code></a></td>
+<td><code>AR</code> / <code>ACK^A28^ACK</code> rejoué avec la
+configuration par défaut — <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/reports/case_1_reject_is_retried.md">rapport</a></td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/test/case_2_corrected.py"><code>case_2_corrected</code></a></td>
+<td><code>:?R=F</code> : une seule livraison — <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/reports/case_2_corrected.md">rapport</a></td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/test/case_3_swallowed_rejection.py"><code>case_3_swallowed_rejection</code></a></td>
+<td>la chaîne héritée cache les rejets (<code>CW</code>) — <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/reports/case_3_swallowed_rejection.md">rapport</a></td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/test/case_4_ack_not_recognised.py"><code>case_4_ack_not_recognised</code></a></td>
+<td>ACK sans encadrement / abandonné / tardif — <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/reports/case_4_ack_not_recognised.md">rapport</a></td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/test/case_5_ack_content_checks.py"><code>case_5_ack_content_checks</code></a></td>
+<td><code>AE</code>, pas de MSA, ACK pour un autre message — <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/reports/case_5_ack_content_checks.md">rapport</a></td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/test/case_6_ackmode.py"><code>case_6_ackmode</code></a></td>
+<td>ce que reçoit l'émetteur avec <code>App</code>, <code>Msh</code>,
+<code>Never</code>, <code>Byte</code> — <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/reports/case_6_ackmode.md">rapport</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="9-fichiers-de-résultats">9. Fichiers de résultats</h2>
+<p>Tout ce qui suit est produit par le lab et versionné dans <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/tree/main/results"><code>results/</code></a>
+:</p>
+<table>
+<thead>
+<tr>
+<th>fichier</th>
+<th>contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/results/lab.jsonl"><code>results/lab.jsonl</code></a></td>
+<td>chaque message que le système aval simulé a reçu et auquel il a
+répondu (le comptage indépendant des livraisons)</td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/results/dashboard.html"><code>results/dashboard.html</code></a></td>
+<td>le même journal sur une seule page : filtres, observations, carte de
+chaleur cas × mode, chronologie, tableau de messages triable, liens vers
+le Visual Trace de chaque message (généré par <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/tools/dashboard.py"><code>tools/dashboard.py</code></a>)
+; <code>results/sessions.json</code> est son cache identifiant de
+contrôle → identifiant de session</td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/results/matrix.md"><code>results/matrix.md</code></a></td>
+<td>les 11 services entrants (ReplyCodeActions × AckMode) × 9
+comportements du lab = 99 lignes : livraisons, statut final, codes
+d'action <strong>et ce que reçoit l'émetteur</strong> (<a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/results/matrix.log"><code>matrix.log</code></a>
+est sa sortie console ; généré par <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/tools/matrix.py"><code>tools/matrix.py</code></a>)</td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/results/reports/README.md"><code>results/reports/README.md</code></a></td>
+<td>index des rapports de test de la dernière exécution complète (<a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/results/run_all.log"><code>run_all.log</code></a>)</td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/results/reports/case_1_reject_is_retried.md"><code>case_1_reject_is_retried.md</code></a></td>
+<td><code>AR</code> rejoué avec la configuration par défaut</td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/results/reports/case_2_corrected.md"><code>case_2_corrected.md</code></a></td>
+<td><code>:?R=F</code></td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/results/reports/case_3_swallowed_rejection.md"><code>case_3_swallowed_rejection.md</code></a></td>
+<td>chaîne héritée, <code>CW</code></td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/results/reports/case_4_ack_not_recognised.md"><code>case_4_ack_not_recognised.md</code></a></td>
+<td>ACK fermé / tardif / sans encadrement</td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/results/reports/case_5_ack_content_checks.md"><code>case_5_ack_content_checks.md</code></a></td>
+<td><code>AE</code>, pas de MSA, ACK pour un autre message</td>
+</tr>
+<tr>
+<td><a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/results/reports/case_6_ackmode.md"><code>case_6_ackmode.md</code></a></td>
+<td><code>AckMode</code> <code>App</code>, <code>Msh</code>,
+<code>Never</code>, <code>Byte</code></td>
+</tr>
+</tbody>
+</table>
+<p>Relancer le lab écrase ces fichiers ; <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/blob/main/docs/reports/README.md"><code>docs/reports/</code></a>
+et <a
+href="https://github.com/SylvainGuilbaud/hl7-ack-investigation/tree/main/docs/traces"><code>docs/traces/</code></a>
+conservent l'exécution de référence citée dans cet article.</p>
+<h2 id="10-à-retenir">10. À retenir</h2>
+<ol type="1">
+<li><strong>Partez du journal du récepteur, pas d'IRIS.</strong> Le
+nombre de livraisons, l'écart et les <em>ACK par livraison</em> (la
+carte de chaleur du tableau de bord) séparent déjà un
+<code>ReplyCodeActions</code> qui rejoue d'une connexion
+défaillante.</li>
+<li><strong>« L'ACK est arrivé » ne dit rien de son code.</strong> Lisez
+d'abord <code>MSA-1</code>.</li>
+<li><strong>Un <code>ReplyCodeActions</code> vide, c'est la valeur par
+défaut, et la valeur par défaut rejoue <code>AR</code>.</strong></li>
+<li><strong>Cherchez <code>resulting in Action code</code>.</strong>
+Présent : <code>ReplyCodeActions</code>. Absent : comportement de
+l'adaptateur/de la connexion.</li>
+<li><strong>L'ordre compte dans <code>ReplyCodeActions</code> :</strong>
+la première correspondance qui n'est pas un simple avertissement
+l'emporte.</li>
+<li><strong>Il existe deux ACK.</strong> Sachez quel
+<code>AckMode</code> utilise votre service et ce que l'émetteur reçoit
+réellement.</li>
+<li><strong>Mesurez côté récepteur avant de modifier un paramètre de
+production.</strong></li>
+</ol>
+<h2 id="réserves">Réserves</h2>
+<ul>
+<li>Testé sur 2026.3 (<code>latest-cd</code>).</li>
+<li>Les noms de menus du portail sont les noms habituels
+d'Interoperability ; vérifiez-les sur votre version.</li>
+<li>Le tableau de bord ne voit que ce qu'a vu le récepteur aval. Il ne
+peut pas montrer la Cause D (rejeux par l'émetteur amont) ni ce qu'IRIS
+a décidé ; utilisez pour cela le Visual Trace et l'Event Log. Les
+chiffres cités à l'Étape 1 du §3 proviennent d'une exécution complète de
+la matrice et changent si d'autres exécutions ajoutent des lignes à
+<code>lab.jsonl</code> (le fichier n'est jamais tronqué).</li>
+<li>Le simulateur est un petit serveur MLLP en Python, pas un vrai LIS ;
+les systèmes réels peuvent fermer les connexions inactives ou regrouper
+les ACK différemment.</li>
+</ul>
+</body>
+</html>

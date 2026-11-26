@@ -671,3 +671,6 @@
 {"event": "ack_sent", "conn": 1, "control_id": "default-NOMSA-165503", "mode": "NOMSA", "msa1": "", "msh9": "ACK", "ts": "2026-11-26T15:55:03.231"}
 {"event": "received", "conn": 1, "control_id": "default-OTHERID-165505", "mode": "OTHERID", "ts": "2026-11-26T15:55:05.464"}
 {"event": "ack_sent", "conn": 1, "control_id": "default-OTHERID-165505", "mode": "OTHERID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:55:05.471"}
+{"event": "peer_closed", "conn": 2, "ts": "2026-11-26T17:03:48.028"}
+{"event": "peer_closed", "conn": 1, "ts": "2026-11-26T17:03:48.031"}
+{"event": "peer_closed", "conn": 3, "ts": "2026-11-26T17:03:48.023"}
