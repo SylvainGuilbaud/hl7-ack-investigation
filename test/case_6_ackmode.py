@@ -16,17 +16,17 @@ run("app.failrej", "AR", "App + :?R=F: no retry, the sender gets IRIS' own CE im
     dict(deliveries=1, status="Error", actions="F", sender_has="MSA|CE", sender_lacks="MSA|AR"))
 run("app.legacy", "AR", "App + legacy string: the lab's real AR reaches the sender (operation 'Completed')",
     dict(deliveries=1, status="Completed", actions="CW", sender_has=["|LAB|SIM", "MSA|AR"]))
-run("app.failrej", "AE", "App + suspended message: the sender receives NO ACK (waits; here it gives up after 15 s)",
-    dict(deliveries=1, status="Suspended", actions="S", sender_has="<nothing>"), wait=15)
+run("app.failrej", "AE", "App + suspended message: the sender receives NO ACK (it waits; here the test gives up after 5 s)",
+    dict(deliveries=1, status="Suspended", actions="S", sender_has="<nothing>"), wait=5)
 # --- other AckModes ---------------------------------------------------------------------------
 run("msh.failrej", "AR", "Msh, MSH-15=AL: commit ACK (CA) sent at once - the rejection is invisible to the sender",
     dict(deliveries=1, status="Error", actions="F", sender_has="MSA|CA"), ack=("AL", "NE"))
 run("msh.failrej", "AR", "Msh, MSH-16=AL: application ACK requested, IRIS builds a CE",
     dict(deliveries=1, status="Error", actions="F", sender_has="MSA|CE"), ack=("NE", "AL"))
 run("msh.failrej", "AR", "Msh, no ACK requested in the message: nothing comes back",
-    dict(deliveries=1, status="Error", actions="F", sender_has="<nothing>"), wait=10)
+    dict(deliveries=1, status="Error", actions="F", sender_has="<nothing>"), wait=5)
 run("never.failrej", "AR", "Never: nothing comes back",
-    dict(deliveries=1, status="Error", actions="F", sender_has="<nothing>"), wait=10)
+    dict(deliveries=1, status="Error", actions="F", sender_has="<nothing>"), wait=5)
 run("byte.failrej", "AR", "Byte: a single 0x06 ('OK') byte although the lab rejected the message",
-    dict(deliveries=1, status="Error", actions="F", sender_has="\x06"), wait=10)
+    dict(deliveries=1, status="Error", actions="F", sender_has="\x06"), wait=5)
 finish()

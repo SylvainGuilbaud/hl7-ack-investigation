@@ -6,35 +6,35 @@
 
 | case | port | lab mode (MSH-6) | control id |
 |---|---|---|---|
-| `failrej` | 29202 | `AR` | `failrej-AR-194312` |
+| `failrej` | 29202 | `AR` | `failrej-AR-20040450` |
 
 ### Sent, and what the sender gets back from IRIS
 
 ```text
 SENT:
-    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126194312||ADT^A28^ADT_A05|failrej-AR-194312|P|2.5
-    EVN|A28|20261126194312
+    MSH|^~\&|PAS|HOSP|IRIS|AR|20261126200404||ADT^A28^ADT_A05|failrej-AR-20040450|P|2.5
+    EVN|A28|20261126200404
     PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
     PV1|1|N
 ANSWER TO THE SENDER (after 0.0s) :
-    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611261943||ACK^A28|failrej-AR-194312|P|2.5
-    MSA|CA|failrej-AR-194312
+    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611262004||ACK^A28|failrej-AR-20040450|P|2.5
+    MSA|CA|failrej-AR-20040450
 ```
 
 ### What the downstream lab saw and answered (`results/dashboard/lab2026-11-26.jsonl`)
 
 | time | event | MSA-1 | MSH-9 |
 |---|---|---|---|
-| 18:43:12.503 | received |  | `` |
-| 18:43:12.507 | ack_sent | AR | `ACK` |
+| 19:04:04.568 | received |  | `` |
+| 19:04:04.574 | ack_sent | AR | `ACK` |
 
 ### What IRIS recorded (`Repro.Trace.Report`)
 
 ```text
-== message headers (session 41)
-  41 18:43:12.501 in.failrej -> out.failrej  [Request/8] 
+== message headers (session 295)
+ 295 19:04:04.567 in.failrej -> out.failrej  [Request/8] 
 == event log
-18:43:12.508 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 13@EnsLib.HL7.Message / 129 because response 10@EnsLib.HL7.Message / 131 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting
+19:04:04.575 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 11@EnsLib.HL7.Message / 754 because response 12@EnsLib.HL7.Message / 756 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting
 ```
 
 **Result:** deliveries = **1**, final status = **Error**, action codes = `F`
@@ -45,35 +45,36 @@ ANSWER TO THE SENDER (after 0.0s) :
 
 | case | port | lab mode (MSH-6) | control id |
 |---|---|---|---|
-| `failrej` | 29202 | `AR3` | `failrej-AR3-194314` |
+| `failrej` | 29202 | `AR3` | `failrej-AR3-20041632` |
 
 ### Sent, and what the sender gets back from IRIS
 
 ```text
 SENT:
-    MSH|^~\&|PAS|HOSP|IRIS|AR3|20261126194314||ADT^A28^ADT_A05|failrej-AR3-194314|P|2.5
-    EVN|A28|20261126194314
+    MSH|^~\&|PAS|HOSP|IRIS|AR3|20261126200416||ADT^A28^ADT_A05|failrej-AR3-20041632|P|2.5
+    EVN|A28|20261126200416
     PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
     PV1|1|N
 ANSWER TO THE SENDER (after 0.0s) :
-    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611261943||ACK^A28|failrej-AR3-194314|P|2.5
-    MSA|CA|failrej-AR3-194314
+    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611262004||ACK^A28|failrej-AR3-20041632|P|2.5
+    MSA|CA|failrej-AR3-20041632
 ```
 
 ### What the downstream lab saw and answered (`results/dashboard/lab2026-11-26.jsonl`)
 
 | time | event | MSA-1 | MSH-9 |
 |---|---|---|---|
-| 18:43:14.680 | received |  | `` |
-| 18:43:14.684 | ack_sent | AR | `ACK^A28^ACK` |
+| 19:04:16.378 | received |  | `` |
+| 19:04:16.381 | ack_sent | AR | `ACK^A28^ACK` |
 
 ### What IRIS recorded (`Repro.Trace.Report`)
 
 ```text
-== message headers (session 42)
-  42 18:43:14.679 in.failrej -> out.failrej  [Request/8] 
+== message headers (session 303)
+ 303 19:04:16.372 in.failrej -> out.failrej  [Request/8] 
 == event log
-18:43:14.685 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 10@EnsLib.HL7.Message / 132 because response 8@EnsLib.HL7.Message / 134 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting
+19:04:16.373 INFO [out.failrej] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
+19:04:16.382 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 10@EnsLib.HL7.Message / 774 because response 9@EnsLib.HL7.Message / 776 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting
 ```
 
 **Result:** deliveries = **1**, final status = **Error**, action codes = `F`
@@ -84,33 +85,33 @@ ANSWER TO THE SENDER (after 0.0s) :
 
 | case | port | lab mode (MSH-6) | control id |
 |---|---|---|---|
-| `failrej` | 29202 | `AA` | `failrej-AA-194316` |
+| `failrej` | 29202 | `AA` | `failrej-AA-20044333` |
 
 ### Sent, and what the sender gets back from IRIS
 
 ```text
 SENT:
-    MSH|^~\&|PAS|HOSP|IRIS|AA|20261126194316||ADT^A28^ADT_A05|failrej-AA-194316|P|2.5
-    EVN|A28|20261126194316
+    MSH|^~\&|PAS|HOSP|IRIS|AA|20261126200443||ADT^A28^ADT_A05|failrej-AA-20044333|P|2.5
+    EVN|A28|20261126200443
     PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
     PV1|1|N
 ANSWER TO THE SENDER (after 0.0s) :
-    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611261943||ACK^A28|failrej-AA-194316|P|2.5
-    MSA|CA|failrej-AA-194316
+    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611262004||ACK^A28|failrej-AA-20044333|P|2.5
+    MSA|CA|failrej-AA-20044333
 ```
 
 ### What the downstream lab saw and answered (`results/dashboard/lab2026-11-26.jsonl`)
 
 | time | event | MSA-1 | MSH-9 |
 |---|---|---|---|
-| 18:43:16.867 | received |  | `` |
-| 18:43:16.871 | ack_sent | AA | `ACK` |
+| 19:04:43.399 | received |  | `` |
+| 19:04:43.405 | ack_sent | AA | `ACK` |
 
 ### What IRIS recorded (`Repro.Trace.Report`)
 
 ```text
-== message headers (session 43)
-  43 18:43:16.866 in.failrej -> out.failrej  [Request/9] 
+== message headers (session 316)
+ 316 19:04:43.398 in.failrej -> out.failrej  [Request/9] 
 == event log
 ```
 

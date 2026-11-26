@@ -7,35 +7,35 @@
 
 | case | port | lab mode (MSH-6) | control id |
 |---|---|---|---|
-| `failrej` | 29202 | `NOFRAME` | `failrej-NOFRAME-194325` |
+| `failrej` | 29202 | `NOFRAME` | `failrej-NOFRAME-20035897` |
 
 ### Sent, and what the sender gets back from IRIS
 
 ```text
 SENT:
-    MSH|^~\&|PAS|HOSP|IRIS|NOFRAME|20261126194325||ADT^A28^ADT_A05|failrej-NOFRAME-194325|P|2.5
-    EVN|A28|20261126194325
+    MSH|^~\&|PAS|HOSP|IRIS|NOFRAME|20261126200359||ADT^A28^ADT_A05|failrej-NOFRAME-20035897|P|2.5
+    EVN|A28|20261126200359
     PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
     PV1|1|N
 ANSWER TO THE SENDER (after 0.0s) :
-    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611261943||ACK^A28|failrej-NOFRAME-194325|P|2.5
-    MSA|CA|failrej-NOFRAME-194325
+    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611262003||ACK^A28|failrej-NOFRAME-20035897|P|2.5
+    MSA|CA|failrej-NOFRAME-20035897
 ```
 
 ### What the downstream lab saw and answered (`results/dashboard/lab2026-11-26.jsonl`)
 
 | time | event | MSA-1 | MSH-9 |
 |---|---|---|---|
-| 18:43:25.699 | received |  | `` |
-| 18:43:25.708 | ack_sent | AA | `ACK` |
+| 19:03:59.039 | received |  | `` |
+| 19:03:59.044 | ack_sent | AA | `ACK` |
 
 ### What IRIS recorded (`Repro.Trace.Report`)
 
 ```text
-== message headers (session 47)
-  47 18:43:25.697 in.failrej -> out.failrej  [Request/8] 
+== message headers (session 286)
+ 286 19:03:59.037 in.failrej -> out.failrej  [Request/8] 
 == event log
-18:43:30.735 ERROR [out.failrej] ERROR <EnsEDIHL7>ErrEndBlock: Received unexpected EndBlock '' in input "", expected 'er, on |TCP|6600|1444'
+19:04:04.068 ERROR [out.failrej] ERROR <EnsEDIHL7>ErrEndBlock: Received unexpected EndBlock '' in input "", expected 'er, on |TCP|6600|9240'
 ```
 
 **Result:** deliveries = **1**, final status = **Error**, action codes = `-`
@@ -46,57 +46,57 @@ ANSWER TO THE SENDER (after 0.0s) :
 
 | case | port | lab mode (MSH-6) | control id |
 |---|---|---|---|
-| `failrej` | 29202 | `CLOSE` | `failrej-CLOSE-194331` |
+| `failrej` | 29202 | `CLOSE` | `failrej-CLOSE-20040587` |
 
 ### Sent, and what the sender gets back from IRIS
 
 ```text
 SENT:
-    MSH|^~\&|PAS|HOSP|IRIS|CLOSE|20261126194332||ADT^A28^ADT_A05|failrej-CLOSE-194331|P|2.5
-    EVN|A28|20261126194332
+    MSH|^~\&|PAS|HOSP|IRIS|CLOSE|20261126200405||ADT^A28^ADT_A05|failrej-CLOSE-20040587|P|2.5
+    EVN|A28|20261126200405
     PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
     PV1|1|N
 ANSWER TO THE SENDER (after 0.0s) :
-    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611261943||ACK^A28|failrej-CLOSE-194331|P|2.5
-    MSA|CA|failrej-CLOSE-194331
+    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611262004||ACK^A28|failrej-CLOSE-20040587|P|2.5
+    MSA|CA|failrej-CLOSE-20040587
 ```
 
 ### What the downstream lab saw and answered (`results/dashboard/lab2026-11-26.jsonl`)
 
 | time | event | MSA-1 | MSH-9 |
 |---|---|---|---|
-| 18:43:32.023 | received |  | `` |
-| 18:43:32.028 | closing_without_ack |  | `` |
-| 18:43:34.044 | received |  | `` |
-| 18:43:34.048 | closing_without_ack |  | `` |
-| 18:43:36.061 | received |  | `` |
-| 18:43:36.064 | closing_without_ack |  | `` |
-| 18:43:38.078 | received |  | `` |
-| 18:43:38.081 | closing_without_ack |  | `` |
-| 18:43:40.090 | received |  | `` |
-| 18:43:40.098 | closing_without_ack |  | `` |
-| 18:43:42.116 | received |  | `` |
-| 18:43:42.119 | closing_without_ack |  | `` |
+| 19:04:05.920 | received |  | `` |
+| 19:04:05.924 | closing_without_ack |  | `` |
+| 19:04:07.935 | received |  | `` |
+| 19:04:07.938 | closing_without_ack |  | `` |
+| 19:04:09.950 | received |  | `` |
+| 19:04:09.953 | closing_without_ack |  | `` |
+| 19:04:11.964 | received |  | `` |
+| 19:04:11.967 | closing_without_ack |  | `` |
+| 19:04:13.979 | received |  | `` |
+| 19:04:13.982 | closing_without_ack |  | `` |
+| 19:04:15.994 | received |  | `` |
+| 19:04:16.004 | closing_without_ack |  | `` |
 
 ### What IRIS recorded (`Repro.Trace.Report`)
 
 ```text
-== message headers (session 48)
-  48 18:43:32.022 in.failrej -> out.failrej  [Request/8] 
+== message headers (session 299)
+ 299 19:04:05.919 in.failrej -> out.failrej  [Request/8] 
 == event log
-18:43:32.032 INFO [out.failrej] Disconnecting from  lab:6600
-18:43:32.032 ERROR [out.failrej] ERROR <Ens>ErrOutConnectionLost: Lost HL7 Read connection to lab:6600 - detected via ERROR #5002: ObjectScript error: <READ>ReadLine+11^%IO.DeviceStream.1
-18:43:34.037 INFO [out.failrej] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
-18:43:34.052 INFO [out.failrej] Disconnecting from  lab:6600
-18:43:36.057 INFO [out.failrej] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
-18:43:36.067 INFO [out.failrej] Disconnecting from  lab:6600
-18:43:38.071 INFO [out.failrej] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
-18:43:38.084 INFO [out.failrej] Disconnecting from  lab:6600
-18:43:40.087 INFO [out.failrej] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
-18:43:40.103 INFO [out.failrej] Disconnecting from  lab:6600
-18:43:42.11 INFO [out.failrej] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
-18:43:42.121 INFO [out.failrej] Disconnecting from  lab:6600
-18:43:42.122 ERROR [out.failrej] ERROR <Ens>ErrFailureTimeout: FailureTimeout of 10 seconds exceeded in EnsLib.HL7.Operation.TCPOperation; status from last attempt was ERROR <Ens>ErrOutConnectionLost: Lost HL7 Read connection to lab:6600 - detected via ERROR #
+19:04:05.928 INFO [out.failrej] Disconnecting from  lab:6600
+19:04:05.928 ERROR [out.failrej] ERROR <Ens>ErrOutConnectionLost: Lost HL7 Read connection to lab:6600 - detected via ERROR #5002: ObjectScript error: <READ>ReadLine+11^%IO.DeviceStream.1
+19:04:07.93 INFO [out.failrej] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
+19:04:07.942 INFO [out.failrej] Disconnecting from  lab:6600
+19:04:09.944 INFO [out.failrej] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
+19:04:09.956 INFO [out.failrej] Disconnecting from  lab:6600
+19:04:11.959 INFO [out.failrej] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
+19:04:11.971 INFO [out.failrej] Disconnecting from  lab:6600
+19:04:13.973 INFO [out.failrej] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
+19:04:13.986 INFO [out.failrej] Disconnecting from  lab:6600
+19:04:15.989 INFO [out.failrej] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
+19:04:16.014 INFO [out.failrej] Disconnecting from  lab:6600
+19:04:16.018 ERROR [out.failrej] ERROR <Ens>ErrFailureTimeout: FailureTimeout of 10 seconds exceeded in EnsLib.HL7.Operation.TCPOperation; status from last attempt was ERROR <Ens>ErrOutConnectionLost: Lost HL7 Read connection to lab:6600 - detected via ERROR #
 ```
 
 **Result:** deliveries = **6**, final status = **Error**, action codes = `-`
@@ -107,39 +107,38 @@ ANSWER TO THE SENDER (after 0.0s) :
 
 | case | port | lab mode (MSH-6) | control id |
 |---|---|---|---|
-| `failrej` | 29202 | `LATE` | `failrej-LATE-194342` |
+| `failrej` | 29202 | `LATE` | `failrej-LATE-20041765` |
 
 ### Sent, and what the sender gets back from IRIS
 
 ```text
 SENT:
-    MSH|^~\&|PAS|HOSP|IRIS|LATE|20261126194342||ADT^A28^ADT_A05|failrej-LATE-194342|P|2.5
-    EVN|A28|20261126194342
+    MSH|^~\&|PAS|HOSP|IRIS|LATE|20261126200417||ADT^A28^ADT_A05|failrej-LATE-20041765|P|2.5
+    EVN|A28|20261126200417
     PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
     PV1|1|N
 ANSWER TO THE SENDER (after 0.0s) :
-    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611261943||ACK^A28|failrej-LATE-194342|P|2.5
-    MSA|CA|failrej-LATE-194342
+    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611262004||ACK^A28|failrej-LATE-20041765|P|2.5
+    MSA|CA|failrej-LATE-20041765
 ```
 
 ### What the downstream lab saw and answered (`results/dashboard/lab2026-11-26.jsonl`)
 
 | time | event | MSA-1 | MSH-9 |
 |---|---|---|---|
-| 18:43:42.476 | received |  | `` |
-| 18:43:54.481 | ack_sent | AA | `ACK` |
-| 18:43:54.488 | received |  | `` |
-| 18:44:06.496 | ack_sent | AA | `ACK` |
+| 19:04:17.705 | received |  | `` |
+| 19:04:29.714 | ack_sent | AA | `ACK` |
+| 19:04:29.721 | received |  | `` |
+| 19:04:41.725 | ack_sent | AA | `ACK` |
 
 ### What IRIS recorded (`Repro.Trace.Report`)
 
 ```text
-== message headers (session 49)
-  49 18:43:42.471 in.failrej -> out.failrej  [Request/8] 
+== message headers (session 306)
+ 306 19:04:17.704 in.failrej -> out.failrej  [Request/8] 
 == event log
-18:43:42.472 INFO [out.failrej] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
-18:43:47.49 ERROR [out.failrej] ERROR <Ens>ErrTCPTerminatedReadTimeoutExpired: TCP Read timeout (5) expired waiting for terminator SegTerminatorAscii=13, on |TCP|6600|1444, data received =''
-18:43:52.508 ERROR [out.failrej] ERROR <Ens>ErrFailureTimeout: FailureTimeout of 10 seconds exceeded in EnsLib.HL7.Operation.TCPOperation; status from last attempt was ERROR <Ens>ErrTCPTerminatedReadTimeoutExpired: TCP Read timeout (5) expired waiting for term
+19:04:22.73 ERROR [out.failrej] ERROR <Ens>ErrTCPTerminatedReadTimeoutExpired: TCP Read timeout (5) expired waiting for terminator SegTerminatorAscii=13, on |TCP|6600|9240, data received =''
+19:04:27.761 ERROR [out.failrej] ERROR <Ens>ErrFailureTimeout: FailureTimeout of 10 seconds exceeded in EnsLib.HL7.Operation.TCPOperation; status from last attempt was ERROR <Ens>ErrTCPTerminatedReadTimeoutExpired: TCP Read timeout (5) expired waiting for term
 ```
 
 **Result:** deliveries = **2**, final status = **Error**, action codes = `-`

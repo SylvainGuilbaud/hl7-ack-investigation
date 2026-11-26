@@ -6,7 +6,7 @@ results/dashboard/ is git-ignored. Every tool (tests, matrix, dashboard) asks th
 gets its own log, dashboard and session cache, and the committed reference files
 (results/lab.jsonl, dashboard.html, sessions.json - the ones the article quotes) are never touched.
 """
-import os
+import contextlib, fcntl, json, os, time
 from datetime import datetime
 from pathlib import Path
 
@@ -36,3 +36,44 @@ def sibling(log: Path, prefix: str, ext: str) -> Path:
     stem = Path(log).stem
     suffix = stem[3:] if stem.startswith("lab") else ""
     return Path(log).with_name(f"{prefix}{suffix}{ext}")
+
+
+def lab_events(ctrl: str) -> list:
+    """Every event the lab logged for one control id (independent of IRIS)."""
+    p = current_log()
+    if not p.exists():
+        return []
+    ev = [json.loads(l) for l in p.read_text().splitlines() if l.strip()]
+    return [e for e in ev if e.get("control_id") == ctrl]
+
+
+@contextlib.contextmanager
+def operation_lock(op: str):
+    """One test at a time per OPERATION, whatever the service, the script or the tool.
+
+    The services in front differ, but they all feed a few operations (out.default, out.failrej, out.legacy), each with
+    PoolSize 1 and ONE TCP connection to the lab: two tests on the same operation queue behind each other and the
+    second one reads the lab's log too early (false FAIL). With this lock the test scripts and the matrix can run in
+    parallel, and next to each other: work on different operations overlaps, work on the same one waits its turn.
+    flock is released by the OS if the process dies."""
+    LIVE.mkdir(parents=True, exist_ok=True)
+    with open(LIVE / f".op-{op}.lock", "w") as f:
+        fcntl.flock(f, fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(f, fcntl.LOCK_UN)
+
+
+def wait_late_replies(ctrl: str, late_delay: float = 12, poll: float = 0.5) -> None:
+    """After a LATE message: wait until the lab has sent the ack of every delivery.
+
+    The lab answers each delivery late_delay seconds late and one at a time, so both replies (one per IRIS attempt)
+    arrive after IRIS gave up. 'All acked' must hold twice in a row: the lab logs the next 'received' a few ms after the
+    previous 'ack_sent'."""
+    stable, deadline = 0, time.time() + 2 * late_delay + 10
+    while stable < 2 and time.time() < deadline:
+        e = lab_events(ctrl)
+        got, acked = sum(x["event"] == "received" for x in e), sum(x["event"] == "ack_sent" for x in e)
+        stable = stable + 1 if got and acked >= got else 0
+        time.sleep(poll)

@@ -1,11 +1,11 @@
 """Shared helpers for the test scripts. stdlib only; needs `docker compose up -d` first."""
-import json, subprocess, sys, time
+import json, os, subprocess, sys, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.dont_write_bytecode = True      # no __pycache__ in the repo
 sys.path.insert(0, str(ROOT / "tools"))
-from labpath import current_log   # the lab container's own dated log (results/lab<date>.jsonl)
+from labpath import current_log, lab_events, operation_lock, wait_late_replies   # shared with tools/matrix.py
 PORTS = {"default": 29201, "failrej": 29202, "legacy": 29203,
          # same operations, other AckMode on the service (what the sender gets back)
          "app.default": 29211, "app.failrej": 29212, "app.legacy": 29213,
@@ -21,14 +21,6 @@ def iris(code):
     return r.stdout
 
 
-def lab_events(ctrl):
-    p = current_log()
-    if not p.exists():
-        return []
-    ev = [json.loads(l) for l in p.read_text().splitlines() if l.strip()]
-    return [e for e in ev if e.get("control_id") == ctrl]
-
-
 def summary(ctrl):
     out = iris(f'do ##class(Repro.Trace).Summary("{ctrl}")')
     line = next((l for l in out.splitlines() if l.startswith("SUMMARY|")), "SUMMARY|?||")
@@ -39,14 +31,25 @@ def fence(text, lang="text"):
     return f"```{lang}\n{text.rstrip()}\n```\n"
 
 
+POLL = 0.5          # seconds between two looks at IRIS while a message is being processed
+
+
 def run(case, mode, title, expect, ack=(), wait=40):
+    """Same as _run, serialised per operation (see operation_lock)."""
+    with operation_lock("out." + case.split(".")[-1]):
+        return _run(case, mode, title, expect, ack, wait)
+
+
+def _run(case, mode, title, expect, ack=(), wait=40):
     """Send one message through `case` with the lab answering `mode`; print a Markdown report; check `expect`.
 
     expect: dict with optional keys  deliveries (int | callable), status (str), actions (substring), no_actions,
             sender_has / sender_lacks (substring(s) of what the SENDER received)
     ack:    (MSH-15, MSH-16) set by the sender;  wait: seconds the sender waits for an answer
     """
-    ctrl = f"{case}-{mode}-{time.strftime('%H%M%S')}"
+    # <case>-<MODE>-<HHMMSS><hundredths>: unique even when the same case+mode runs twice within one second
+    # (a fast test takes well under 1 s now), because two tests with the same id would be counted as one message.
+    ctrl = f"{case}-{mode}-{time.strftime('%H%M%S')}{int(time.time() * 100) % 100:02d}"
     ctrl = ctrl.replace("..", ".")
     print(f"## {title}\n")
     print(f"| case | port | lab mode (MSH-6) | control id |\n|---|---|---|---|\n| `{case}` | {PORTS[case]} | `{mode}` | `{ctrl}` |\n")
@@ -58,13 +61,14 @@ def run(case, mode, title, expect, ack=(), wait=40):
     t0 = time.time()
     status = actions = errs = ""
     while time.time() - t0 < 60:
-        time.sleep(2)
+        time.sleep(POLL)
         status, actions, errs = summary(ctrl)
         if status in TERMINAL:
             break
     if mode == "LATE":
-        time.sleep(LATE_DELAY + 8)          # let the lab finish both late replies (one per attempt) ...
-        iris(f'do ##class(Repro.Trace).ResetOperation("out.{case.split(".")[-1]}")')   # ... then drop the stale bytes
+        wait_late_replies(ctrl, LATE_DELAY, POLL)          # both late replies have arrived ...
+        # ... so drop the stale bytes from IRIS' socket
+        iris(f'do ##class(Repro.Trace).ResetOperation("out.{case.split(".")[-1]}")')
     ev = lab_events(ctrl)
     print(f"### What the downstream lab saw and answered (`results/dashboard/{current_log().name}`)\n")
     rows = ["| time | event | MSA-1 | MSH-9 |", "|---|---|---|---|"]

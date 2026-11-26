@@ -1,12 +1,20 @@
 #!/usr/bin/env bash
-# Runs the test scripts; each writes a Markdown report to results/reports/<script>.md,
-# and results/reports/README.md indexes them. Full run ~8 minutes.
+# Runs the test scripts IN PARALLEL (one Markdown report each in results/reports/<script>.md, indexed by
+# results/reports/README.md). Full run ~65 s in parallel, ~100 s with --serial.
+#
+# Why parallel is safe: every test takes a lock on the OPERATION it goes through (test/harness.py, operation_lock).
+# The services differ but feed only 3 operations (out.default, out.failrej, out.legacy), each single-threaded with one
+# connection to the lab, so tests on different operations overlap and tests on the same one queue.
+#
 # The lab container logs to its OWN file, results/dashboard/lab<YYYY-MM-DD>.jsonl (new container => new log); at the end
-# this script builds results/dashboard/dashboard<YYYY-MM-DD>.html from it (results/dashboard/ is git-ignored). The committed reference (results/lab.jsonl,
-# dashboard.html, sessions.json - the ones the article quotes) is never touched.
-# usage: test/run_all.sh [1 3 ...]     (script numbers; default: all)
+# this script builds results/dashboard/dashboard<YYYY-MM-DD>.html from it (results/dashboard/ is git-ignored). The
+# committed reference (results/lab.jsonl, dashboard.html, sessions.json - the ones the article quotes) is never touched.
+#
+# usage: test/run_all.sh [--serial] [1 3 ...]     (script numbers; default: all)
 set -u
 cd "$(dirname "$0")/.."
+SERIAL=0; nums=(); pids=()
+for a in "$@"; do case "$a" in -s|--serial) SERIAL=1 ;; *) nums+=("$a") ;; esac; done
 OUT=results/reports; mkdir -p "$OUT"
 docker exec hl7ack-iris true 2>/dev/null || { echo "stack not running: docker compose up -d --build"; exit 2; }
 rc=0
@@ -40,19 +48,42 @@ build_dashboard() {
   { echo; echo "- dashboard: \`$(python3 -B -I -c "import sys; sys.path.insert(0,'tools'); from labpath import current_log, sibling; print(sibling(current_log(),'dashboard','.html').name)")\` from \`$(python3 -B -I -c "import sys; sys.path.insert(0,'tools'); from labpath import current_log; print(current_log().name)")\`"; } >> "$IDX"
 }
 trap build_dashboard EXIT
-trap 'echo; echo "interrupted"; exit 130' INT TERM
+trap 'echo; echo "interrupted"; kill ${pids[@]+"${pids[@]}"} 2>/dev/null; exit 130' INT TERM
 { echo "# Test reports"; echo; echo "Run: $(date '+%Y-%m-%d %H:%M:%S'), image: $(docker exec hl7ack-iris iris qlist 2>/dev/null | cut -d^ -f3)"; echo
   echo "| script | tests | passed | report |"; echo "|---|---:|---:|---|"; } > "$IDX"
+scripts=()
 for f in test/case_*.py; do
   n=$(basename "$f" .py); num=${n#case_}; num=${num%%_*}
-  if [ $# -gt 0 ] && ! printf '%s\n' "$@" | grep -qx "$num"; then continue; fi
-  echo ">> $n"
-  python3 -B -I "$f" > "$OUT/$n.md" 2>&1; r=$?
+  if [ ${#nums[@]} -gt 0 ] && ! printf '%s\n' "${nums[@]}" | grep -qx "$num"; then continue; fi
+  scripts+=("$n")
+done
+
+[ ${#scripts[@]} -gt 0 ] || { echo "no test script matches: ${nums[*]}"; exit 2; }
+
+if [ $SERIAL -eq 0 ]; then
+  echo "running ${#scripts[@]} scripts in parallel: ${scripts[*]}"
+  for n in "${scripts[@]}"; do
+    python3 -B -I "test/$n.py" > "$OUT/$n.md" 2>&1 &
+    pids+=($!)
+  done
+fi
+
+i=0
+for n in "${scripts[@]}"; do
+  if [ $SERIAL -eq 1 ]; then
+    echo ">> $n"
+    python3 -B -I "test/$n.py" > "$OUT/$n.md" 2>&1; r=$?
+  else
+    wait "${pids[$i]}"; r=$?; echo ">> $n"
+  fi
+  i=$((i+1))
   tot=$(grep -c '^\*\*Verdict' "$OUT/$n.md"); ok=$(grep -c '^\*\*Verdict:\*\* PASS' "$OUT/$n.md")
   grep -E '^\*\*Verdict' "$OUT/$n.md" | sed 's/^/   /'
   echo "| $n | $tot | $ok | [$n.md]($n.md) |" >> "$IDX"
   [ $r -ne 0 ] && rc=1
 done
+{ echo; echo "- duration: ${SECONDS} s ($([ $SERIAL -eq 1 ] && echo serial || echo "parallel, one lock per operation"))"; } >> "$IDX"
 echo
+echo "done in ${SECONDS} s"
 [ $rc -eq 0 ] && echo "ALL PASSED - reports in $OUT/ (index: $IDX)" || echo "FAILURES - see $OUT/"
 exit $rc

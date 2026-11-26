@@ -1,6 +1,6 @@
 # Test reports
 
-Run: 2026-11-26 19:42:51, image: 2026.3.0.212.0com
+Run: 2026-11-26 20:03:47, image: 2026.3.0.212.0com
 
 | script | tests | passed | report |
 |---|---:|---:|---|
@@ -10,5 +10,7 @@ Run: 2026-11-26 19:42:51, image: 2026.3.0.212.0com
 | case_4_ack_not_recognised | 3 | 3 | [case_4_ack_not_recognised.md](case_4_ack_not_recognised.md) |
 | case_5_ack_content_checks | 3 | 3 | [case_5_ack_content_checks.md](case_5_ack_content_checks.md) |
 | case_6_ackmode | 10 | 10 | [case_6_ackmode.md](case_6_ackmode.md) |
+
+- duration: 136 s (parallel, one lock per operation)
 
 - dashboard: `dashboard2026-11-26.html` from `lab2026-11-26.jsonl`

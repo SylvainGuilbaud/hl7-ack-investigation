@@ -133,7 +133,7 @@ decision of `ReplyCodeActions`) and the final `ErrFailureTimeout`. The same data
 
 ### 5. Run the automated tests
 
-Run all 6 scripts (24 tests, about 3 minutes):
+Run all 6 scripts in parallel (24 tests, about 1 minute):
 
 ```bash
 test/run_all.sh
@@ -145,9 +145,15 @@ Or only some of them, here scripts 1 and 4:
 test/run_all.sh 1 4
 ```
 
+Or one after the other, about 100 s, which is easier to follow in the live output:
+
+```bash
+test/run_all.sh --serial
+```
+
 Each test sends messages, checks the deliveries and the final status, and writes a Markdown report to `results/reports/`
-(index in `results/reports/README.md`). Run **one at a time**: a second `run_all.sh` refuses to start, because the
-operations are single-threaded and concurrent runs would delay and mix each other's messages. Details in *Tests* below.
+(index in `results/reports/README.md`, which also records the duration). Start **one `run_all.sh` at a time**: a second one refuses
+to start. Inside a run, the scripts overlap safely because each test locks the operation it goes through. Details in *Tests* below.
 
 ### 6. Open the dashboard
 
@@ -157,13 +163,19 @@ python3 tools/dashboard.py --open
 Turns the lab's log into one page, `results/dashboard/dashboard<YYYY-MM-DD>.html` (`run_all.sh` also builds it when it
 ends). Details in *Dashboard over the receiver's log* below.
 
-### 7. Optional: the full matrix (about 20 minutes)
+### 7. Optional: the full matrix (about 8 minutes)
 
 ```bash
 python3 tools/matrix.py --out results/dashboard/matrix.md
 ```
 Sends every lab mode through every one of the 11 services (99 messages) and writes the table. **Always pass `--out`**: the
 default, `results/matrix.md`, is the committed reference the article quotes, and a run overwrites it.
+
+The cells run in parallel, one worker per operation (`out.default`, `out.failrej`, `out.legacy`), with the same operation
+locks as `run_all.sh`, so the matrix can even run next to the tests. The `out.failrej` worker (63 of the 99 cells) sets the
+duration. Add `--serial` to send one message at a time (about 20 minutes with the original waits). Do not empty
+`results/dashboard/` while it runs: the lab recreates its log, but the messages already logged are lost and some cells
+would count too few deliveries.
 
 ### 8. Stop
 
@@ -214,7 +226,7 @@ what the lab received/answered, the IRIS trace, and a PASS/FAIL verdict against 
 | `case_5_ack_content_checks` | `AE`, no MSA, an ACK for another message (MSA-2 mismatch) under the default |
 | `case_6_ackmode` | `AckMode` `App` / `Msh` / `Never` / `Byte`: what the **sender** receives (the lab's real ACK or not) |
 
-Run all scripts (about 3 minutes). One Markdown report per script goes to `results/reports/*.md`, with an index in `results/reports/README.md`:
+Run all scripts in parallel (about 1 minute). One Markdown report per script goes to `results/reports/*.md`, with an index in `results/reports/README.md`:
 
 ```bash
 test/run_all.sh
@@ -225,6 +237,19 @@ Run only selected scripts, here 1 and 4:
 ```bash
 test/run_all.sh 1 4
 ```
+
+Run them one after the other (about 100 s) instead of in parallel:
+
+```bash
+test/run_all.sh --serial
+```
+
+**Why running in parallel is safe.** The services differ, but they all feed only three operations (`out.default`,
+`out.failrej`, `out.legacy`). Each operation is single-threaded and has one TCP connection to the lab, so two tests going
+through the same operation would queue behind each other and the second would read the lab's log too early. Every test
+therefore takes a lock on its operation (`operation_lock` in `test/harness.py`): tests on different operations overlap,
+tests on the same one wait their turn. The slowest chain is the one through `out.failrej` (scripts 2, 4 and part of 6),
+which sets the wall time. Scripts run directly (`python3 -I test/case_N_*.py`) take the same locks.
 
 Run a single script directly: its report is printed on stdout instead of being written to a file:
 
