@@ -1,0 +1,32 @@
+>> case_1_reject_is_retried
+   **Verdict:** PASS
+   **Verdict:** PASS
+>> case_2_corrected
+   **Verdict:** PASS
+   **Verdict:** PASS
+   **Verdict:** PASS
+>> case_3_swallowed_rejection
+   **Verdict:** PASS
+   **Verdict:** PASS
+   **Verdict:** PASS
+>> case_4_ack_not_recognised
+   **Verdict:** PASS
+   **Verdict:** PASS
+   **Verdict:** PASS
+>> case_5_ack_content_checks
+   **Verdict:** PASS
+   **Verdict:** PASS
+   **Verdict:** PASS
+>> case_6_ackmode
+   **Verdict:** PASS
+   **Verdict:** PASS
+   **Verdict:** PASS
+   **Verdict:** PASS
+   **Verdict:** PASS
+   **Verdict:** PASS
+   **Verdict:** PASS
+   **Verdict:** PASS
+   **Verdict:** PASS
+   **Verdict:** PASS
+
+ALL PASSED - reports in results/reports/ (index: results/reports/README.md)

@@ -1,0 +1,29 @@
+services:
+  iris:
+    build:
+      context: iris
+      args:
+        IRIS_IMAGE: ${IRIS_IMAGE}
+    image: hl7-ack-iris
+    container_name: hl7ack-iris
+    hostname: hl7ack-iris
+    environment:
+      TZ: ${TZ}
+    ports:
+      - "9772:52773"   # Management Portal  http://localhost:9772/csp/sys/UtilHome.csp
+      - "29201-29220:29201-29220"   # one inbound HL7 service per ReplyCodeActions variant
+    volumes:
+      - ./results:/results
+    depends_on: [lab]
+  lab:
+    image: python:3.13-alpine
+    container_name: hl7ack-lab
+    hostname: lab
+    command: ["python3", "-u", "/app/lab.py"]
+    environment:
+      LAB_PORT: "6600"
+      LATE_DELAY: "12"
+      LAB_LOG: /results/lab.jsonl
+    volumes:
+      - ./simulator/lab.py:/app/lab.py:ro
+      - ./results:/results

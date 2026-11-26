@@ -1,0 +1,12 @@
+    zn "%SYS"
+    // Lab credentials: _SYSTEM / SYS, no forced change, no expiry
+    set p("Password")="SYS", p("ChangePasswordOnNextLogin")=0, p("PasswordNeverExpires")=1
+    do ##class(Security.Users).Modify("_SYSTEM",.p)
+    do ##class(Security.Users).Modify("SuperUser",.p)
+    do ##class(Security.Users).UnExpireUserPasswords("*")
+
+    zn "REPRO"
+    set sc = $SYSTEM.OBJ.LoadDir("/opt/repro/src","ck",,1)
+    if 'sc { do $SYSTEM.Status.DisplayError(sc) }
+    do ##class(Ens.Director).SetAutoStart("Repro.Production")
+    halt

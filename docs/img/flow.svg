@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 360" width="1040" height="360" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">
+  <title>Test lab flow: sender, IRIS service and operation, lab simulator</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#333"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#00836a"/></marker>
+  </defs>
+  <rect width="1040" height="360" fill="#fff"/>
+
+  <!-- IRIS container -->
+  <rect x="215" y="38" width="500" height="200" rx="12" fill="#f3f7fd" stroke="#257de0" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="233" y="62" font-size="13" font-weight="600" fill="#1a5bab">IRIS for Health · namespace REPRO · Repro.Production</text>
+
+  <!-- boxes -->
+  <rect x="20" y="95" width="160" height="90" rx="10" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="100" y="128" text-anchor="middle" font-size="15" font-weight="600" fill="#191919">Sender</text>
+  <text x="100" y="150" text-anchor="middle" font-size="12" fill="#555">tools/send.py</text>
+  <text x="100" y="167" text-anchor="middle" font-size="12" fill="#555">ADT^A28, MSH-6 = mode</text>
+
+  <rect x="235" y="95" width="200" height="90" rx="10" fill="#fff" stroke="#257de0" stroke-width="2"/>
+  <text x="335" y="122" text-anchor="middle" font-size="15" font-weight="600" fill="#191919">in.&lt;case&gt;</text>
+  <text x="335" y="142" text-anchor="middle" font-size="12" fill="#555">HL7 TCP service</text>
+  <text x="335" y="166" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a5bab">AckMode varies</text>
+
+  <rect x="495" y="95" width="200" height="90" rx="10" fill="#fff" stroke="#257de0" stroke-width="2"/>
+  <text x="595" y="122" text-anchor="middle" font-size="15" font-weight="600" fill="#191919">out.&lt;case&gt;</text>
+  <text x="595" y="142" text-anchor="middle" font-size="12" fill="#555">HL7 TCP operation</text>
+  <text x="595" y="166" text-anchor="middle" font-size="12.5" font-weight="600" fill="#1a5bab">ReplyCodeActions varies</text>
+
+  <rect x="800" y="95" width="220" height="90" rx="10" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="910" y="122" text-anchor="middle" font-size="15" font-weight="600" fill="#191919">lab</text>
+  <text x="910" y="142" text-anchor="middle" font-size="12" fill="#555">Python MLLP simulator (:6600)</text>
+  <text x="910" y="166" text-anchor="middle" font-size="12" fill="#555">answers AA / AE / AR / … on demand</text>
+
+  <!-- forward arrows -->
+  <line x1="180" y1="125" x2="233" y2="125" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="435" y1="125" x2="493" y2="125" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="695" y1="125" x2="798" y2="125" stroke="#333" stroke-width="2" marker-end="url(#a)"/>
+  <text x="206" y="116" text-anchor="middle" font-size="11" fill="#333">MLLP</text>
+  <text x="747" y="116" text-anchor="middle" font-size="11" fill="#333">MLLP</text>
+  <text x="464" y="116" text-anchor="middle" font-size="11" fill="#333">message</text>
+
+  <!-- return arrows (ACKs) -->
+  <line x1="798" y1="160" x2="697" y2="160" stroke="#00836a" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#b)"/>
+  <text x="747" y="178" text-anchor="middle" font-size="11" font-weight="600" fill="#00836a">ACK ①</text>
+  <line x1="493" y1="160" x2="437" y2="160" stroke="#00836a" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#b)"/>
+  <text x="464" y="178" text-anchor="middle" font-size="11" fill="#00836a">response</text>
+  <line x1="233" y1="160" x2="182" y2="160" stroke="#00836a" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#b)"/>
+  <text x="206" y="178" text-anchor="middle" font-size="11" font-weight="600" fill="#00836a">ACK ②</text>
+
+  <!-- lab log + dashboard -->
+  <line x1="910" y1="185" x2="910" y2="262" stroke="#333" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="920" y="228" font-size="11" fill="#555">logs every delivery</text>
+  <rect x="800" y="264" width="220" height="62" rx="10" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="910" y="290" text-anchor="middle" font-size="14" font-weight="600" fill="#191919">results/lab.jsonl</text>
+  <text x="910" y="310" text-anchor="middle" font-size="12" fill="#555">counted outside IRIS</text>
+  <line x1="798" y1="295" x2="700" y2="295" stroke="#333" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="500" y="264" width="198" height="62" rx="10" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="599" y="290" text-anchor="middle" font-size="14" font-weight="600" fill="#191919">dashboard.html</text>
+  <text x="599" y="310" text-anchor="middle" font-size="12" fill="#555">tools/dashboard.py</text>
+  <line x1="599" y1="262" x2="599" y2="241" stroke="#555" stroke-width="1.5" stroke-dasharray="2 4" marker-end="url(#a)"/>
+  <text x="609" y="256" font-size="11" fill="#555">link to Visual Trace</text>
+
+  <!-- legend / notes -->
+  <text x="20" y="262" font-size="12" font-weight="600" fill="#191919">Two ACKs</text>
+  <text x="20" y="282" font-size="12" fill="#00836a">① lab → IRIS operation: judged by ReplyCodeActions</text>
+  <text x="20" y="300" font-size="12" fill="#00836a">② IRIS service → sender: decided by AckMode</text>
+  <text x="20" y="324" font-size="12" fill="#555">Same everywhere else: ResponseTimeout=5,</text>
+  <text x="20" y="340" font-size="12" fill="#555">RetryInterval=2, FailureTimeout=10</text>
+</svg>

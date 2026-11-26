@@ -1,0 +1,16 @@
+== message headers (session 9)
+   9 11:42:54.313 in.default -> out.default  [Request/8] 
+== event log
+11:42:54.319 INFO [out.default] Disconnecting from  lab:6600
+11:42:54.32 ERROR [out.default] ERROR <Ens>ErrOutConnectionLost: Lost HL7 Read connection to lab:6600 - detected via ERROR #5002: ObjectScript error: <READ>ReadLine+11^%IO.DeviceStream.1
+11:42:56.326 INFO [out.default] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
+11:42:56.339 INFO [out.default] Disconnecting from  lab:6600
+11:42:58.341 INFO [out.default] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
+11:42:58.35 INFO [out.default] Disconnecting from  lab:6600
+11:43:00.352 INFO [out.default] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
+11:43:00.363 INFO [out.default] Disconnecting from  lab:6600
+11:43:02.365 INFO [out.default] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
+11:43:02.375 INFO [out.default] Disconnecting from  lab:6600
+11:43:04.38 INFO [out.default] Opened TCP connection from local address 192.168.204.83 to remote address lab:6600
+11:43:04.389 INFO [out.default] Disconnecting from  lab:6600
+11:43:04.39 ERROR [out.default] ERROR <Ens>ErrFailureTimeout: FailureTimeout of 10 seconds exceeded in EnsLib.HL7.Operation.TCPOperation; status from last attempt was ERROR <Ens>ErrOutConnectionLost: Lost HL7 Read connection to lab:6600 - detected via ERROR #5002: ObjectScript error: <READ>ReadLine+11^%IO.DeviceStream.1

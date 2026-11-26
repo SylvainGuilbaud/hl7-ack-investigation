@@ -1,0 +1,4 @@
+== message headers (session 25)
+  25 11:44:34.675 in.legacy -> out.legacy  [Request/8] 
+== event log
+11:44:34.681 ERROR [out.legacy] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 13@EnsLib.HL7.Message / 76 because response 12@EnsLib.HL7.Message / 78 MSA code '~NoMSA' matched ReplyCodeActions 1-4 : ':?R=W,:?E=W,:~=F,:?A=C', resulting in Action code F : MSH|^~\&|LAB|SIM|IRIS|HOSP|20261126114434||ACK|ACKlegacy-NOMSA-124218|P|2.5 ERR|^^^207 

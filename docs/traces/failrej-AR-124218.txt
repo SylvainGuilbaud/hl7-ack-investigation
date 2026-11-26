@@ -1,0 +1,4 @@
+== message headers (session 13)
+  13 11:43:34.328 in.failrej -> out.failrej  [Request/8] 
+== event log
+11:43:34.34 ERROR [out.failrej] ERROR <Ens>ErrGeneral: Quitting with error on HL7 Message body 12@EnsLib.HL7.Message / 42 because response 10@EnsLib.HL7.Message / 44 MSA code 'AR' matched ReplyCodeActions 1-6 : ':?R=F,:?E=S,:~=S,:?A=C,:*=S,:I?=W', resulting in Action code F : MSH|^~\&|LAB|SIM|IRIS|HOSP|20261126114334||ACK|ACKfailrej-AR-124218|P|2.5 MSA|AR|failrej-AR-124218|Rejected 

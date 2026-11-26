@@ -1,0 +1,7 @@
+[Startup]
+SystemMode=DEVELOPMENT
+
+[Actions]
+CreateResource:Name=%DB_REPRO,Description="REPRO database"
+CreateDatabase:Name=REPRO,Directory=/usr/irissys/mgr/REPRO,Resource=%DB_REPRO
+CreateNamespace:Name=REPRO,Globals=REPRO,Routines=REPRO,Interop=1

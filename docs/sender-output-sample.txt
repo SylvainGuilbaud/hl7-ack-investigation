@@ -1,0 +1,8 @@
+SENT:
+    MSH|^~\&|PAS|HOSP|IRIS|AA|20261126124632||ADT^A28^ADT_A05|article-sample-01|P|2.5
+    EVN|A28|20261126124632
+    PID|1||123456^^^PAS^MR||DOE^JANE||19800101|F
+    PV1|1|N
+ACK FROM IRIS (to the sender):
+    MSH|^~\&|EnsembleHL7|ISC|PAS|HOSP|202611261246||ACK^A28|article-sample-01|P|2.5
+    MSA|CA|article-sample-01

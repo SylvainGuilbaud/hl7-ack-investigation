@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="730" viewBox="0 0 1200 730" font-family="Helvetica, Arial, sans-serif">
+<title>Decision flow: why is my HL7 message retried although the ACK arrived?</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#44546a"/></marker></defs>
+<rect width="1200" height="730" fill="#ffffff"/>
+<text x="600.0" y="39.0" font-size="21" fill="#1f2d3d" text-anchor="middle"><tspan x="600.0" dy="0" font-weight="bold">The ACK arrived, the message is retried: which mechanism is it?</tspan></text>
+<polygon points="600,62.0 815.0,112 600,162.0 385.0,112" fill="#fff7e0" stroke="#c99a00" stroke-width="1.8"/>
+<text x="600" y="107.7" font-size="14" fill="#1f2d3d" text-anchor="middle"><tspan x="600" dy="0" font-weight="bold">Same MSH-10 delivered / received more than once?</tspan><tspan x="600" dy="18" font-weight="bold">(Step 1: count at the receiver)</tspan></text>
+<text x="600" y="182.0" font-size="12" fill="#6b7a8c" text-anchor="middle"><tspan x="600" dy="0">once, everywhere: not a retry problem</tspan></text>
+<polyline points="385,112 260,112 260,194" fill="none" stroke="#44546a" stroke-width="2" marker-end="url(#a)"/>
+<text x="250" y="99.3" font-size="13" fill="#44546a" text-anchor="middle"><tspan x="250" dy="0" font-weight="bold">at the DOWNSTREAM system</tspan></text>
+<polyline points="815,112 1010,112 1010,184" fill="none" stroke="#44546a" stroke-width="2" marker-end="url(#a)"/>
+<text x="1000" y="99.3" font-size="13" fill="#44546a" text-anchor="middle"><tspan x="1000" dy="0" font-weight="bold">only at IRIS' INBOUND side</tspan></text>
+<polygon points="260,195.0 450.0,260 260,325.0 70.0,260" fill="#fff7e0" stroke="#c99a00" stroke-width="1.8"/>
+<text x="260" y="246.7" font-size="14" fill="#1f2d3d" text-anchor="middle"><tspan x="260" dy="0" font-weight="bold">Event Log of the operation shows</tspan><tspan x="260" dy="18" font-weight="bold">'resulting in Action code ...' ?</tspan><tspan x="260" dy="18" font-weight="bold">(Step 4)</tspan></text>
+<polyline points="260,325 260,445" fill="none" stroke="#44546a" stroke-width="2" marker-end="url(#a)"/>
+<text x="282" y="394.3" font-size="13" fill="#44546a" text-anchor="start"><tspan x="282" dy="0" font-weight="bold">yes</tspan></text>
+<rect x="30.0" y="445.0" width="300" height="150" rx="10" fill="#e8f1fb" stroke="#2f6db3" stroke-width="1.8"/>
+<text x="180" y="488.7" font-size="14" fill="#1f2d3d" text-anchor="middle"><tspan x="180" dy="0" font-weight="bold">CAUSE A / B: ReplyCodeActions</tspan><tspan x="180" dy="18">A valid negative ACK, retried by the</tspan><tspan x="180" dy="18">default :?R=RF (AR / CR).</tspan><tspan x="180" dy="18">Fix: :?R=F or :?R=S, plus an alert.</tspan><tspan x="180" dy="18">Beware W / CW: rejected but Completed.</tspan></text>
+<polyline points="450,260 560,260 560,330" fill="none" stroke="#44546a" stroke-width="2" marker-end="url(#a)"/>
+<text x="505" y="255.3" font-size="13" fill="#44546a" text-anchor="middle"><tspan x="505" dy="0" font-weight="bold">no</tspan></text>
+<polygon points="560,330 780,410 560,490 340,410" fill="#fff7e0" stroke="#c99a00" stroke-width="1.8"/>
+<text x="560" y="397" font-size="13" fill="#1f2d3d" text-anchor="middle"><tspan x="560" dy="0" font-weight="bold">TCP / adapter error logged,</tspan><tspan x="560" dy="17" font-weight="bold">with no action code?</tspan><tspan x="560" dy="17" font-weight="bold">(ErrOutConnectionLost,</tspan><tspan x="560" dy="17" font-weight="bold">ReadTimeout, ErrEndBlock)</tspan></text>
+<polyline points="560,490 560,568" fill="none" stroke="#44546a" stroke-width="2" marker-end="url(#a)"/>
+<text x="582" y="529.3" font-size="13" fill="#44546a" text-anchor="start"><tspan x="582" dy="0" font-weight="bold">yes</tspan></text>
+<rect x="350.0" y="569.0" width="340" height="112" rx="10" fill="#eaf6ee" stroke="#2e8b57" stroke-width="1.8"/>
+<text x="520" y="603.8" font-size="13" fill="#1f2d3d" text-anchor="middle"><tspan x="520" dy="0" font-weight="bold">CAUSE C: the ACK never became usable</tspan><tspan x="520" dy="17">Closed socket, late ACK, no MLLP end block.</tspan><tspan x="520" dy="17">Fix the receiver, or ResponseTimeout /</tspan><tspan x="520" dy="17">FailureTimeout. ReplyCodeActions can't help.</tspan></text>
+<polyline points="780,410 805,410 805,565" fill="none" stroke="#44546a" stroke-width="2" marker-end="url(#a)"/>
+<text x="793" y="405.3" font-size="13" fill="#44546a" text-anchor="middle"><tspan x="793" dy="0" font-weight="bold">no</tspan></text>
+<rect x="760.0" y="573.0" width="200" height="104" rx="10" fill="#f3f3f3" stroke="#8a8a8a" stroke-width="1.8"/>
+<text x="860" y="603.8" font-size="13" fill="#1f2d3d" text-anchor="middle"><tspan x="860" dy="0" font-weight="bold">Re-check Steps 1-2</tspan><tspan x="860" dy="17">Count the deliveries</tspan><tspan x="860" dy="17">again and read the</tspan><tspan x="860" dy="17">ACK (MSA-1) itself</tspan></text>
+<rect x="840.0" y="185.0" width="340" height="130" rx="10" fill="#fdeeea" stroke="#c0504d" stroke-width="1.8"/>
+<text x="1010" y="218.7" font-size="14" fill="#1f2d3d" text-anchor="middle"><tspan x="1010" dy="0" font-weight="bold">CAUSE D: the SENDER retries</tspan><tspan x="1010" dy="18">Several inbound requests with the</tspan><tspan x="1010" dy="18">same MSH-10 in the Message Viewer.</tspan><tspan x="1010" dy="18">Interval = the sender's own timeout.</tspan><tspan x="1010" dy="18">(Step 6: check the service AckMode)</tspan></text>
+<polyline points="1010,315 1010,375" fill="none" stroke="#44546a" stroke-width="2" marker-end="url(#a)"/>
+<rect x="840.0" y="375.0" width="340" height="150" rx="10" fill="#ffffff" stroke="#c0504d" stroke-width="1.8"/>
+<text x="1010" y="420.3" font-size="13" fill="#1f2d3d" text-anchor="middle"><tspan x="1010" dy="0" font-weight="bold">What the sender was told (AckMode)</tspan><tspan x="1010" dy="17">App + Suspended: no ACK at all</tspan><tspan x="1010" dy="17">App + Error: IRIS-built CE, not the lab's</tspan><tspan x="1010" dy="17">Immed / Msh(AL) / Byte: 'OK' even if</tspan><tspan x="1010" dy="17">the lab rejected it (silent loss)</tspan></text>
+<text x="30" y="716.0" font-size="12" fill="#6b7a8c" text-anchor="start"><tspan x="30" dy="0">Steps refer to the six-step investigation method. Blue: ReplyCodeActions. Green: connection layer. Red: sender side.</tspan></text>
+</svg>

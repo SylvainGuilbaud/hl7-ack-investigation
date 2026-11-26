@@ -1,0 +1,4 @@
+== message headers (session 8)
+   8 11:42:48.055 in.default -> out.default  [Request/8] 
+== event log
+11:42:53.063 ERROR [out.default] ERROR <EnsEDIHL7>ErrEndBlock: Received unexpected EndBlock '' in input "", expected 'er, on |TCP|6600|684'

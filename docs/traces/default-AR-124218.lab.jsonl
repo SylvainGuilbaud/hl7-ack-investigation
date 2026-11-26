@@ -1,0 +1,12 @@
+{"event": "received", "conn": 9, "control_id": "default-AR-124218", "mode": "AR", "ts": "2026-11-26T11:42:22.971"}
+{"event": "ack_sent", "conn": 9, "control_id": "default-AR-124218", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T11:42:22.976"}
+{"event": "received", "conn": 9, "control_id": "default-AR-124218", "mode": "AR", "ts": "2026-11-26T11:42:24.986"}
+{"event": "ack_sent", "conn": 9, "control_id": "default-AR-124218", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T11:42:24.991"}
+{"event": "received", "conn": 9, "control_id": "default-AR-124218", "mode": "AR", "ts": "2026-11-26T11:42:26.993"}
+{"event": "ack_sent", "conn": 9, "control_id": "default-AR-124218", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T11:42:26.997"}
+{"event": "received", "conn": 9, "control_id": "default-AR-124218", "mode": "AR", "ts": "2026-11-26T11:42:28.998"}
+{"event": "ack_sent", "conn": 9, "control_id": "default-AR-124218", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T11:42:29.002"}
+{"event": "received", "conn": 9, "control_id": "default-AR-124218", "mode": "AR", "ts": "2026-11-26T11:42:31.008"}
+{"event": "ack_sent", "conn": 9, "control_id": "default-AR-124218", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T11:42:31.015"}
+{"event": "received", "conn": 11, "control_id": "default-AR-124218", "mode": "AR", "ts": "2026-11-26T11:42:33.023"}
+{"event": "ack_sent", "conn": 11, "control_id": "default-AR-124218", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T11:42:33.025"}

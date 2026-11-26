@@ -1,0 +1,4 @@
+== message headers (session 22)
+  22 11:44:28.278 in.legacy -> out.legacy  [Request/9] 
+== event log
+11:44:28.283 WARNING [out.legacy] Warning on HL7 Message body 12@EnsLib.HL7.Message / 67 because response 10@EnsLib.HL7.Message / 69 MSA code 'AR' matched ReplyCodeActions 1-4 : ':?R=W,:?E=W,:~=F,:?A=C' and Reply message type ACK does not match expected type ACK_A28, resulting in Action code CW : MSH|^~\&|LAB|SIM|IRIS|HOSP|20261126114428||ACK|ACKlegacy-AR-124218|P|2.5 MSA|AR|legacy-AR-124218|Rejected 

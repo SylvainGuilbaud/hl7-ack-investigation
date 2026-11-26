@@ -1,0 +1,2 @@
+{"event": "received", "conn": 8, "control_id": "failrej-AR-124218", "mode": "AR", "ts": "2026-11-26T11:43:34.332"}
+{"event": "ack_sent", "conn": 8, "control_id": "failrej-AR-124218", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T11:43:34.338"}

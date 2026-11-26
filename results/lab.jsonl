@@ -1,0 +1,673 @@
+{"event": "received", "conn": 185, "control_id": "default-AR-162504", "mode": "AR", "ts": "2026-11-26T15:25:04.319"}
+{"event": "ack_sent", "conn": 185, "control_id": "default-AR-162504", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:25:04.325"}
+{"event": "received", "conn": 185, "control_id": "default-AR-162504", "mode": "AR", "ts": "2026-11-26T15:25:06.330"}
+{"event": "ack_sent", "conn": 185, "control_id": "default-AR-162504", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:25:06.334"}
+{"event": "received", "conn": 185, "control_id": "default-AR-162504", "mode": "AR", "ts": "2026-11-26T15:25:08.342"}
+{"event": "ack_sent", "conn": 185, "control_id": "default-AR-162504", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:25:08.348"}
+{"event": "received", "conn": 185, "control_id": "default-AR-162504", "mode": "AR", "ts": "2026-11-26T15:25:10.350"}
+{"event": "ack_sent", "conn": 185, "control_id": "default-AR-162504", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:25:10.354"}
+{"event": "received", "conn": 185, "control_id": "default-AR-162504", "mode": "AR", "ts": "2026-11-26T15:25:12.360"}
+{"event": "ack_sent", "conn": 185, "control_id": "default-AR-162504", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:25:12.363"}
+{"event": "peer_closed", "conn": 185, "ts": "2026-11-26T15:25:14.372"}
+{"event": "connected", "conn": 188, "peer": "192.168.204.83", "ts": "2026-11-26T15:25:14.376"}
+{"event": "received", "conn": 188, "control_id": "default-AR-162504", "mode": "AR", "ts": "2026-11-26T15:25:14.380"}
+{"event": "ack_sent", "conn": 188, "control_id": "default-AR-162504", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:25:14.382"}
+{"event": "received", "conn": 188, "control_id": "default-AR3-162514", "mode": "AR3", "ts": "2026-11-26T15:25:14.768"}
+{"event": "ack_sent", "conn": 188, "control_id": "default-AR3-162514", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:25:14.771"}
+{"event": "received", "conn": 188, "control_id": "default-AR3-162514", "mode": "AR3", "ts": "2026-11-26T15:25:16.775"}
+{"event": "ack_sent", "conn": 188, "control_id": "default-AR3-162514", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:25:16.779"}
+{"event": "received", "conn": 188, "control_id": "default-AR3-162514", "mode": "AR3", "ts": "2026-11-26T15:25:18.785"}
+{"event": "ack_sent", "conn": 188, "control_id": "default-AR3-162514", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:25:18.789"}
+{"event": "received", "conn": 188, "control_id": "default-AR3-162514", "mode": "AR3", "ts": "2026-11-26T15:25:20.802"}
+{"event": "ack_sent", "conn": 188, "control_id": "default-AR3-162514", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:25:20.808"}
+{"event": "received", "conn": 188, "control_id": "default-AR3-162514", "mode": "AR3", "ts": "2026-11-26T15:25:22.811"}
+{"event": "ack_sent", "conn": 188, "control_id": "default-AR3-162514", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:25:22.814"}
+{"event": "peer_closed", "conn": 188, "ts": "2026-11-26T15:25:24.818"}
+{"event": "connected", "conn": 189, "peer": "192.168.204.83", "ts": "2026-11-26T15:25:24.822"}
+{"event": "received", "conn": 189, "control_id": "default-AR3-162514", "mode": "AR3", "ts": "2026-11-26T15:25:24.829"}
+{"event": "ack_sent", "conn": 189, "control_id": "default-AR3-162514", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:25:24.831"}
+{"event": "received", "conn": 186, "control_id": "failrej-AR-162525", "mode": "AR", "ts": "2026-11-26T15:25:25.330"}
+{"event": "ack_sent", "conn": 186, "control_id": "failrej-AR-162525", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:25:25.334"}
+{"event": "received", "conn": 186, "control_id": "failrej-AR3-162527", "mode": "AR3", "ts": "2026-11-26T15:25:27.751"}
+{"event": "ack_sent", "conn": 186, "control_id": "failrej-AR3-162527", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:25:27.754"}
+{"event": "received", "conn": 186, "control_id": "failrej-AA-162530", "mode": "AA", "ts": "2026-11-26T15:25:30.272"}
+{"event": "ack_sent", "conn": 186, "control_id": "failrej-AA-162530", "mode": "AA", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:25:30.334"}
+{"event": "received", "conn": 187, "control_id": "legacy-AR-162532", "mode": "AR", "ts": "2026-11-26T15:25:32.681"}
+{"event": "ack_sent", "conn": 187, "control_id": "legacy-AR-162532", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:25:32.687"}
+{"event": "received", "conn": 187, "control_id": "legacy-AE-162534", "mode": "AE", "ts": "2026-11-26T15:25:34.877"}
+{"event": "ack_sent", "conn": 187, "control_id": "legacy-AE-162534", "mode": "AE", "msa1": "AE", "msh9": "ACK", "ts": "2026-11-26T15:25:34.880"}
+{"event": "received", "conn": 187, "control_id": "legacy-NOMSA-162537", "mode": "NOMSA", "ts": "2026-11-26T15:25:37.050"}
+{"event": "ack_sent", "conn": 187, "control_id": "legacy-NOMSA-162537", "mode": "NOMSA", "msa1": "", "msh9": "ACK", "ts": "2026-11-26T15:25:37.054"}
+{"event": "received", "conn": 186, "control_id": "failrej-NOFRAME-162539", "mode": "NOFRAME", "ts": "2026-11-26T15:25:39.351"}
+{"event": "ack_sent", "conn": 186, "control_id": "failrej-NOFRAME-162539", "mode": "NOFRAME", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:25:39.356"}
+{"event": "received", "conn": 186, "control_id": "failrej-CLOSE-162545", "mode": "CLOSE", "ts": "2026-11-26T15:25:45.668"}
+{"event": "closing_without_ack", "conn": 186, "control_id": "failrej-CLOSE-162545", "ts": "2026-11-26T15:25:45.672"}
+{"event": "peer_closed", "conn": 186, "ts": "2026-11-26T15:25:45.675"}
+{"event": "connected", "conn": 190, "peer": "192.168.204.83", "ts": "2026-11-26T15:25:47.681"}
+{"event": "received", "conn": 190, "control_id": "failrej-CLOSE-162545", "mode": "CLOSE", "ts": "2026-11-26T15:25:47.684"}
+{"event": "closing_without_ack", "conn": 190, "control_id": "failrej-CLOSE-162545", "ts": "2026-11-26T15:25:47.686"}
+{"event": "peer_closed", "conn": 190, "ts": "2026-11-26T15:25:47.688"}
+{"event": "connected", "conn": 191, "peer": "192.168.204.83", "ts": "2026-11-26T15:25:49.692"}
+{"event": "received", "conn": 191, "control_id": "failrej-CLOSE-162545", "mode": "CLOSE", "ts": "2026-11-26T15:25:49.695"}
+{"event": "closing_without_ack", "conn": 191, "control_id": "failrej-CLOSE-162545", "ts": "2026-11-26T15:25:49.697"}
+{"event": "peer_closed", "conn": 191, "ts": "2026-11-26T15:25:49.699"}
+{"event": "connected", "conn": 192, "peer": "192.168.204.83", "ts": "2026-11-26T15:25:51.702"}
+{"event": "received", "conn": 192, "control_id": "failrej-CLOSE-162545", "mode": "CLOSE", "ts": "2026-11-26T15:25:51.705"}
+{"event": "closing_without_ack", "conn": 192, "control_id": "failrej-CLOSE-162545", "ts": "2026-11-26T15:25:51.709"}
+{"event": "peer_closed", "conn": 192, "ts": "2026-11-26T15:25:51.711"}
+{"event": "connected", "conn": 193, "peer": "192.168.204.83", "ts": "2026-11-26T15:25:53.716"}
+{"event": "received", "conn": 193, "control_id": "failrej-CLOSE-162545", "mode": "CLOSE", "ts": "2026-11-26T15:25:53.721"}
+{"event": "closing_without_ack", "conn": 193, "control_id": "failrej-CLOSE-162545", "ts": "2026-11-26T15:25:53.724"}
+{"event": "peer_closed", "conn": 193, "ts": "2026-11-26T15:25:53.728"}
+{"event": "connected", "conn": 194, "peer": "192.168.204.83", "ts": "2026-11-26T15:25:55.733"}
+{"event": "received", "conn": 194, "control_id": "failrej-CLOSE-162545", "mode": "CLOSE", "ts": "2026-11-26T15:25:55.739"}
+{"event": "closing_without_ack", "conn": 194, "control_id": "failrej-CLOSE-162545", "ts": "2026-11-26T15:25:55.742"}
+{"event": "peer_closed", "conn": 194, "ts": "2026-11-26T15:25:55.744"}
+{"event": "connected", "conn": 195, "peer": "192.168.204.83", "ts": "2026-11-26T15:25:56.171"}
+{"event": "received", "conn": 195, "control_id": "failrej-LATE-162556", "mode": "LATE", "ts": "2026-11-26T15:25:56.175"}
+{"event": "ack_sent", "conn": 195, "control_id": "failrej-LATE-162556", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:26:08.180"}
+{"event": "received", "conn": 195, "control_id": "failrej-LATE-162556", "mode": "LATE", "ts": "2026-11-26T15:26:08.184"}
+{"event": "ack_sent", "conn": 195, "control_id": "failrej-LATE-162556", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:26:20.189"}
+{"event": "socket_error", "conn": 195, "error": "[Errno 104] Connection reset by peer", "ts": "2026-11-26T15:26:26.620"}
+{"event": "connected", "conn": 196, "peer": "192.168.204.83", "ts": "2026-11-26T15:26:26.647"}
+{"event": "received", "conn": 189, "control_id": "default-AE-162626", "mode": "AE", "ts": "2026-11-26T15:26:26.865"}
+{"event": "ack_sent", "conn": 189, "control_id": "default-AE-162626", "mode": "AE", "msa1": "AE", "msh9": "ACK", "ts": "2026-11-26T15:26:26.868"}
+{"event": "received", "conn": 189, "control_id": "default-NOMSA-162629", "mode": "NOMSA", "ts": "2026-11-26T15:26:29.047"}
+{"event": "ack_sent", "conn": 189, "control_id": "default-NOMSA-162629", "mode": "NOMSA", "msa1": "", "msh9": "ACK", "ts": "2026-11-26T15:26:29.050"}
+{"event": "received", "conn": 189, "control_id": "default-BADID-162631", "mode": "BADID", "ts": "2026-11-26T15:26:31.216"}
+{"event": "ack_sent", "conn": 189, "control_id": "default-BADID-162631", "mode": "BADID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:26:31.219"}
+{"event": "received", "conn": 189, "control_id": "app.default-AA-162633", "mode": "AA", "ts": "2026-11-26T15:26:33.450"}
+{"event": "ack_sent", "conn": 189, "control_id": "app.default-AA-162633", "mode": "AA", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:26:33.453"}
+{"event": "received", "conn": 189, "control_id": "app.default-AR-162635", "mode": "AR", "ts": "2026-11-26T15:26:35.665"}
+{"event": "ack_sent", "conn": 189, "control_id": "app.default-AR-162635", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:26:35.668"}
+{"event": "received", "conn": 189, "control_id": "app.default-AR-162635", "mode": "AR", "ts": "2026-11-26T15:26:37.670"}
+{"event": "ack_sent", "conn": 189, "control_id": "app.default-AR-162635", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:26:37.673"}
+{"event": "received", "conn": 189, "control_id": "app.default-AR-162635", "mode": "AR", "ts": "2026-11-26T15:26:39.675"}
+{"event": "ack_sent", "conn": 189, "control_id": "app.default-AR-162635", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:26:39.679"}
+{"event": "received", "conn": 189, "control_id": "app.default-AR-162635", "mode": "AR", "ts": "2026-11-26T15:26:41.685"}
+{"event": "ack_sent", "conn": 189, "control_id": "app.default-AR-162635", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:26:41.690"}
+{"event": "received", "conn": 189, "control_id": "app.default-AR-162635", "mode": "AR", "ts": "2026-11-26T15:26:43.698"}
+{"event": "ack_sent", "conn": 189, "control_id": "app.default-AR-162635", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:26:43.702"}
+{"event": "peer_closed", "conn": 189, "ts": "2026-11-26T15:26:45.707"}
+{"event": "connected", "conn": 197, "peer": "192.168.204.83", "ts": "2026-11-26T15:26:45.712"}
+{"event": "received", "conn": 197, "control_id": "app.default-AR-162635", "mode": "AR", "ts": "2026-11-26T15:26:45.717"}
+{"event": "ack_sent", "conn": 197, "control_id": "app.default-AR-162635", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:26:45.719"}
+{"event": "received", "conn": 196, "control_id": "app.failrej-AR-162647", "mode": "AR", "ts": "2026-11-26T15:26:47.940"}
+{"event": "ack_sent", "conn": 196, "control_id": "app.failrej-AR-162647", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:26:47.943"}
+{"event": "received", "conn": 187, "control_id": "app.legacy-AR-162650", "mode": "AR", "ts": "2026-11-26T15:26:50.125"}
+{"event": "ack_sent", "conn": 187, "control_id": "app.legacy-AR-162650", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:26:50.127"}
+{"event": "received", "conn": 196, "control_id": "app.failrej-AE-162652", "mode": "AE", "ts": "2026-11-26T15:26:52.313"}
+{"event": "ack_sent", "conn": 196, "control_id": "app.failrej-AE-162652", "mode": "AE", "msa1": "AE", "msh9": "ACK", "ts": "2026-11-26T15:26:52.320"}
+{"event": "received", "conn": 196, "control_id": "msh.failrej-AR-162709", "mode": "AR", "ts": "2026-11-26T15:27:09.516"}
+{"event": "ack_sent", "conn": 196, "control_id": "msh.failrej-AR-162709", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:27:09.520"}
+{"event": "received", "conn": 196, "control_id": "msh.failrej-AR-162711", "mode": "AR", "ts": "2026-11-26T15:27:11.700"}
+{"event": "ack_sent", "conn": 196, "control_id": "msh.failrej-AR-162711", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:27:11.703"}
+{"event": "received", "conn": 196, "control_id": "msh.failrej-AR-162713", "mode": "AR", "ts": "2026-11-26T15:27:13.879"}
+{"event": "ack_sent", "conn": 196, "control_id": "msh.failrej-AR-162713", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:27:13.882"}
+{"event": "received", "conn": 196, "control_id": "never.failrej-AR-162726", "mode": "AR", "ts": "2026-11-26T15:27:26.100"}
+{"event": "ack_sent", "conn": 196, "control_id": "never.failrej-AR-162726", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:27:26.103"}
+{"event": "received", "conn": 196, "control_id": "byte.failrej-AR-162738", "mode": "AR", "ts": "2026-11-26T15:27:38.309"}
+{"event": "ack_sent", "conn": 196, "control_id": "byte.failrej-AR-162738", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:27:38.313"}
+{"event": "received", "conn": 197, "control_id": "default-AA-162740", "mode": "AA", "ts": "2026-11-26T15:27:40.601"}
+{"event": "ack_sent", "conn": 197, "control_id": "default-AA-162740", "mode": "AA", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:27:40.605"}
+{"event": "received", "conn": 197, "control_id": "default-AE-162740", "mode": "AE", "ts": "2026-11-26T15:27:42.731"}
+{"event": "ack_sent", "conn": 197, "control_id": "default-AE-162740", "mode": "AE", "msa1": "AE", "msh9": "ACK", "ts": "2026-11-26T15:27:42.738"}
+{"event": "received", "conn": 197, "control_id": "default-AR-162740", "mode": "AR", "ts": "2026-11-26T15:27:44.904"}
+{"event": "ack_sent", "conn": 197, "control_id": "default-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:27:44.909"}
+{"event": "received", "conn": 197, "control_id": "default-AR-162740", "mode": "AR", "ts": "2026-11-26T15:27:46.911"}
+{"event": "ack_sent", "conn": 197, "control_id": "default-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:27:46.915"}
+{"event": "received", "conn": 197, "control_id": "default-AR-162740", "mode": "AR", "ts": "2026-11-26T15:27:48.917"}
+{"event": "ack_sent", "conn": 197, "control_id": "default-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:27:48.924"}
+{"event": "received", "conn": 197, "control_id": "default-AR-162740", "mode": "AR", "ts": "2026-11-26T15:27:50.931"}
+{"event": "ack_sent", "conn": 197, "control_id": "default-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:27:50.937"}
+{"event": "received", "conn": 197, "control_id": "default-AR-162740", "mode": "AR", "ts": "2026-11-26T15:27:52.942"}
+{"event": "ack_sent", "conn": 197, "control_id": "default-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:27:52.946"}
+{"event": "peer_closed", "conn": 197, "ts": "2026-11-26T15:27:54.948"}
+{"event": "connected", "conn": 198, "peer": "192.168.204.83", "ts": "2026-11-26T15:27:54.951"}
+{"event": "received", "conn": 198, "control_id": "default-AR-162740", "mode": "AR", "ts": "2026-11-26T15:27:54.957"}
+{"event": "ack_sent", "conn": 198, "control_id": "default-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:27:54.960"}
+{"event": "received", "conn": 198, "control_id": "default-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:27:55.286"}
+{"event": "ack_sent", "conn": 198, "control_id": "default-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:27:55.289"}
+{"event": "received", "conn": 198, "control_id": "default-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:27:57.291"}
+{"event": "ack_sent", "conn": 198, "control_id": "default-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:27:57.294"}
+{"event": "received", "conn": 198, "control_id": "default-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:27:59.301"}
+{"event": "ack_sent", "conn": 198, "control_id": "default-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:27:59.307"}
+{"event": "received", "conn": 198, "control_id": "default-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:28:01.309"}
+{"event": "ack_sent", "conn": 198, "control_id": "default-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:28:01.312"}
+{"event": "received", "conn": 198, "control_id": "default-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:28:03.317"}
+{"event": "ack_sent", "conn": 198, "control_id": "default-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:28:03.320"}
+{"event": "peer_closed", "conn": 198, "ts": "2026-11-26T15:28:05.322"}
+{"event": "connected", "conn": 199, "peer": "192.168.204.83", "ts": "2026-11-26T15:28:05.324"}
+{"event": "received", "conn": 199, "control_id": "default-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:28:05.328"}
+{"event": "ack_sent", "conn": 199, "control_id": "default-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:28:05.330"}
+{"event": "received", "conn": 199, "control_id": "default-BADID-162740", "mode": "BADID", "ts": "2026-11-26T15:28:05.726"}
+{"event": "ack_sent", "conn": 199, "control_id": "default-BADID-162740", "mode": "BADID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:28:05.730"}
+{"event": "received", "conn": 199, "control_id": "default-NOMSA-162740", "mode": "NOMSA", "ts": "2026-11-26T15:28:07.850"}
+{"event": "ack_sent", "conn": 199, "control_id": "default-NOMSA-162740", "mode": "NOMSA", "msa1": "", "msh9": "ACK", "ts": "2026-11-26T15:28:07.855"}
+{"event": "received", "conn": 199, "control_id": "default-NOFRAME-162740", "mode": "NOFRAME", "ts": "2026-11-26T15:28:09.995"}
+{"event": "ack_sent", "conn": 199, "control_id": "default-NOFRAME-162740", "mode": "NOFRAME", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:28:09.998"}
+{"event": "received", "conn": 199, "control_id": "default-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:28:16.280"}
+{"event": "closing_without_ack", "conn": 199, "control_id": "default-CLOSE-162740", "ts": "2026-11-26T15:28:16.285"}
+{"event": "peer_closed", "conn": 199, "ts": "2026-11-26T15:28:16.288"}
+{"event": "connected", "conn": 200, "peer": "192.168.204.83", "ts": "2026-11-26T15:28:18.334"}
+{"event": "received", "conn": 200, "control_id": "default-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:28:18.340"}
+{"event": "closing_without_ack", "conn": 200, "control_id": "default-CLOSE-162740", "ts": "2026-11-26T15:28:18.352"}
+{"event": "peer_closed", "conn": 200, "ts": "2026-11-26T15:28:18.354"}
+{"event": "connected", "conn": 201, "peer": "192.168.204.83", "ts": "2026-11-26T15:28:20.357"}
+{"event": "received", "conn": 201, "control_id": "default-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:28:20.361"}
+{"event": "closing_without_ack", "conn": 201, "control_id": "default-CLOSE-162740", "ts": "2026-11-26T15:28:20.363"}
+{"event": "peer_closed", "conn": 201, "ts": "2026-11-26T15:28:20.365"}
+{"event": "connected", "conn": 202, "peer": "192.168.204.83", "ts": "2026-11-26T15:28:22.367"}
+{"event": "received", "conn": 202, "control_id": "default-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:28:22.373"}
+{"event": "closing_without_ack", "conn": 202, "control_id": "default-CLOSE-162740", "ts": "2026-11-26T15:28:22.376"}
+{"event": "peer_closed", "conn": 202, "ts": "2026-11-26T15:28:22.379"}
+{"event": "connected", "conn": 203, "peer": "192.168.204.83", "ts": "2026-11-26T15:28:24.385"}
+{"event": "received", "conn": 203, "control_id": "default-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:28:24.389"}
+{"event": "closing_without_ack", "conn": 203, "control_id": "default-CLOSE-162740", "ts": "2026-11-26T15:28:24.391"}
+{"event": "peer_closed", "conn": 203, "ts": "2026-11-26T15:28:24.393"}
+{"event": "connected", "conn": 204, "peer": "192.168.204.83", "ts": "2026-11-26T15:28:26.396"}
+{"event": "received", "conn": 204, "control_id": "default-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:28:26.401"}
+{"event": "closing_without_ack", "conn": 204, "control_id": "default-CLOSE-162740", "ts": "2026-11-26T15:28:26.405"}
+{"event": "peer_closed", "conn": 204, "ts": "2026-11-26T15:28:26.409"}
+{"event": "connected", "conn": 205, "peer": "192.168.204.83", "ts": "2026-11-26T15:28:26.761"}
+{"event": "received", "conn": 205, "control_id": "default-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:28:26.765"}
+{"event": "ack_sent", "conn": 205, "control_id": "default-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:28:38.770"}
+{"event": "received", "conn": 205, "control_id": "default-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:28:38.776"}
+{"event": "ack_sent", "conn": 205, "control_id": "default-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:28:50.800"}
+{"event": "socket_error", "conn": 205, "error": "[Errno 104] Connection reset by peer", "ts": "2026-11-26T15:28:57.800"}
+{"event": "connected", "conn": 206, "peer": "192.168.204.83", "ts": "2026-11-26T15:28:57.866"}
+{"event": "received", "conn": 196, "control_id": "failrej-AA-162740", "mode": "AA", "ts": "2026-11-26T15:28:58.002"}
+{"event": "ack_sent", "conn": 196, "control_id": "failrej-AA-162740", "mode": "AA", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:28:58.006"}
+{"event": "received", "conn": 196, "control_id": "failrej-AE-162740", "mode": "AE", "ts": "2026-11-26T15:29:00.181"}
+{"event": "ack_sent", "conn": 196, "control_id": "failrej-AE-162740", "mode": "AE", "msa1": "AE", "msh9": "ACK", "ts": "2026-11-26T15:29:00.184"}
+{"event": "received", "conn": 196, "control_id": "failrej-AR-162740", "mode": "AR", "ts": "2026-11-26T15:29:02.354"}
+{"event": "ack_sent", "conn": 196, "control_id": "failrej-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:29:02.361"}
+{"event": "received", "conn": 196, "control_id": "failrej-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:29:04.548"}
+{"event": "ack_sent", "conn": 196, "control_id": "failrej-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:29:04.567"}
+{"event": "received", "conn": 196, "control_id": "failrej-BADID-162740", "mode": "BADID", "ts": "2026-11-26T15:29:06.747"}
+{"event": "ack_sent", "conn": 196, "control_id": "failrej-BADID-162740", "mode": "BADID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:29:06.751"}
+{"event": "received", "conn": 196, "control_id": "failrej-NOMSA-162740", "mode": "NOMSA", "ts": "2026-11-26T15:29:11.234"}
+{"event": "ack_sent", "conn": 196, "control_id": "failrej-NOMSA-162740", "mode": "NOMSA", "msa1": "", "msh9": "ACK", "ts": "2026-11-26T15:29:11.244"}
+{"event": "received", "conn": 196, "control_id": "failrej-NOFRAME-162740", "mode": "NOFRAME", "ts": "2026-11-26T15:29:13.422"}
+{"event": "ack_sent", "conn": 196, "control_id": "failrej-NOFRAME-162740", "mode": "NOFRAME", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:29:13.430"}
+{"event": "received", "conn": 196, "control_id": "failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:29:19.809"}
+{"event": "closing_without_ack", "conn": 196, "control_id": "failrej-CLOSE-162740", "ts": "2026-11-26T15:29:19.813"}
+{"event": "peer_closed", "conn": 196, "ts": "2026-11-26T15:29:19.832"}
+{"event": "connected", "conn": 207, "peer": "192.168.204.83", "ts": "2026-11-26T15:29:21.853"}
+{"event": "received", "conn": 207, "control_id": "failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:29:21.859"}
+{"event": "closing_without_ack", "conn": 207, "control_id": "failrej-CLOSE-162740", "ts": "2026-11-26T15:29:21.862"}
+{"event": "peer_closed", "conn": 207, "ts": "2026-11-26T15:29:21.865"}
+{"event": "connected", "conn": 208, "peer": "192.168.204.83", "ts": "2026-11-26T15:29:23.872"}
+{"event": "received", "conn": 208, "control_id": "failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:29:23.877"}
+{"event": "closing_without_ack", "conn": 208, "control_id": "failrej-CLOSE-162740", "ts": "2026-11-26T15:29:23.879"}
+{"event": "peer_closed", "conn": 208, "ts": "2026-11-26T15:29:23.881"}
+{"event": "connected", "conn": 209, "peer": "192.168.204.83", "ts": "2026-11-26T15:29:25.885"}
+{"event": "received", "conn": 209, "control_id": "failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:29:25.890"}
+{"event": "closing_without_ack", "conn": 209, "control_id": "failrej-CLOSE-162740", "ts": "2026-11-26T15:29:25.893"}
+{"event": "peer_closed", "conn": 209, "ts": "2026-11-26T15:29:25.895"}
+{"event": "connected", "conn": 210, "peer": "192.168.204.83", "ts": "2026-11-26T15:29:27.902"}
+{"event": "received", "conn": 210, "control_id": "failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:29:27.907"}
+{"event": "closing_without_ack", "conn": 210, "control_id": "failrej-CLOSE-162740", "ts": "2026-11-26T15:29:27.909"}
+{"event": "peer_closed", "conn": 210, "ts": "2026-11-26T15:29:27.911"}
+{"event": "connected", "conn": 211, "peer": "192.168.204.83", "ts": "2026-11-26T15:29:29.925"}
+{"event": "received", "conn": 211, "control_id": "failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:29:29.928"}
+{"event": "closing_without_ack", "conn": 211, "control_id": "failrej-CLOSE-162740", "ts": "2026-11-26T15:29:29.930"}
+{"event": "peer_closed", "conn": 211, "ts": "2026-11-26T15:29:29.932"}
+{"event": "connected", "conn": 212, "peer": "192.168.204.83", "ts": "2026-11-26T15:29:30.334"}
+{"event": "received", "conn": 212, "control_id": "failrej-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:29:30.338"}
+{"event": "ack_sent", "conn": 212, "control_id": "failrej-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:29:42.344"}
+{"event": "received", "conn": 212, "control_id": "failrej-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:29:42.349"}
+{"event": "ack_sent", "conn": 212, "control_id": "failrej-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:29:54.357"}
+{"event": "socket_error", "conn": 212, "error": "[Errno 104] Connection reset by peer", "ts": "2026-11-26T15:30:00.819"}
+{"event": "connected", "conn": 213, "peer": "192.168.204.83", "ts": "2026-11-26T15:30:00.862"}
+{"event": "received", "conn": 187, "control_id": "legacy-AA-162740", "mode": "AA", "ts": "2026-11-26T15:30:00.930"}
+{"event": "ack_sent", "conn": 187, "control_id": "legacy-AA-162740", "mode": "AA", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:30:00.934"}
+{"event": "received", "conn": 187, "control_id": "legacy-AE-162740", "mode": "AE", "ts": "2026-11-26T15:30:03.075"}
+{"event": "ack_sent", "conn": 187, "control_id": "legacy-AE-162740", "mode": "AE", "msa1": "AE", "msh9": "ACK", "ts": "2026-11-26T15:30:03.078"}
+{"event": "received", "conn": 187, "control_id": "legacy-AR-162740", "mode": "AR", "ts": "2026-11-26T15:30:05.191"}
+{"event": "ack_sent", "conn": 187, "control_id": "legacy-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:30:05.195"}
+{"event": "received", "conn": 187, "control_id": "legacy-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:30:07.313"}
+{"event": "ack_sent", "conn": 187, "control_id": "legacy-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:30:07.316"}
+{"event": "received", "conn": 187, "control_id": "legacy-BADID-162740", "mode": "BADID", "ts": "2026-11-26T15:30:09.435"}
+{"event": "ack_sent", "conn": 187, "control_id": "legacy-BADID-162740", "mode": "BADID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:30:09.439"}
+{"event": "received", "conn": 187, "control_id": "legacy-NOMSA-162740", "mode": "NOMSA", "ts": "2026-11-26T15:30:11.559"}
+{"event": "ack_sent", "conn": 187, "control_id": "legacy-NOMSA-162740", "mode": "NOMSA", "msa1": "", "msh9": "ACK", "ts": "2026-11-26T15:30:11.562"}
+{"event": "received", "conn": 187, "control_id": "legacy-NOFRAME-162740", "mode": "NOFRAME", "ts": "2026-11-26T15:30:13.677"}
+{"event": "ack_sent", "conn": 187, "control_id": "legacy-NOFRAME-162740", "mode": "NOFRAME", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:30:13.680"}
+{"event": "received", "conn": 187, "control_id": "legacy-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:30:19.930"}
+{"event": "closing_without_ack", "conn": 187, "control_id": "legacy-CLOSE-162740", "ts": "2026-11-26T15:30:19.934"}
+{"event": "peer_closed", "conn": 187, "ts": "2026-11-26T15:30:19.936"}
+{"event": "connected", "conn": 214, "peer": "192.168.204.83", "ts": "2026-11-26T15:30:21.943"}
+{"event": "received", "conn": 214, "control_id": "legacy-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:30:21.947"}
+{"event": "closing_without_ack", "conn": 214, "control_id": "legacy-CLOSE-162740", "ts": "2026-11-26T15:30:21.949"}
+{"event": "peer_closed", "conn": 214, "ts": "2026-11-26T15:30:21.952"}
+{"event": "connected", "conn": 215, "peer": "192.168.204.83", "ts": "2026-11-26T15:30:23.955"}
+{"event": "received", "conn": 215, "control_id": "legacy-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:30:23.959"}
+{"event": "closing_without_ack", "conn": 215, "control_id": "legacy-CLOSE-162740", "ts": "2026-11-26T15:30:23.962"}
+{"event": "peer_closed", "conn": 215, "ts": "2026-11-26T15:30:23.964"}
+{"event": "connected", "conn": 216, "peer": "192.168.204.83", "ts": "2026-11-26T15:30:25.972"}
+{"event": "received", "conn": 216, "control_id": "legacy-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:30:25.975"}
+{"event": "closing_without_ack", "conn": 216, "control_id": "legacy-CLOSE-162740", "ts": "2026-11-26T15:30:25.977"}
+{"event": "peer_closed", "conn": 216, "ts": "2026-11-26T15:30:25.979"}
+{"event": "connected", "conn": 217, "peer": "192.168.204.83", "ts": "2026-11-26T15:30:27.984"}
+{"event": "received", "conn": 217, "control_id": "legacy-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:30:27.990"}
+{"event": "closing_without_ack", "conn": 217, "control_id": "legacy-CLOSE-162740", "ts": "2026-11-26T15:30:27.994"}
+{"event": "peer_closed", "conn": 217, "ts": "2026-11-26T15:30:27.998"}
+{"event": "connected", "conn": 218, "peer": "192.168.204.83", "ts": "2026-11-26T15:30:30.005"}
+{"event": "received", "conn": 218, "control_id": "legacy-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:30:30.008"}
+{"event": "closing_without_ack", "conn": 218, "control_id": "legacy-CLOSE-162740", "ts": "2026-11-26T15:30:30.010"}
+{"event": "peer_closed", "conn": 218, "ts": "2026-11-26T15:30:30.013"}
+{"event": "connected", "conn": 219, "peer": "192.168.204.83", "ts": "2026-11-26T15:30:30.375"}
+{"event": "received", "conn": 219, "control_id": "legacy-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:30:30.378"}
+{"event": "ack_sent", "conn": 219, "control_id": "legacy-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:30:42.382"}
+{"event": "received", "conn": 219, "control_id": "legacy-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:30:42.387"}
+{"event": "ack_sent", "conn": 219, "control_id": "legacy-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:30:54.391"}
+{"event": "socket_error", "conn": 219, "error": "[Errno 104] Connection reset by peer", "ts": "2026-11-26T15:31:00.833"}
+{"event": "connected", "conn": 220, "peer": "192.168.204.83", "ts": "2026-11-26T15:31:00.870"}
+{"event": "received", "conn": 206, "control_id": "app.default-AA-162740", "mode": "AA", "ts": "2026-11-26T15:31:00.932"}
+{"event": "ack_sent", "conn": 206, "control_id": "app.default-AA-162740", "mode": "AA", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:31:00.935"}
+{"event": "received", "conn": 206, "control_id": "app.default-AE-162740", "mode": "AE", "ts": "2026-11-26T15:31:03.199"}
+{"event": "ack_sent", "conn": 206, "control_id": "app.default-AE-162740", "mode": "AE", "msa1": "AE", "msh9": "ACK", "ts": "2026-11-26T15:31:03.210"}
+{"event": "received", "conn": 206, "control_id": "app.default-AR-162740", "mode": "AR", "ts": "2026-11-26T15:31:20.315"}
+{"event": "ack_sent", "conn": 206, "control_id": "app.default-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:31:20.318"}
+{"event": "received", "conn": 206, "control_id": "app.default-AR-162740", "mode": "AR", "ts": "2026-11-26T15:31:22.319"}
+{"event": "ack_sent", "conn": 206, "control_id": "app.default-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:31:22.324"}
+{"event": "received", "conn": 206, "control_id": "app.default-AR-162740", "mode": "AR", "ts": "2026-11-26T15:31:24.331"}
+{"event": "ack_sent", "conn": 206, "control_id": "app.default-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:31:24.336"}
+{"event": "received", "conn": 206, "control_id": "app.default-AR-162740", "mode": "AR", "ts": "2026-11-26T15:31:26.342"}
+{"event": "ack_sent", "conn": 206, "control_id": "app.default-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:31:26.349"}
+{"event": "received", "conn": 206, "control_id": "app.default-AR-162740", "mode": "AR", "ts": "2026-11-26T15:31:28.352"}
+{"event": "ack_sent", "conn": 206, "control_id": "app.default-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:31:28.356"}
+{"event": "peer_closed", "conn": 206, "ts": "2026-11-26T15:31:30.360"}
+{"event": "connected", "conn": 221, "peer": "192.168.204.83", "ts": "2026-11-26T15:31:30.362"}
+{"event": "received", "conn": 221, "control_id": "app.default-AR-162740", "mode": "AR", "ts": "2026-11-26T15:31:30.368"}
+{"event": "ack_sent", "conn": 221, "control_id": "app.default-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:31:30.370"}
+{"event": "received", "conn": 221, "control_id": "app.default-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:31:32.567"}
+{"event": "ack_sent", "conn": 221, "control_id": "app.default-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:31:32.570"}
+{"event": "received", "conn": 221, "control_id": "app.default-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:31:34.575"}
+{"event": "ack_sent", "conn": 221, "control_id": "app.default-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:31:34.580"}
+{"event": "received", "conn": 221, "control_id": "app.default-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:31:36.586"}
+{"event": "ack_sent", "conn": 221, "control_id": "app.default-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:31:36.590"}
+{"event": "received", "conn": 221, "control_id": "app.default-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:31:38.594"}
+{"event": "ack_sent", "conn": 221, "control_id": "app.default-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:31:38.605"}
+{"event": "received", "conn": 221, "control_id": "app.default-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:31:40.610"}
+{"event": "ack_sent", "conn": 221, "control_id": "app.default-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:31:40.613"}
+{"event": "peer_closed", "conn": 221, "ts": "2026-11-26T15:31:42.615"}
+{"event": "connected", "conn": 222, "peer": "192.168.204.83", "ts": "2026-11-26T15:31:42.619"}
+{"event": "received", "conn": 222, "control_id": "app.default-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:31:42.649"}
+{"event": "ack_sent", "conn": 222, "control_id": "app.default-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:31:42.658"}
+{"event": "received", "conn": 222, "control_id": "app.default-BADID-162740", "mode": "BADID", "ts": "2026-11-26T15:31:44.810"}
+{"event": "ack_sent", "conn": 222, "control_id": "app.default-BADID-162740", "mode": "BADID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:31:44.813"}
+{"event": "received", "conn": 222, "control_id": "app.default-NOMSA-162740", "mode": "NOMSA", "ts": "2026-11-26T15:31:46.947"}
+{"event": "ack_sent", "conn": 222, "control_id": "app.default-NOMSA-162740", "mode": "NOMSA", "msa1": "", "msh9": "ACK", "ts": "2026-11-26T15:31:46.950"}
+{"event": "received", "conn": 222, "control_id": "app.default-NOFRAME-162740", "mode": "NOFRAME", "ts": "2026-11-26T15:32:04.100"}
+{"event": "ack_sent", "conn": 222, "control_id": "app.default-NOFRAME-162740", "mode": "NOFRAME", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:32:04.105"}
+{"event": "received", "conn": 222, "control_id": "app.default-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:32:11.278"}
+{"event": "closing_without_ack", "conn": 222, "control_id": "app.default-CLOSE-162740", "ts": "2026-11-26T15:32:11.282"}
+{"event": "peer_closed", "conn": 222, "ts": "2026-11-26T15:32:11.285"}
+{"event": "connected", "conn": 223, "peer": "192.168.204.83", "ts": "2026-11-26T15:32:13.294"}
+{"event": "received", "conn": 223, "control_id": "app.default-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:32:13.300"}
+{"event": "closing_without_ack", "conn": 223, "control_id": "app.default-CLOSE-162740", "ts": "2026-11-26T15:32:13.302"}
+{"event": "peer_closed", "conn": 223, "ts": "2026-11-26T15:32:13.304"}
+{"event": "connected", "conn": 224, "peer": "192.168.204.83", "ts": "2026-11-26T15:32:15.311"}
+{"event": "received", "conn": 224, "control_id": "app.default-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:32:15.316"}
+{"event": "closing_without_ack", "conn": 224, "control_id": "app.default-CLOSE-162740", "ts": "2026-11-26T15:32:15.318"}
+{"event": "peer_closed", "conn": 224, "ts": "2026-11-26T15:32:15.321"}
+{"event": "connected", "conn": 225, "peer": "192.168.204.83", "ts": "2026-11-26T15:32:17.332"}
+{"event": "received", "conn": 225, "control_id": "app.default-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:32:17.336"}
+{"event": "closing_without_ack", "conn": 225, "control_id": "app.default-CLOSE-162740", "ts": "2026-11-26T15:32:17.339"}
+{"event": "peer_closed", "conn": 225, "ts": "2026-11-26T15:32:17.341"}
+{"event": "connected", "conn": 226, "peer": "192.168.204.83", "ts": "2026-11-26T15:32:19.344"}
+{"event": "received", "conn": 226, "control_id": "app.default-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:32:19.349"}
+{"event": "closing_without_ack", "conn": 226, "control_id": "app.default-CLOSE-162740", "ts": "2026-11-26T15:32:19.351"}
+{"event": "peer_closed", "conn": 226, "ts": "2026-11-26T15:32:19.354"}
+{"event": "connected", "conn": 227, "peer": "192.168.204.83", "ts": "2026-11-26T15:32:21.357"}
+{"event": "received", "conn": 227, "control_id": "app.default-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:32:21.360"}
+{"event": "closing_without_ack", "conn": 227, "control_id": "app.default-CLOSE-162740", "ts": "2026-11-26T15:32:21.362"}
+{"event": "peer_closed", "conn": 227, "ts": "2026-11-26T15:32:21.364"}
+{"event": "connected", "conn": 228, "peer": "192.168.204.83", "ts": "2026-11-26T15:32:22.367"}
+{"event": "received", "conn": 228, "control_id": "app.default-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:32:23.507"}
+{"event": "ack_sent", "conn": 228, "control_id": "app.default-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:32:35.511"}
+{"event": "received", "conn": 228, "control_id": "app.default-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:32:35.526"}
+{"event": "ack_sent", "conn": 228, "control_id": "app.default-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:32:47.533"}
+{"event": "socket_error", "conn": 228, "error": "[Errno 104] Connection reset by peer", "ts": "2026-11-26T15:32:55.798"}
+{"event": "connected", "conn": 229, "peer": "192.168.204.83", "ts": "2026-11-26T15:32:55.839"}
+{"event": "received", "conn": 213, "control_id": "app.failrej-AA-162740", "mode": "AA", "ts": "2026-11-26T15:32:55.903"}
+{"event": "ack_sent", "conn": 213, "control_id": "app.failrej-AA-162740", "mode": "AA", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:32:55.906"}
+{"event": "received", "conn": 213, "control_id": "app.failrej-AE-162740", "mode": "AE", "ts": "2026-11-26T15:32:58.060"}
+{"event": "ack_sent", "conn": 213, "control_id": "app.failrej-AE-162740", "mode": "AE", "msa1": "AE", "msh9": "ACK", "ts": "2026-11-26T15:32:58.064"}
+{"event": "received", "conn": 213, "control_id": "app.failrej-AR-162740", "mode": "AR", "ts": "2026-11-26T15:33:15.207"}
+{"event": "ack_sent", "conn": 213, "control_id": "app.failrej-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:33:15.210"}
+{"event": "received", "conn": 213, "control_id": "app.failrej-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:33:17.341"}
+{"event": "ack_sent", "conn": 213, "control_id": "app.failrej-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:33:17.345"}
+{"event": "received", "conn": 213, "control_id": "app.failrej-BADID-162740", "mode": "BADID", "ts": "2026-11-26T15:33:19.475"}
+{"event": "ack_sent", "conn": 213, "control_id": "app.failrej-BADID-162740", "mode": "BADID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:33:19.478"}
+{"event": "received", "conn": 213, "control_id": "app.failrej-NOMSA-162740", "mode": "NOMSA", "ts": "2026-11-26T15:33:21.605"}
+{"event": "ack_sent", "conn": 213, "control_id": "app.failrej-NOMSA-162740", "mode": "NOMSA", "msa1": "", "msh9": "ACK", "ts": "2026-11-26T15:33:21.608"}
+{"event": "received", "conn": 213, "control_id": "app.failrej-NOFRAME-162740", "mode": "NOFRAME", "ts": "2026-11-26T15:33:38.740"}
+{"event": "ack_sent", "conn": 213, "control_id": "app.failrej-NOFRAME-162740", "mode": "NOFRAME", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:33:38.743"}
+{"event": "received", "conn": 213, "control_id": "app.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:33:45.908"}
+{"event": "closing_without_ack", "conn": 213, "control_id": "app.failrej-CLOSE-162740", "ts": "2026-11-26T15:33:45.912"}
+{"event": "peer_closed", "conn": 213, "ts": "2026-11-26T15:33:45.914"}
+{"event": "connected", "conn": 230, "peer": "192.168.204.83", "ts": "2026-11-26T15:33:47.919"}
+{"event": "received", "conn": 230, "control_id": "app.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:33:47.924"}
+{"event": "closing_without_ack", "conn": 230, "control_id": "app.failrej-CLOSE-162740", "ts": "2026-11-26T15:33:47.927"}
+{"event": "peer_closed", "conn": 230, "ts": "2026-11-26T15:33:47.930"}
+{"event": "connected", "conn": 231, "peer": "192.168.204.83", "ts": "2026-11-26T15:33:49.933"}
+{"event": "received", "conn": 231, "control_id": "app.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:33:49.937"}
+{"event": "closing_without_ack", "conn": 231, "control_id": "app.failrej-CLOSE-162740", "ts": "2026-11-26T15:33:49.939"}
+{"event": "peer_closed", "conn": 231, "ts": "2026-11-26T15:33:49.942"}
+{"event": "connected", "conn": 232, "peer": "192.168.204.83", "ts": "2026-11-26T15:33:51.944"}
+{"event": "received", "conn": 232, "control_id": "app.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:33:51.948"}
+{"event": "closing_without_ack", "conn": 232, "control_id": "app.failrej-CLOSE-162740", "ts": "2026-11-26T15:33:51.951"}
+{"event": "peer_closed", "conn": 232, "ts": "2026-11-26T15:33:51.953"}
+{"event": "connected", "conn": 233, "peer": "192.168.204.83", "ts": "2026-11-26T15:33:53.958"}
+{"event": "received", "conn": 233, "control_id": "app.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:33:53.962"}
+{"event": "closing_without_ack", "conn": 233, "control_id": "app.failrej-CLOSE-162740", "ts": "2026-11-26T15:33:53.965"}
+{"event": "peer_closed", "conn": 233, "ts": "2026-11-26T15:33:53.968"}
+{"event": "connected", "conn": 234, "peer": "192.168.204.83", "ts": "2026-11-26T15:33:55.970"}
+{"event": "received", "conn": 234, "control_id": "app.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:33:55.973"}
+{"event": "closing_without_ack", "conn": 234, "control_id": "app.failrej-CLOSE-162740", "ts": "2026-11-26T15:33:55.975"}
+{"event": "peer_closed", "conn": 234, "ts": "2026-11-26T15:33:55.978"}
+{"event": "connected", "conn": 235, "peer": "192.168.204.83", "ts": "2026-11-26T15:33:56.982"}
+{"event": "received", "conn": 235, "control_id": "app.failrej-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:33:58.147"}
+{"event": "ack_sent", "conn": 235, "control_id": "app.failrej-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:34:10.153"}
+{"event": "received", "conn": 235, "control_id": "app.failrej-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:34:10.159"}
+{"event": "ack_sent", "conn": 235, "control_id": "app.failrej-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:34:22.167"}
+{"event": "socket_error", "conn": 235, "error": "[Errno 104] Connection reset by peer", "ts": "2026-11-26T15:34:30.394"}
+{"event": "connected", "conn": 236, "peer": "192.168.204.83", "ts": "2026-11-26T15:34:30.435"}
+{"event": "received", "conn": 220, "control_id": "app.legacy-AA-162740", "mode": "AA", "ts": "2026-11-26T15:34:30.498"}
+{"event": "ack_sent", "conn": 220, "control_id": "app.legacy-AA-162740", "mode": "AA", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:34:30.502"}
+{"event": "received", "conn": 220, "control_id": "app.legacy-AE-162740", "mode": "AE", "ts": "2026-11-26T15:34:32.642"}
+{"event": "ack_sent", "conn": 220, "control_id": "app.legacy-AE-162740", "mode": "AE", "msa1": "AE", "msh9": "ACK", "ts": "2026-11-26T15:34:32.645"}
+{"event": "received", "conn": 220, "control_id": "app.legacy-AR-162740", "mode": "AR", "ts": "2026-11-26T15:34:34.776"}
+{"event": "ack_sent", "conn": 220, "control_id": "app.legacy-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:34:34.779"}
+{"event": "received", "conn": 220, "control_id": "app.legacy-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:34:36.903"}
+{"event": "ack_sent", "conn": 220, "control_id": "app.legacy-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:34:36.906"}
+{"event": "received", "conn": 220, "control_id": "app.legacy-BADID-162740", "mode": "BADID", "ts": "2026-11-26T15:34:39.050"}
+{"event": "ack_sent", "conn": 220, "control_id": "app.legacy-BADID-162740", "mode": "BADID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:34:39.057"}
+{"event": "received", "conn": 220, "control_id": "app.legacy-NOMSA-162740", "mode": "NOMSA", "ts": "2026-11-26T15:34:41.206"}
+{"event": "ack_sent", "conn": 220, "control_id": "app.legacy-NOMSA-162740", "mode": "NOMSA", "msa1": "", "msh9": "ACK", "ts": "2026-11-26T15:34:41.209"}
+{"event": "received", "conn": 220, "control_id": "app.legacy-NOFRAME-162740", "mode": "NOFRAME", "ts": "2026-11-26T15:34:43.360"}
+{"event": "ack_sent", "conn": 220, "control_id": "app.legacy-NOFRAME-162740", "mode": "NOFRAME", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:34:43.363"}
+{"event": "received", "conn": 220, "control_id": "app.legacy-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:34:50.522"}
+{"event": "closing_without_ack", "conn": 220, "control_id": "app.legacy-CLOSE-162740", "ts": "2026-11-26T15:34:50.525"}
+{"event": "peer_closed", "conn": 220, "ts": "2026-11-26T15:34:50.528"}
+{"event": "connected", "conn": 237, "peer": "192.168.204.83", "ts": "2026-11-26T15:34:52.532"}
+{"event": "received", "conn": 237, "control_id": "app.legacy-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:34:52.535"}
+{"event": "closing_without_ack", "conn": 237, "control_id": "app.legacy-CLOSE-162740", "ts": "2026-11-26T15:34:52.537"}
+{"event": "peer_closed", "conn": 237, "ts": "2026-11-26T15:34:52.539"}
+{"event": "connected", "conn": 238, "peer": "192.168.204.83", "ts": "2026-11-26T15:34:54.577"}
+{"event": "received", "conn": 238, "control_id": "app.legacy-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:34:54.592"}
+{"event": "closing_without_ack", "conn": 238, "control_id": "app.legacy-CLOSE-162740", "ts": "2026-11-26T15:34:54.596"}
+{"event": "peer_closed", "conn": 238, "ts": "2026-11-26T15:34:54.598"}
+{"event": "connected", "conn": 239, "peer": "192.168.204.83", "ts": "2026-11-26T15:34:56.631"}
+{"event": "received", "conn": 239, "control_id": "app.legacy-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:34:56.638"}
+{"event": "closing_without_ack", "conn": 239, "control_id": "app.legacy-CLOSE-162740", "ts": "2026-11-26T15:34:56.650"}
+{"event": "peer_closed", "conn": 239, "ts": "2026-11-26T15:34:56.658"}
+{"event": "connected", "conn": 240, "peer": "192.168.204.83", "ts": "2026-11-26T15:34:58.663"}
+{"event": "received", "conn": 240, "control_id": "app.legacy-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:34:58.667"}
+{"event": "closing_without_ack", "conn": 240, "control_id": "app.legacy-CLOSE-162740", "ts": "2026-11-26T15:34:58.671"}
+{"event": "peer_closed", "conn": 240, "ts": "2026-11-26T15:34:58.674"}
+{"event": "connected", "conn": 241, "peer": "192.168.204.83", "ts": "2026-11-26T15:35:00.676"}
+{"event": "received", "conn": 241, "control_id": "app.legacy-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:35:00.680"}
+{"event": "closing_without_ack", "conn": 241, "control_id": "app.legacy-CLOSE-162740", "ts": "2026-11-26T15:35:00.682"}
+{"event": "peer_closed", "conn": 241, "ts": "2026-11-26T15:35:00.685"}
+{"event": "connected", "conn": 242, "peer": "192.168.204.83", "ts": "2026-11-26T15:35:01.688"}
+{"event": "received", "conn": 242, "control_id": "app.legacy-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:35:02.858"}
+{"event": "ack_sent", "conn": 242, "control_id": "app.legacy-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:35:14.866"}
+{"event": "received", "conn": 242, "control_id": "app.legacy-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:35:14.872"}
+{"event": "ack_sent", "conn": 242, "control_id": "app.legacy-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:35:26.877"}
+{"event": "socket_error", "conn": 242, "error": "[Errno 104] Connection reset by peer", "ts": "2026-11-26T15:35:35.107"}
+{"event": "connected", "conn": 243, "peer": "192.168.204.83", "ts": "2026-11-26T15:35:35.148"}
+{"event": "received", "conn": 236, "control_id": "msh.failrej_AL-AA-162740", "mode": "AA", "ts": "2026-11-26T15:35:35.211"}
+{"event": "ack_sent", "conn": 236, "control_id": "msh.failrej_AL-AA-162740", "mode": "AA", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:35:35.215"}
+{"event": "received", "conn": 236, "control_id": "msh.failrej_AL-AE-162740", "mode": "AE", "ts": "2026-11-26T15:35:37.347"}
+{"event": "ack_sent", "conn": 236, "control_id": "msh.failrej_AL-AE-162740", "mode": "AE", "msa1": "AE", "msh9": "ACK", "ts": "2026-11-26T15:35:37.351"}
+{"event": "received", "conn": 236, "control_id": "msh.failrej_AL-AR-162740", "mode": "AR", "ts": "2026-11-26T15:35:39.472"}
+{"event": "ack_sent", "conn": 236, "control_id": "msh.failrej_AL-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:35:39.475"}
+{"event": "received", "conn": 236, "control_id": "msh.failrej_AL-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:35:41.599"}
+{"event": "ack_sent", "conn": 236, "control_id": "msh.failrej_AL-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:35:41.602"}
+{"event": "received", "conn": 236, "control_id": "msh.failrej_AL-BADID-162740", "mode": "BADID", "ts": "2026-11-26T15:35:43.725"}
+{"event": "ack_sent", "conn": 236, "control_id": "msh.failrej_AL-BADID-162740", "mode": "BADID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:35:43.730"}
+{"event": "received", "conn": 236, "control_id": "msh.failrej_AL-NOMSA-162740", "mode": "NOMSA", "ts": "2026-11-26T15:35:45.839"}
+{"event": "ack_sent", "conn": 236, "control_id": "msh.failrej_AL-NOMSA-162740", "mode": "NOMSA", "msa1": "", "msh9": "ACK", "ts": "2026-11-26T15:35:45.843"}
+{"event": "received", "conn": 236, "control_id": "msh.failrej_AL-NOFRAME-162740", "mode": "NOFRAME", "ts": "2026-11-26T15:35:47.957"}
+{"event": "ack_sent", "conn": 236, "control_id": "msh.failrej_AL-NOFRAME-162740", "mode": "NOFRAME", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:35:47.961"}
+{"event": "received", "conn": 236, "control_id": "msh.failrej_AL-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:35:54.270"}
+{"event": "closing_without_ack", "conn": 236, "control_id": "msh.failrej_AL-CLOSE-162740", "ts": "2026-11-26T15:35:54.273"}
+{"event": "peer_closed", "conn": 236, "ts": "2026-11-26T15:35:54.276"}
+{"event": "connected", "conn": 244, "peer": "192.168.204.83", "ts": "2026-11-26T15:35:56.281"}
+{"event": "received", "conn": 244, "control_id": "msh.failrej_AL-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:35:56.286"}
+{"event": "closing_without_ack", "conn": 244, "control_id": "msh.failrej_AL-CLOSE-162740", "ts": "2026-11-26T15:35:56.290"}
+{"event": "peer_closed", "conn": 244, "ts": "2026-11-26T15:35:56.294"}
+{"event": "connected", "conn": 245, "peer": "192.168.204.83", "ts": "2026-11-26T15:35:58.297"}
+{"event": "received", "conn": 245, "control_id": "msh.failrej_AL-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:35:58.300"}
+{"event": "closing_without_ack", "conn": 245, "control_id": "msh.failrej_AL-CLOSE-162740", "ts": "2026-11-26T15:35:58.302"}
+{"event": "peer_closed", "conn": 245, "ts": "2026-11-26T15:35:58.305"}
+{"event": "connected", "conn": 246, "peer": "192.168.204.83", "ts": "2026-11-26T15:36:00.307"}
+{"event": "received", "conn": 246, "control_id": "msh.failrej_AL-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:36:00.311"}
+{"event": "closing_without_ack", "conn": 246, "control_id": "msh.failrej_AL-CLOSE-162740", "ts": "2026-11-26T15:36:00.314"}
+{"event": "peer_closed", "conn": 246, "ts": "2026-11-26T15:36:00.320"}
+{"event": "connected", "conn": 247, "peer": "192.168.204.83", "ts": "2026-11-26T15:36:02.324"}
+{"event": "received", "conn": 247, "control_id": "msh.failrej_AL-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:36:02.331"}
+{"event": "closing_without_ack", "conn": 247, "control_id": "msh.failrej_AL-CLOSE-162740", "ts": "2026-11-26T15:36:02.333"}
+{"event": "peer_closed", "conn": 247, "ts": "2026-11-26T15:36:02.335"}
+{"event": "connected", "conn": 248, "peer": "192.168.204.83", "ts": "2026-11-26T15:36:04.343"}
+{"event": "received", "conn": 248, "control_id": "msh.failrej_AL-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:36:04.348"}
+{"event": "closing_without_ack", "conn": 248, "control_id": "msh.failrej_AL-CLOSE-162740", "ts": "2026-11-26T15:36:04.350"}
+{"event": "peer_closed", "conn": 248, "ts": "2026-11-26T15:36:04.352"}
+{"event": "connected", "conn": 249, "peer": "192.168.204.83", "ts": "2026-11-26T15:36:04.702"}
+{"event": "received", "conn": 249, "control_id": "msh.failrej_AL-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:36:04.707"}
+{"event": "ack_sent", "conn": 249, "control_id": "msh.failrej_AL-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:36:16.710"}
+{"event": "received", "conn": 249, "control_id": "msh.failrej_AL-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:36:16.714"}
+{"event": "ack_sent", "conn": 249, "control_id": "msh.failrej_AL-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:36:28.718"}
+{"event": "socket_error", "conn": 249, "error": "[Errno 104] Connection reset by peer", "ts": "2026-11-26T15:36:35.316"}
+{"event": "connected", "conn": 250, "peer": "192.168.204.83", "ts": "2026-11-26T15:36:35.359"}
+{"event": "received", "conn": 250, "control_id": "msh.failrej_App-AA-162740", "mode": "AA", "ts": "2026-11-26T15:36:35.421"}
+{"event": "ack_sent", "conn": 250, "control_id": "msh.failrej_App-AA-162740", "mode": "AA", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:36:35.424"}
+{"event": "received", "conn": 250, "control_id": "msh.failrej_App-AE-162740", "mode": "AE", "ts": "2026-11-26T15:36:37.564"}
+{"event": "ack_sent", "conn": 250, "control_id": "msh.failrej_App-AE-162740", "mode": "AE", "msa1": "AE", "msh9": "ACK", "ts": "2026-11-26T15:36:37.567"}
+{"event": "received", "conn": 250, "control_id": "msh.failrej_App-AR-162740", "mode": "AR", "ts": "2026-11-26T15:36:54.718"}
+{"event": "ack_sent", "conn": 250, "control_id": "msh.failrej_App-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:36:54.721"}
+{"event": "received", "conn": 250, "control_id": "msh.failrej_App-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:36:56.896"}
+{"event": "ack_sent", "conn": 250, "control_id": "msh.failrej_App-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:36:56.899"}
+{"event": "received", "conn": 250, "control_id": "msh.failrej_App-BADID-162740", "mode": "BADID", "ts": "2026-11-26T15:36:59.035"}
+{"event": "ack_sent", "conn": 250, "control_id": "msh.failrej_App-BADID-162740", "mode": "BADID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:36:59.037"}
+{"event": "received", "conn": 250, "control_id": "msh.failrej_App-NOMSA-162740", "mode": "NOMSA", "ts": "2026-11-26T15:37:01.152"}
+{"event": "ack_sent", "conn": 250, "control_id": "msh.failrej_App-NOMSA-162740", "mode": "NOMSA", "msa1": "", "msh9": "ACK", "ts": "2026-11-26T15:37:01.154"}
+{"event": "received", "conn": 250, "control_id": "msh.failrej_App-NOFRAME-162740", "mode": "NOFRAME", "ts": "2026-11-26T15:37:18.307"}
+{"event": "ack_sent", "conn": 250, "control_id": "msh.failrej_App-NOFRAME-162740", "mode": "NOFRAME", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:37:18.312"}
+{"event": "received", "conn": 250, "control_id": "msh.failrej_App-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:37:25.467"}
+{"event": "closing_without_ack", "conn": 250, "control_id": "msh.failrej_App-CLOSE-162740", "ts": "2026-11-26T15:37:25.471"}
+{"event": "peer_closed", "conn": 250, "ts": "2026-11-26T15:37:25.473"}
+{"event": "connected", "conn": 251, "peer": "192.168.204.83", "ts": "2026-11-26T15:37:27.483"}
+{"event": "received", "conn": 251, "control_id": "msh.failrej_App-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:37:27.488"}
+{"event": "closing_without_ack", "conn": 251, "control_id": "msh.failrej_App-CLOSE-162740", "ts": "2026-11-26T15:37:27.491"}
+{"event": "peer_closed", "conn": 251, "ts": "2026-11-26T15:37:27.493"}
+{"event": "connected", "conn": 252, "peer": "192.168.204.83", "ts": "2026-11-26T15:37:29.495"}
+{"event": "received", "conn": 252, "control_id": "msh.failrej_App-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:37:29.498"}
+{"event": "closing_without_ack", "conn": 252, "control_id": "msh.failrej_App-CLOSE-162740", "ts": "2026-11-26T15:37:29.500"}
+{"event": "peer_closed", "conn": 252, "ts": "2026-11-26T15:37:29.502"}
+{"event": "connected", "conn": 253, "peer": "192.168.204.83", "ts": "2026-11-26T15:37:31.503"}
+{"event": "received", "conn": 253, "control_id": "msh.failrej_App-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:37:31.507"}
+{"event": "closing_without_ack", "conn": 253, "control_id": "msh.failrej_App-CLOSE-162740", "ts": "2026-11-26T15:37:31.509"}
+{"event": "peer_closed", "conn": 253, "ts": "2026-11-26T15:37:31.511"}
+{"event": "connected", "conn": 254, "peer": "192.168.204.83", "ts": "2026-11-26T15:37:33.521"}
+{"event": "received", "conn": 254, "control_id": "msh.failrej_App-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:37:33.527"}
+{"event": "closing_without_ack", "conn": 254, "control_id": "msh.failrej_App-CLOSE-162740", "ts": "2026-11-26T15:37:33.529"}
+{"event": "peer_closed", "conn": 254, "ts": "2026-11-26T15:37:33.531"}
+{"event": "connected", "conn": 255, "peer": "192.168.204.83", "ts": "2026-11-26T15:37:35.541"}
+{"event": "received", "conn": 255, "control_id": "msh.failrej_App-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:37:35.545"}
+{"event": "closing_without_ack", "conn": 255, "control_id": "msh.failrej_App-CLOSE-162740", "ts": "2026-11-26T15:37:35.547"}
+{"event": "peer_closed", "conn": 255, "ts": "2026-11-26T15:37:35.550"}
+{"event": "connected", "conn": 256, "peer": "192.168.204.83", "ts": "2026-11-26T15:37:36.553"}
+{"event": "received", "conn": 256, "control_id": "msh.failrej_App-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:37:37.680"}
+{"event": "ack_sent", "conn": 256, "control_id": "msh.failrej_App-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:37:49.686"}
+{"event": "received", "conn": 256, "control_id": "msh.failrej_App-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:37:49.692"}
+{"event": "ack_sent", "conn": 256, "control_id": "msh.failrej_App-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:38:01.701"}
+{"event": "socket_error", "conn": 256, "error": "[Errno 104] Connection reset by peer", "ts": "2026-11-26T15:38:10.103"}
+{"event": "connected", "conn": 257, "peer": "192.168.204.83", "ts": "2026-11-26T15:38:10.148"}
+{"event": "received", "conn": 257, "control_id": "msh.failrej-AA-162740", "mode": "AA", "ts": "2026-11-26T15:38:10.226"}
+{"event": "ack_sent", "conn": 257, "control_id": "msh.failrej-AA-162740", "mode": "AA", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:38:10.229"}
+{"event": "received", "conn": 257, "control_id": "msh.failrej-AE-162740", "mode": "AE", "ts": "2026-11-26T15:38:27.352"}
+{"event": "ack_sent", "conn": 257, "control_id": "msh.failrej-AE-162740", "mode": "AE", "msa1": "AE", "msh9": "ACK", "ts": "2026-11-26T15:38:27.356"}
+{"event": "received", "conn": 257, "control_id": "msh.failrej-AR-162740", "mode": "AR", "ts": "2026-11-26T15:38:44.472"}
+{"event": "ack_sent", "conn": 257, "control_id": "msh.failrej-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:38:44.475"}
+{"event": "received", "conn": 257, "control_id": "msh.failrej-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:39:01.601"}
+{"event": "ack_sent", "conn": 257, "control_id": "msh.failrej-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:39:01.604"}
+{"event": "received", "conn": 257, "control_id": "msh.failrej-BADID-162740", "mode": "BADID", "ts": "2026-11-26T15:39:18.719"}
+{"event": "ack_sent", "conn": 257, "control_id": "msh.failrej-BADID-162740", "mode": "BADID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:39:18.727"}
+{"event": "received", "conn": 257, "control_id": "msh.failrej-NOMSA-162740", "mode": "NOMSA", "ts": "2026-11-26T15:39:35.826"}
+{"event": "ack_sent", "conn": 257, "control_id": "msh.failrej-NOMSA-162740", "mode": "NOMSA", "msa1": "", "msh9": "ACK", "ts": "2026-11-26T15:39:35.830"}
+{"event": "received", "conn": 257, "control_id": "msh.failrej-NOFRAME-162740", "mode": "NOFRAME", "ts": "2026-11-26T15:39:52.953"}
+{"event": "ack_sent", "conn": 257, "control_id": "msh.failrej-NOFRAME-162740", "mode": "NOFRAME", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:39:52.957"}
+{"event": "received", "conn": 257, "control_id": "msh.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:40:10.115"}
+{"event": "closing_without_ack", "conn": 257, "control_id": "msh.failrej-CLOSE-162740", "ts": "2026-11-26T15:40:10.118"}
+{"event": "peer_closed", "conn": 257, "ts": "2026-11-26T15:40:10.122"}
+{"event": "connected", "conn": 258, "peer": "192.168.204.83", "ts": "2026-11-26T15:40:12.128"}
+{"event": "received", "conn": 258, "control_id": "msh.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:40:12.135"}
+{"event": "closing_without_ack", "conn": 258, "control_id": "msh.failrej-CLOSE-162740", "ts": "2026-11-26T15:40:12.138"}
+{"event": "peer_closed", "conn": 258, "ts": "2026-11-26T15:40:12.140"}
+{"event": "connected", "conn": 259, "peer": "192.168.204.83", "ts": "2026-11-26T15:40:14.147"}
+{"event": "received", "conn": 259, "control_id": "msh.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:40:14.154"}
+{"event": "closing_without_ack", "conn": 259, "control_id": "msh.failrej-CLOSE-162740", "ts": "2026-11-26T15:40:14.157"}
+{"event": "peer_closed", "conn": 259, "ts": "2026-11-26T15:40:14.161"}
+{"event": "connected", "conn": 260, "peer": "192.168.204.83", "ts": "2026-11-26T15:40:16.169"}
+{"event": "received", "conn": 260, "control_id": "msh.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:40:16.173"}
+{"event": "closing_without_ack", "conn": 260, "control_id": "msh.failrej-CLOSE-162740", "ts": "2026-11-26T15:40:16.178"}
+{"event": "peer_closed", "conn": 260, "ts": "2026-11-26T15:40:16.182"}
+{"event": "connected", "conn": 261, "peer": "192.168.204.83", "ts": "2026-11-26T15:40:18.186"}
+{"event": "received", "conn": 261, "control_id": "msh.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:40:18.190"}
+{"event": "closing_without_ack", "conn": 261, "control_id": "msh.failrej-CLOSE-162740", "ts": "2026-11-26T15:40:18.192"}
+{"event": "peer_closed", "conn": 261, "ts": "2026-11-26T15:40:18.194"}
+{"event": "connected", "conn": 262, "peer": "192.168.204.83", "ts": "2026-11-26T15:40:20.204"}
+{"event": "received", "conn": 262, "control_id": "msh.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:40:20.209"}
+{"event": "closing_without_ack", "conn": 262, "control_id": "msh.failrej-CLOSE-162740", "ts": "2026-11-26T15:40:20.211"}
+{"event": "peer_closed", "conn": 262, "ts": "2026-11-26T15:40:20.213"}
+{"event": "connected", "conn": 263, "peer": "192.168.204.83", "ts": "2026-11-26T15:40:21.221"}
+{"event": "received", "conn": 263, "control_id": "msh.failrej-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:40:27.351"}
+{"event": "ack_sent", "conn": 263, "control_id": "msh.failrej-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:40:39.356"}
+{"event": "received", "conn": 263, "control_id": "msh.failrej-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:40:39.363"}
+{"event": "ack_sent", "conn": 263, "control_id": "msh.failrej-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:40:51.373"}
+{"event": "socket_error", "conn": 263, "error": "[Errno 104] Connection reset by peer", "ts": "2026-11-26T15:41:04.501"}
+{"event": "connected", "conn": 264, "peer": "192.168.204.83", "ts": "2026-11-26T15:41:04.540"}
+{"event": "received", "conn": 264, "control_id": "never.failrej-AA-162740", "mode": "AA", "ts": "2026-11-26T15:41:04.616"}
+{"event": "ack_sent", "conn": 264, "control_id": "never.failrej-AA-162740", "mode": "AA", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:41:04.620"}
+{"event": "received", "conn": 264, "control_id": "never.failrej-AE-162740", "mode": "AE", "ts": "2026-11-26T15:41:21.753"}
+{"event": "ack_sent", "conn": 264, "control_id": "never.failrej-AE-162740", "mode": "AE", "msa1": "AE", "msh9": "ACK", "ts": "2026-11-26T15:41:21.756"}
+{"event": "received", "conn": 264, "control_id": "never.failrej-AR-162740", "mode": "AR", "ts": "2026-11-26T15:41:38.886"}
+{"event": "ack_sent", "conn": 264, "control_id": "never.failrej-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:41:38.891"}
+{"event": "received", "conn": 264, "control_id": "never.failrej-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:41:56.019"}
+{"event": "ack_sent", "conn": 264, "control_id": "never.failrej-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:41:56.024"}
+{"event": "received", "conn": 264, "control_id": "never.failrej-BADID-162740", "mode": "BADID", "ts": "2026-11-26T15:42:13.157"}
+{"event": "ack_sent", "conn": 264, "control_id": "never.failrej-BADID-162740", "mode": "BADID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:42:13.163"}
+{"event": "received", "conn": 264, "control_id": "never.failrej-NOMSA-162740", "mode": "NOMSA", "ts": "2026-11-26T15:42:30.287"}
+{"event": "ack_sent", "conn": 264, "control_id": "never.failrej-NOMSA-162740", "mode": "NOMSA", "msa1": "", "msh9": "ACK", "ts": "2026-11-26T15:42:30.291"}
+{"event": "received", "conn": 264, "control_id": "never.failrej-NOFRAME-162740", "mode": "NOFRAME", "ts": "2026-11-26T15:42:47.414"}
+{"event": "ack_sent", "conn": 264, "control_id": "never.failrej-NOFRAME-162740", "mode": "NOFRAME", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:42:47.417"}
+{"event": "received", "conn": 264, "control_id": "never.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:43:04.550"}
+{"event": "closing_without_ack", "conn": 264, "control_id": "never.failrej-CLOSE-162740", "ts": "2026-11-26T15:43:04.555"}
+{"event": "peer_closed", "conn": 264, "ts": "2026-11-26T15:43:04.557"}
+{"event": "connected", "conn": 265, "peer": "192.168.204.83", "ts": "2026-11-26T15:43:06.561"}
+{"event": "received", "conn": 265, "control_id": "never.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:43:06.566"}
+{"event": "closing_without_ack", "conn": 265, "control_id": "never.failrej-CLOSE-162740", "ts": "2026-11-26T15:43:06.567"}
+{"event": "peer_closed", "conn": 265, "ts": "2026-11-26T15:43:06.570"}
+{"event": "connected", "conn": 266, "peer": "192.168.204.83", "ts": "2026-11-26T15:43:08.587"}
+{"event": "received", "conn": 266, "control_id": "never.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:43:08.592"}
+{"event": "closing_without_ack", "conn": 266, "control_id": "never.failrej-CLOSE-162740", "ts": "2026-11-26T15:43:08.594"}
+{"event": "peer_closed", "conn": 266, "ts": "2026-11-26T15:43:08.596"}
+{"event": "connected", "conn": 267, "peer": "192.168.204.83", "ts": "2026-11-26T15:43:10.599"}
+{"event": "received", "conn": 267, "control_id": "never.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:43:10.604"}
+{"event": "closing_without_ack", "conn": 267, "control_id": "never.failrej-CLOSE-162740", "ts": "2026-11-26T15:43:10.606"}
+{"event": "peer_closed", "conn": 267, "ts": "2026-11-26T15:43:10.609"}
+{"event": "connected", "conn": 268, "peer": "192.168.204.83", "ts": "2026-11-26T15:43:12.613"}
+{"event": "received", "conn": 268, "control_id": "never.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:43:12.616"}
+{"event": "closing_without_ack", "conn": 268, "control_id": "never.failrej-CLOSE-162740", "ts": "2026-11-26T15:43:12.619"}
+{"event": "peer_closed", "conn": 268, "ts": "2026-11-26T15:43:12.621"}
+{"event": "connected", "conn": 269, "peer": "192.168.204.83", "ts": "2026-11-26T15:43:14.625"}
+{"event": "received", "conn": 269, "control_id": "never.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:43:14.629"}
+{"event": "closing_without_ack", "conn": 269, "control_id": "never.failrej-CLOSE-162740", "ts": "2026-11-26T15:43:14.633"}
+{"event": "peer_closed", "conn": 269, "ts": "2026-11-26T15:43:14.637"}
+{"event": "connected", "conn": 270, "peer": "192.168.204.83", "ts": "2026-11-26T15:43:15.643"}
+{"event": "received", "conn": 270, "control_id": "never.failrej-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:43:21.710"}
+{"event": "ack_sent", "conn": 270, "control_id": "never.failrej-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:43:33.717"}
+{"event": "received", "conn": 270, "control_id": "never.failrej-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:43:33.720"}
+{"event": "ack_sent", "conn": 270, "control_id": "never.failrej-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:43:45.724"}
+{"event": "socket_error", "conn": 270, "error": "[Errno 104] Connection reset by peer", "ts": "2026-11-26T15:43:58.856"}
+{"event": "connected", "conn": 271, "peer": "192.168.204.83", "ts": "2026-11-26T15:43:58.894"}
+{"event": "received", "conn": 271, "control_id": "byte.failrej-AA-162740", "mode": "AA", "ts": "2026-11-26T15:43:58.962"}
+{"event": "ack_sent", "conn": 271, "control_id": "byte.failrej-AA-162740", "mode": "AA", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:43:58.967"}
+{"event": "received", "conn": 271, "control_id": "byte.failrej-AE-162740", "mode": "AE", "ts": "2026-11-26T15:44:01.099"}
+{"event": "ack_sent", "conn": 271, "control_id": "byte.failrej-AE-162740", "mode": "AE", "msa1": "AE", "msh9": "ACK", "ts": "2026-11-26T15:44:01.107"}
+{"event": "received", "conn": 271, "control_id": "byte.failrej-AR-162740", "mode": "AR", "ts": "2026-11-26T15:44:03.251"}
+{"event": "ack_sent", "conn": 271, "control_id": "byte.failrej-AR-162740", "mode": "AR", "msa1": "AR", "msh9": "ACK", "ts": "2026-11-26T15:44:03.256"}
+{"event": "received", "conn": 271, "control_id": "byte.failrej-AR3-162740", "mode": "AR3", "ts": "2026-11-26T15:44:05.381"}
+{"event": "ack_sent", "conn": 271, "control_id": "byte.failrej-AR3-162740", "mode": "AR3", "msa1": "AR", "msh9": "ACK^A28^ACK", "ts": "2026-11-26T15:44:05.385"}
+{"event": "received", "conn": 271, "control_id": "byte.failrej-BADID-162740", "mode": "BADID", "ts": "2026-11-26T15:44:07.501"}
+{"event": "ack_sent", "conn": 271, "control_id": "byte.failrej-BADID-162740", "mode": "BADID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:44:07.504"}
+{"event": "received", "conn": 271, "control_id": "byte.failrej-NOMSA-162740", "mode": "NOMSA", "ts": "2026-11-26T15:44:09.639"}
+{"event": "ack_sent", "conn": 271, "control_id": "byte.failrej-NOMSA-162740", "mode": "NOMSA", "msa1": "", "msh9": "ACK", "ts": "2026-11-26T15:44:09.643"}
+{"event": "received", "conn": 271, "control_id": "byte.failrej-NOFRAME-162740", "mode": "NOFRAME", "ts": "2026-11-26T15:44:11.770"}
+{"event": "ack_sent", "conn": 271, "control_id": "byte.failrej-NOFRAME-162740", "mode": "NOFRAME", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:44:11.773"}
+{"event": "received", "conn": 271, "control_id": "byte.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:44:18.068"}
+{"event": "closing_without_ack", "conn": 271, "control_id": "byte.failrej-CLOSE-162740", "ts": "2026-11-26T15:44:18.072"}
+{"event": "peer_closed", "conn": 271, "ts": "2026-11-26T15:44:18.074"}
+{"event": "connected", "conn": 272, "peer": "192.168.204.83", "ts": "2026-11-26T15:44:20.083"}
+{"event": "received", "conn": 272, "control_id": "byte.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:44:20.087"}
+{"event": "closing_without_ack", "conn": 272, "control_id": "byte.failrej-CLOSE-162740", "ts": "2026-11-26T15:44:20.090"}
+{"event": "peer_closed", "conn": 272, "ts": "2026-11-26T15:44:20.092"}
+{"event": "connected", "conn": 273, "peer": "192.168.204.83", "ts": "2026-11-26T15:44:22.104"}
+{"event": "received", "conn": 273, "control_id": "byte.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:44:22.110"}
+{"event": "closing_without_ack", "conn": 273, "control_id": "byte.failrej-CLOSE-162740", "ts": "2026-11-26T15:44:22.113"}
+{"event": "peer_closed", "conn": 273, "ts": "2026-11-26T15:44:22.115"}
+{"event": "connected", "conn": 274, "peer": "192.168.204.83", "ts": "2026-11-26T15:44:24.119"}
+{"event": "received", "conn": 274, "control_id": "byte.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:44:24.123"}
+{"event": "closing_without_ack", "conn": 274, "control_id": "byte.failrej-CLOSE-162740", "ts": "2026-11-26T15:44:24.125"}
+{"event": "peer_closed", "conn": 274, "ts": "2026-11-26T15:44:24.127"}
+{"event": "connected", "conn": 275, "peer": "192.168.204.83", "ts": "2026-11-26T15:44:26.133"}
+{"event": "received", "conn": 275, "control_id": "byte.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:44:26.138"}
+{"event": "closing_without_ack", "conn": 275, "control_id": "byte.failrej-CLOSE-162740", "ts": "2026-11-26T15:44:26.140"}
+{"event": "peer_closed", "conn": 275, "ts": "2026-11-26T15:44:26.142"}
+{"event": "connected", "conn": 276, "peer": "192.168.204.83", "ts": "2026-11-26T15:44:28.149"}
+{"event": "received", "conn": 276, "control_id": "byte.failrej-CLOSE-162740", "mode": "CLOSE", "ts": "2026-11-26T15:44:28.153"}
+{"event": "closing_without_ack", "conn": 276, "control_id": "byte.failrej-CLOSE-162740", "ts": "2026-11-26T15:44:28.156"}
+{"event": "peer_closed", "conn": 276, "ts": "2026-11-26T15:44:28.158"}
+{"event": "connected", "conn": 277, "peer": "192.168.204.83", "ts": "2026-11-26T15:44:28.607"}
+{"event": "received", "conn": 277, "control_id": "byte.failrej-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:44:28.610"}
+{"event": "ack_sent", "conn": 277, "control_id": "byte.failrej-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:44:40.613"}
+{"event": "received", "conn": 277, "control_id": "byte.failrej-LATE-162740", "mode": "LATE", "ts": "2026-11-26T15:44:40.618"}
+{"event": "ack_sent", "conn": 277, "control_id": "byte.failrej-LATE-162740", "mode": "LATE", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:44:52.622"}
+{"event": "socket_error", "conn": 277, "error": "[Errno 104] Connection reset by peer", "ts": "2026-11-26T15:44:59.085"}
+{"event": "connected", "conn": 278, "peer": "192.168.204.83", "ts": "2026-11-26T15:44:59.124"}
+{"event": "connected", "conn": 1, "peer": "192.168.204.83", "ts": "2026-11-26T15:53:50.927"}
+{"event": "connected", "conn": 2, "peer": "192.168.204.83", "ts": "2026-11-26T15:53:50.934"}
+{"event": "connected", "conn": 3, "peer": "192.168.204.83", "ts": "2026-11-26T15:53:51.054"}
+{"event": "received", "conn": 1, "control_id": "default-OTHERID-165400", "mode": "OTHERID", "ts": "2026-11-26T15:54:00.910"}
+{"event": "ack_sent", "conn": 1, "control_id": "default-OTHERID-165400", "mode": "OTHERID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:54:00.914"}
+{"event": "received", "conn": 3, "control_id": "failrej-OTHERID-165400", "mode": "OTHERID", "ts": "2026-11-26T15:54:03.113"}
+{"event": "ack_sent", "conn": 3, "control_id": "failrej-OTHERID-165400", "mode": "OTHERID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:54:03.146"}
+{"event": "received", "conn": 2, "control_id": "legacy-OTHERID-165400", "mode": "OTHERID", "ts": "2026-11-26T15:54:05.273"}
+{"event": "ack_sent", "conn": 2, "control_id": "legacy-OTHERID-165400", "mode": "OTHERID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:54:05.277"}
+{"event": "received", "conn": 1, "control_id": "app.default-OTHERID-165400", "mode": "OTHERID", "ts": "2026-11-26T15:54:07.449"}
+{"event": "ack_sent", "conn": 1, "control_id": "app.default-OTHERID-165400", "mode": "OTHERID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:54:07.454"}
+{"event": "received", "conn": 3, "control_id": "app.failrej-OTHERID-165400", "mode": "OTHERID", "ts": "2026-11-26T15:54:09.602"}
+{"event": "ack_sent", "conn": 3, "control_id": "app.failrej-OTHERID-165400", "mode": "OTHERID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:54:09.605"}
+{"event": "received", "conn": 2, "control_id": "app.legacy-OTHERID-165400", "mode": "OTHERID", "ts": "2026-11-26T15:54:11.738"}
+{"event": "ack_sent", "conn": 2, "control_id": "app.legacy-OTHERID-165400", "mode": "OTHERID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:54:11.741"}
+{"event": "received", "conn": 3, "control_id": "msh.failrej_AL-OTHERID-165400", "mode": "OTHERID", "ts": "2026-11-26T15:54:13.881"}
+{"event": "ack_sent", "conn": 3, "control_id": "msh.failrej_AL-OTHERID-165400", "mode": "OTHERID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:54:13.887"}
+{"event": "received", "conn": 3, "control_id": "msh.failrej_App-OTHERID-165400", "mode": "OTHERID", "ts": "2026-11-26T15:54:16.026"}
+{"event": "ack_sent", "conn": 3, "control_id": "msh.failrej_App-OTHERID-165400", "mode": "OTHERID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:54:16.029"}
+{"event": "received", "conn": 3, "control_id": "msh.failrej-OTHERID-165400", "mode": "OTHERID", "ts": "2026-11-26T15:54:18.164"}
+{"event": "ack_sent", "conn": 3, "control_id": "msh.failrej-OTHERID-165400", "mode": "OTHERID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:54:18.167"}
+{"event": "received", "conn": 3, "control_id": "never.failrej-OTHERID-165400", "mode": "OTHERID", "ts": "2026-11-26T15:54:35.324"}
+{"event": "ack_sent", "conn": 3, "control_id": "never.failrej-OTHERID-165400", "mode": "OTHERID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:54:35.332"}
+{"event": "received", "conn": 3, "control_id": "byte.failrej-OTHERID-165400", "mode": "OTHERID", "ts": "2026-11-26T15:54:52.459"}
+{"event": "ack_sent", "conn": 3, "control_id": "byte.failrej-OTHERID-165400", "mode": "OTHERID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:54:52.464"}
+{"event": "received", "conn": 1, "control_id": "default-AE-165500", "mode": "AE", "ts": "2026-11-26T15:55:01.033"}
+{"event": "ack_sent", "conn": 1, "control_id": "default-AE-165500", "mode": "AE", "msa1": "AE", "msh9": "ACK", "ts": "2026-11-26T15:55:01.040"}
+{"event": "received", "conn": 1, "control_id": "default-NOMSA-165503", "mode": "NOMSA", "ts": "2026-11-26T15:55:03.227"}
+{"event": "ack_sent", "conn": 1, "control_id": "default-NOMSA-165503", "mode": "NOMSA", "msa1": "", "msh9": "ACK", "ts": "2026-11-26T15:55:03.231"}
+{"event": "received", "conn": 1, "control_id": "default-OTHERID-165505", "mode": "OTHERID", "ts": "2026-11-26T15:55:05.464"}
+{"event": "ack_sent", "conn": 1, "control_id": "default-OTHERID-165505", "mode": "OTHERID", "msa1": "AA", "msh9": "ACK", "ts": "2026-11-26T15:55:05.471"}
