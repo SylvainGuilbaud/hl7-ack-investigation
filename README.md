@@ -2,6 +2,11 @@
 
 Standalone lab for the InterSystems Developer Community article. Everything is synthetic.
 
+**The article: [docs/article.md](docs/article.md)** — symptom, six-step investigation method, the four causes, test matrix.
+This README is the lab's manual.
+
+![Lab flow](docs/img/flow.svg)
+
 ```
 sender ──MLLP──▶ in.<case> ──▶ out.<case> ──MLLP──▶ lab (Python simulator, :6600)
  (tools/send.py)  HL7 TCP service  HL7 TCP operation     answers AA/AE/AR/… on demand
@@ -12,6 +17,18 @@ sender ──MLLP──▶ in.<case> ──▶ out.<case> ──MLLP──▶ la
   Built at image time: namespace `REPRO`, production `Repro.Production` auto-started. `_SYSTEM`/`SuperUser` password `SYS`.
 * **lab** (`simulator/lab.py`): stdlib-only MLLP receiver. It reads **MSH-6** of what it receives and misbehaves accordingly,
   and logs every delivery to `results/lab.jsonl` — so "how many times was it sent" is counted *outside* IRIS.
+* **Repository layout**
+
+  | path | content |
+  |---|---|
+  | `docker-compose.yml`, `iris/` | the IRIS for Health image (built with the code and the production) and the `lab` container |
+  | `iris/src/Repro/` | `Production.cls` (generated), `Trace.cls` (read-only investigation helpers) |
+  | `simulator/lab.py` | the downstream receiver |
+  | `tools/` | `send.py` (sender), `matrix.py` (99-row matrix), `dashboard.py` (view of the lab log), `gen_production.py` |
+  | `test/` | 6 scripts / 24 tests, each writing a Markdown report |
+  | `results/` | output of the last runs, **committed** (see Caveats) |
+  | `docs/` | the article, its images (`docs/img/`), and the reference run (`docs/reports/`, `docs/traces/`, `docs/matrix.md`) |
+
 * One service/operation pair per `ReplyCodeActions` variant; all other settings are identical
   (`ResponseTimeout=5`, `RetryInterval=2`, `FailureTimeout=10`, `ArchiveIO=1` on every item).
 
@@ -41,7 +58,20 @@ SEND_WAIT=15 python3 tools/send.py localhost 29211 AR demo-2   # AckMode=App; op
 docker exec -i hl7ack-iris iris session IRIS -U REPRO <<< 'do ##class(Repro.Trace).Report("demo-1")'
 python3 tools/matrix.py               # all 11 services x 9 lab modes = 99 rows, ~20 min, writes results/matrix.md
 ```
-Management Portal: http://localhost:9772/csp/sys/UtilHome.csp (namespace `REPRO`). `tools/gen_production.py` regenerates `Production.cls` from its CASES table.
+Management Portal: http://localhost:9772/csp/sys/UtilHome.csp (namespace `REPRO`, user `_SYSTEM` / `SYS`).
+`tools/gen_production.py` regenerates `Production.cls` from its CASES table.
+
+### Dashboard over the receiver's log
+
+```bash
+python3 tools/dashboard.py --open      # writes results/dashboard.html (self-contained) and opens it
+python3 tools/dashboard.py --serve     # live: reload the page to re-read results/lab.jsonl (default port 8765)
+```
+![Dashboard](docs/img/dashboard-overview.png)
+
+Per message: deliveries, gaps, ACKs per delivery; a *trace ↗* link opens its Visual Trace (the session id is fetched from the
+running container and cached in `results/sessions.json`; options `--portal`, `--ns`, `--container`, `--no-fetch`).
+It only sees what the downstream receiver saw, so it cannot show retries made by the *sender* (Cause D in the article).
 
 Lab modes (MSH-6): `AA AE AR AR3`(AR with MSH-9 `ACK^A28^ACK`) `OTHERID`(AA whose MSA-2 is the control id of *another* message) `NOMSA` `NOFRAME`(no MLLP end block) `CLOSE`(socket closed, no ACK) `LATE`(AA after 12 s).
 
@@ -68,11 +98,16 @@ A reference run is committed in `docs/reports/`.
 
 ## The investigation, in the order that worked
 
-1. **Count deliveries at the receiver**, not in IRIS (`results/lab.jsonl`). Is it really being resent, and at what interval?
+Detailed in [the article](docs/article.md#3-the-investigation-method-six-steps); in short:
+
+1. **Count deliveries at the receiver**, not in IRIS (`results/lab.jsonl`, or the dashboard). Is it really being resent, at what interval, and was each delivery ACKed?
 2. **Look at what the receiver actually answered** (`MSA-1`, `MSA-2`, `MSH-9`) — the ACK the *sender* sees from IRIS (`MSA|CA`, `AckMode=Immed`) is a different ACK.
-3. **Read the Event Log of the session** (`Repro.Trace.Report`). The text `matched ReplyCodeActions … resulting in Action code XX` names the entry that fired and the action taken.
-4. **Check the effective `ReplyCodeActions`** (blank ≠ nothing: blank means the default string above) and remember: entries are evaluated left to right, **the first non-warning match wins**.
-5. Only then change a setting, and re-run the matrix.
+3. **Follow the message in IRIS**: Visual Trace / Message Viewer (or `Repro.Trace.Report`).
+4. **Read the Event Log of the session.** `matched ReplyCodeActions … resulting in Action code XX` ⇒ read `ReplyCodeActions`; a TCP/adapter error with *no* action code ⇒ connection layer.
+5. **Check the effective `ReplyCodeActions`** (blank ≠ nothing: blank means the default string above) and remember: entries are evaluated left to right, **the first non-warning match wins**.
+6. **Check what the sender was told** (`AckMode` of the service). Only then change a setting, and re-run the matrix.
+
+![Decision flow](docs/img/decision-flow.png)
 
 ## Results (2026.3.0.212, see `docs/matrix.md`, traces in `docs/traces/`)
 
@@ -113,4 +148,7 @@ connection logic, **not** by ReplyCodeActions (no `Action code` in the log); (c)
 ## Caveats
 * Tested on `latest-cd` = **2026.3**, not 2026.2 — set `IRIS_IMAGE` to a 2026.2 image if the article must say 2026.2.
 * `F` on AR leaves the message in Error and the sender is not told (`AckMode=Immed`); alerting/resubmit is a business decision, not shown here.
-* The 7th `RF` in the Summary column for AR is the final "Discarding message" log line quoting the last attempt, not a 7th delivery.
+* Extra `RF` / `F` entries in the matrix's "action codes logged" column are log lines that *quote* the action (the final "Discarding message" line, or the service's "Constructing ACK with code CE" warning), not extra deliveries; the **deliveries** column is the receiver's count.
+* `results/` is committed on purpose (the article links to it). Re-running the lab or the tests overwrites it, and `results/lab.jsonl` is only appended to, never truncated (`: > results/lab.jsonl` to start clean). The reference run quoted in the article is kept in `docs/`.
+* A `LATE` ACK stays in the operation's socket and IRIS logs *"Discarding data found in buffer before HL7 send"* on the next send. That is IRIS discarding a stale ACK on purpose; the test harness and `tools/matrix.py` reset the operation's connection after every `LATE` run (`Repro.Trace.ResetOperation`) so it does not leak into other tests.
+* "Nothing for ≥ 100 s" (suspended message under `AckMode=App`) was observed once; the setting that eventually releases the sender was not investigated.
