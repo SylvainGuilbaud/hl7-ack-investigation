@@ -146,9 +146,8 @@ connection logic, **not** by ReplyCodeActions (no `Action code` in the log); (c)
 `failrej` fixes only (a); (b) needs the receiver or `ResponseTimeout` fixed.
 
 ## Caveats
-* Tested on `latest-cd` = **2026.3**, not 2026.2 — set `IRIS_IMAGE` to a 2026.2 image if the article must say 2026.2.
+* Tested on `latest-cd` = **2026.3**
 * `F` on AR leaves the message in Error and the sender is not told (`AckMode=Immed`); alerting/resubmit is a business decision, not shown here.
 * Extra `RF` / `F` entries in the matrix's "action codes logged" column are log lines that *quote* the action (the final "Discarding message" line, or the service's "Constructing ACK with code CE" warning), not extra deliveries; the **deliveries** column is the receiver's count.
 * `results/` is committed on purpose (the article links to it). Re-running the lab or the tests overwrites it, and `results/lab.jsonl` is only appended to, never truncated (`: > results/lab.jsonl` to start clean). The reference run quoted in the article is kept in `docs/`.
 * A `LATE` ACK stays in the operation's socket and IRIS logs *"Discarding data found in buffer before HL7 send"* on the next send. That is IRIS discarding a stale ACK on purpose; the test harness and `tools/matrix.py` reset the operation's connection after every `LATE` run (`Repro.Trace.ResetOperation`) so it does not leak into other tests.
-* "Nothing for ≥ 100 s" (suspended message under `AckMode=App`) was observed once; the setting that eventually releases the sender was not investigated.
