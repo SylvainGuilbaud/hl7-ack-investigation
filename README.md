@@ -151,3 +151,7 @@ connection logic, **not** by ReplyCodeActions (no `Action code` in the log); (c)
 * Extra `RF` / `F` entries in the matrix's "action codes logged" column are log lines that *quote* the action (the final "Discarding message" line, or the service's "Constructing ACK with code CE" warning), not extra deliveries; the **deliveries** column is the receiver's count.
 * `results/` is committed on purpose (the article links to it). Re-running the lab or the tests overwrites it, and `results/lab.jsonl` is only appended to, never truncated (`: > results/lab.jsonl` to start clean). The reference run quoted in the article is kept in `docs/`.
 * A `LATE` ACK stays in the operation's socket and IRIS logs *"Discarding data found in buffer before HL7 send"* on the next send. That is IRIS discarding a stale ACK on purpose; the test harness and `tools/matrix.py` reset the operation's connection after every `LATE` run (`Repro.Trace.ResetOperation`) so it does not leak into other tests.
+
+## License
+
+[MIT](LICENSE). The InterSystems IRIS for Health image used by the lab is subject to its own license terms.
