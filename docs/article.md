@@ -1,4 +1,4 @@
-# The ACK Arrived — Why Is My HL7 Message Still Being Retried in InterSystems Health Connect?
+# The ACK Arrived — Why Is My HL7 Message Still Being Retried in InterSystems IRIS for Health | Health Connect?
 
 *Tested with InterSystems IRIS for Health community image `latest-cd` (2026.3.0.212). All messages are synthetic. The full lab ([Docker Compose](../docker-compose.yml), [simulator](../simulator/lab.py), [production](../iris/src/Repro/Production.cls), 24 [scripted tests](../test/) with [reports](reports/README.md), and a [dashboard](../tools/dashboard.py) over the receiver's log) is in the companion repository; see the [README](../README.md).*
 
